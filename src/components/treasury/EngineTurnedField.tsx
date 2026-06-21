@@ -84,7 +84,7 @@ export function EngineTurnedField({
         </defs>
       )}
       {paths.map((d, i) => (
-        <path key={i} d={d} stroke={stroke} strokeWidth={0.5} strokeOpacity={0.7} />
+        <path key={i} d={d} stroke={stroke} strokeWidth={0.9} strokeOpacity={0.9} />
       ))}
     </svg>
   );
