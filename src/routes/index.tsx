@@ -197,21 +197,21 @@ function Hero() {
                   ["Ledger", "0xZEN…a91f"],
                   ["Status", "Verified On-Chain"],
                 ].map(([k, v]) => (
-                  <div key={k} className="rounded-lg p-3" style={{ background: "rgba(5,7,10,0.5)", border: "1px solid rgba(214,177,94,0.12)" }}>
+                  <div key={k} className="rounded-lg p-3" style={{ background: "rgba(8,16,8,0.5)", border: "1px solid rgba(227,185,85,0.14)" }}>
                     <div className="micro-label text-muted-foreground">{k}</div>
                     <div className="mt-1 font-medium text-zen-platinum">{v}</div>
                   </div>
                 ))}
               </div>
 
-              <div className="relative mt-6 overflow-hidden rounded-lg p-4" style={{ background: "rgba(5,7,10,0.55)", border: "1px solid rgba(46,168,255,0.18)" }}>
-                <GuillocheOverlay className="absolute -right-10 -top-10 h-40 w-40 text-zen-holo" color="#2ea8ff" rings={4} opacity={0.18} />
+              <div className="relative mt-6 overflow-hidden rounded-lg p-4" style={{ background: "rgba(8,16,8,0.55)", border: "1px solid rgba(182,212,74,0.22)" }}>
+                <GuillocheOverlay className="absolute -right-10 -top-10 h-40 w-40 text-zen-holo" color="#a9d24a" rings={4} opacity={0.2} />
                 <div className="relative flex items-center justify-between">
                   <div>
                     <div className="micro-label text-zen-holo">Security Seal</div>
                     <div className="mt-1 font-mono text-xs text-muted-foreground">SHA-256 · ZEN-CERT-2026</div>
                   </div>
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full text-zen-holo" style={{ border: "1px solid rgba(46,168,255,0.4)" }}>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full text-zen-holo" style={{ border: "1px solid rgba(182,212,74,0.42)" }}>
                     {Icon.verify}
                   </div>
                 </div>
