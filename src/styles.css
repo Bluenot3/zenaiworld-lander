@@ -142,6 +142,13 @@
 
   body {
     background-color: var(--color-background);
+    background-image:
+      radial-gradient(120% 85% at 82% -12%, rgba(232, 137, 58, 0.16), transparent 52%),
+      radial-gradient(95% 75% at 8% 6%, rgba(56, 185, 106, 0.14), transparent 55%),
+      radial-gradient(85% 80% at 50% 116%, rgba(182, 212, 74, 0.12), transparent 58%),
+      radial-gradient(70% 60% at 95% 70%, rgba(31, 143, 114, 0.12), transparent 60%),
+      linear-gradient(168deg, #0e2110 0%, #0a1207 58%, #0c1808 100%);
+    background-attachment: fixed;
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -149,7 +156,7 @@
   }
 
   ::selection {
-    background: rgba(0, 184, 121, 0.3);
+    background: rgba(182, 212, 74, 0.32);
     color: var(--zen-white);
   }
 
