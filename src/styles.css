@@ -66,58 +66,58 @@
 :root {
   --radius: 0.75rem;
 
-  /* Exact brand palette — US-currency "tasty" warm gradient family
-     deep olive ink → treasury green → bill emerald → yellow-green →
-     amber gold → copper orange. Holo/cyan repurposed to lime tones. */
-  --zen-ink: #0a1207;        /* deep olive-black base */
-  --zen-navy: #0f1d0e;       /* deep forest panel */
-  --zen-treasury: #15401f;   /* treasury green */
-  --zen-emerald: #38b96a;    /* vivid banknote green */
-  --zen-gold: #e3b955;       /* amber gold */
-  --zen-antique: #c2782e;    /* copper */
-  --zen-platinum: #f4eed8;   /* warm cream platinum */
-  --zen-holo: #a9d24a;       /* yellow-green highlight (repurposed) */
-  --zen-cyan: #d9e87f;       /* pale lime */
-  --zen-orange: #e8893a;     /* copper-orange */
-  --zen-lime: #b6d44a;       /* fresh yellow-green */
-  --zen-parchment: #d8cba3;
-  --zen-white: #faf8ef;
+  /* Brand palette — luminous "new currency" gradient family:
+     light aqua-blue → teal-green → fresh lime → warm gold →
+     orange → bright cream/white. Lighter, airier, premium. */
+  --zen-ink: #08191e;        /* deep teal-blue base (lighter, not muddy) */
+  --zen-navy: #0d2730;       /* deep teal panel */
+  --zen-treasury: #155a52;   /* teal-green */
+  --zen-emerald: #45dcae;    /* luminous aqua-green */
+  --zen-gold: #f3d172;       /* warm light gold */
+  --zen-antique: #f29a4e;    /* warm orange */
+  --zen-platinum: #f8f3e6;   /* bright warm cream */
+  --zen-holo: #7fe8da;       /* light teal highlight */
+  --zen-cyan: #95e8ff;       /* sky blue */
+  --zen-orange: #f6964f;     /* orange */
+  --zen-lime: #d4ec80;       /* yellow-green */
+  --zen-parchment: #ecdfb8;
+  --zen-white: #fcf9f2;
 
-  /* Semantic (warm currency dark) */
-  --background: #0a1207;
-  --foreground: #f4eed8;
-  --card: #102014;
-  --card-foreground: #f4eed8;
-  --popover: #0f1d0e;
-  --popover-foreground: #f4eed8;
-  --primary: #38b96a;
-  --primary-foreground: #06140b;
-  --secondary: #14241a;
-  --secondary-foreground: #f4eed8;
-  --muted: #122016;
-  --muted-foreground: #9fb08a;
-  --accent: #e3b955;
-  --accent-foreground: #160f02;
-  --destructive: #d6453f;
-  --destructive-foreground: #faf8ef;
-  --border: rgba(227, 185, 85, 0.18);
-  --input: rgba(227, 185, 85, 0.2);
-  --ring: rgba(169, 210, 74, 0.55);
+  /* Semantic (luminous teal-blue dark) */
+  --background: #08191e;
+  --foreground: #f5f1e6;
+  --card: #0f2730;
+  --card-foreground: #f5f1e6;
+  --popover: #0d222b;
+  --popover-foreground: #f5f1e6;
+  --primary: #45dcae;
+  --primary-foreground: #052019;
+  --secondary: #133038;
+  --secondary-foreground: #f5f1e6;
+  --muted: #123039;
+  --muted-foreground: #b7c9c8;   /* brighter for legibility */
+  --accent: #f3d172;
+  --accent-foreground: #1a1303;
+  --destructive: #e35b50;
+  --destructive-foreground: #fcf9f2;
+  --border: rgba(127, 232, 218, 0.20);
+  --input: rgba(127, 232, 218, 0.22);
+  --ring: rgba(149, 232, 255, 0.6);
 
-  /* Gradients — rich, edible US-currency ink */
-  --grad-emerald-gold: linear-gradient(135deg, #38b96a 0%, #b6d44a 45%, #e3b955 100%);
-  --grad-holo: linear-gradient(135deg, #b6d44a 0%, #d9e87f 45%, #f4eed8 100%);
-  --grad-navy-ink: linear-gradient(160deg, #0f1d0e 0%, #0a1207 100%);
-  --grad-gold-platinum: linear-gradient(120deg, #c2782e 0%, #e3b955 48%, #f4eed8 100%);
-  --grad-treasury: linear-gradient(165deg, #15401f 0%, #0a1207 90%);
-  /* currency color-shift — copper-orange → amber → yellow-green → emerald → teal */
-  --grad-currency: linear-gradient(110deg, #c2632a 0%, #e8893a 16%, #e3b955 34%, #b6d44a 54%, #38b96a 76%, #1f8f72 100%);
+  /* Gradients — luminous blue-green fading to gold/orange/cream */
+  --grad-emerald-gold: linear-gradient(135deg, #45dcae 0%, #d4ec80 48%, #f3d172 100%);
+  --grad-holo: linear-gradient(135deg, #95e8ff 0%, #7fe8da 45%, #fcf9f2 100%);
+  --grad-navy-ink: linear-gradient(160deg, #0d2730 0%, #08191e 100%);
+  --grad-gold-platinum: linear-gradient(120deg, #f6964f 0%, #f3d172 48%, #fcf9f2 100%);
+  --grad-treasury: linear-gradient(165deg, #155a52 0%, #08191e 90%);
+  /* currency color-shift — sky blue → teal → lime → gold → orange → cream */
+  --grad-currency: linear-gradient(110deg, #95e8ff 0%, #5fdcd0 18%, #6fdc9e 36%, #d4ec80 54%, #f3d172 72%, #f6964f 88%, #fcf6e6 100%);
 
   /* Shadows / glow */
-  --shadow-cert: 0 30px 80px -40px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(227, 185, 85, 0.12);
-  --shadow-emerald: 0 0 60px -18px rgba(56, 185, 106, 0.5);
-  --shadow-holo: 0 0 80px -20px rgba(182, 212, 74, 0.5);
-  --glow-gold: 0 0 44px -12px rgba(227, 185, 85, 0.55);
+  --shadow-cert: 0 30px 80px -40px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(127, 232, 218, 0.14);
+  --shadow-emerald: 0 0 60px -18px rgba(69, 220, 174, 0.55);
+  --shadow-holo: 0 0 80px -20px rgba(149, 232, 255, 0.5);
+  --glow-gold: 0 0 44px -12px rgba(243, 209, 114, 0.55);
 }
 
 @theme inline {
@@ -143,11 +143,11 @@
   body {
     background-color: var(--color-background);
     background-image:
-      radial-gradient(120% 85% at 82% -12%, rgba(232, 137, 58, 0.16), transparent 52%),
-      radial-gradient(95% 75% at 8% 6%, rgba(56, 185, 106, 0.14), transparent 55%),
-      radial-gradient(85% 80% at 50% 116%, rgba(182, 212, 74, 0.12), transparent 58%),
-      radial-gradient(70% 60% at 95% 70%, rgba(31, 143, 114, 0.12), transparent 60%),
-      linear-gradient(168deg, #0e2110 0%, #0a1207 58%, #0c1808 100%);
+      radial-gradient(120% 85% at 82% -12%, rgba(246, 150, 79, 0.16), transparent 52%),
+      radial-gradient(95% 75% at 8% 6%, rgba(69, 220, 174, 0.16), transparent 55%),
+      radial-gradient(85% 80% at 50% 116%, rgba(149, 232, 255, 0.14), transparent 58%),
+      radial-gradient(70% 60% at 95% 70%, rgba(127, 232, 218, 0.12), transparent 60%),
+      linear-gradient(168deg, #0c2630 0%, #08191e 58%, #0a1f26 100%);
     background-attachment: fixed;
     color: var(--color-foreground);
     font-family: var(--font-sans);
@@ -156,7 +156,7 @@
   }
 
   ::selection {
-    background: rgba(182, 212, 74, 0.32);
+    background: rgba(149, 232, 255, 0.32);
     color: var(--zen-white);
   }
 
@@ -245,16 +245,16 @@
 }
 
 @utility glass-panel {
-  background: linear-gradient(160deg, rgba(20, 36, 22, 0.82), rgba(10, 18, 7, 0.86));
+  background: linear-gradient(160deg, rgba(20, 46, 52, 0.80), rgba(10, 26, 32, 0.86));
   backdrop-filter: blur(18px) saturate(135%);
   border: 1px solid var(--color-border);
 }
 
 @utility cert-surface {
   background:
-    radial-gradient(120% 120% at 50% -10%, rgba(56, 185, 106, 0.08), transparent 55%),
-    radial-gradient(90% 90% at 100% 0%, rgba(232, 137, 58, 0.06), transparent 55%),
-    linear-gradient(165deg, rgba(16, 32, 20, 0.95), rgba(10, 18, 7, 0.97));
+    radial-gradient(120% 120% at 50% -10%, rgba(69, 220, 174, 0.10), transparent 55%),
+    radial-gradient(90% 90% at 100% 0%, rgba(149, 232, 255, 0.08), transparent 55%),
+    linear-gradient(165deg, rgba(16, 42, 50, 0.95), rgba(9, 24, 30, 0.97));
 }
 
 @utility hover-lift {

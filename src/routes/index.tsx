@@ -103,7 +103,7 @@ function Hero() {
       {/* legibility scrim behind copy */}
       <div
         className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-full md:w-3/5"
-        style={{ background: "linear-gradient(90deg, rgba(10,18,7,0.92) 0%, rgba(10,18,7,0.68) 45%, transparent 100%)" }}
+        style={{ background: "linear-gradient(90deg, rgba(8,25,30,0.94) 0%, rgba(8,25,30,0.70) 45%, transparent 100%)" }}
         aria-hidden="true"
       />
 
@@ -205,7 +205,7 @@ function Hero() {
               </div>
 
               <div className="relative mt-6 overflow-hidden rounded-lg p-4" style={{ background: "rgba(8,16,8,0.55)", border: "1px solid rgba(182,212,74,0.22)" }}>
-                <GuillocheOverlay className="absolute -right-10 -top-10 h-40 w-40 text-zen-holo" color="#a9d24a" rings={4} opacity={0.2} />
+                <GuillocheOverlay className="absolute -right-10 -top-10 h-40 w-40 text-zen-holo" color="#7fe8da" rings={4} opacity={0.2} />
                 <div className="relative flex items-center justify-between">
                   <div>
                     <div className="micro-label text-zen-holo">Security Seal</div>
@@ -361,7 +361,7 @@ function Proof() {
             <div className="grid gap-px p-px md:grid-cols-4" style={{ background: "rgba(214,177,94,0.1)" }}>
               {PROOF.map(([n, l, s], i) => (
                 <div key={l} className="cert-surface relative overflow-hidden p-8 text-center">
-                  {i === 1 && <GuillocheOverlay className="absolute inset-0 m-auto h-48 w-48 text-zen-emerald" color="#38b96a" rings={4} opacity={0.08} />}
+                  {i === 1 && <GuillocheOverlay className="absolute inset-0 m-auto h-48 w-48 text-zen-emerald" color="#45dcae" rings={4} opacity={0.08} />}
                   <div className="relative font-display text-4xl font-semibold text-engrave md:text-5xl">{n}</div>
                   <div className="relative mt-2 text-sm font-medium text-zen-platinum">{l}</div>
                   <div className="relative mt-1 micro-label text-muted-foreground">{s}</div>
