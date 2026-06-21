@@ -37,24 +37,24 @@ export function TreasuryPatternBackground({
       {/* engine-turned woven band — top */}
       <EngineTurnedField
         gradient="currency"
-        opacity={hero ? 0.22 : 0.13}
-        lines={hero ? 54 : 40}
-        className="absolute -top-10 left-0 h-[55%] w-full"
+        opacity={hero ? 0.4 : 0.24}
+        lines={hero ? 56 : 42}
+        className="absolute -top-10 left-0 h-[58%] w-full"
       />
       {/* engine-turned woven band — bottom, mirrored */}
       <EngineTurnedField
         gradient="emerald"
-        opacity={hero ? 0.16 : 0.09}
-        lines={44}
+        opacity={hero ? 0.3 : 0.18}
+        lines={46}
         amplitude={0.2}
-        className="absolute -bottom-10 left-0 h-[55%] w-full -scale-y-100"
+        className="absolute -bottom-10 left-0 h-[58%] w-full -scale-y-100"
       />
 
       {/* radial engraving waves */}
       <SecurityLinePattern
         variant="wave"
         color="#d6b15e"
-        opacity={hero ? 0.12 : 0.07}
+        opacity={hero ? 0.16 : 0.1}
         className="absolute -right-1/4 -top-1/3 h-[150%] w-[150%]"
       />
 
