@@ -100,8 +100,8 @@ function Hero() {
       <TreasuryPatternBackground variant="hero" />
 
       {/* holographic strips */}
-      <HolographicSecurityStrip className="absolute left-[12%] top-0 h-full opacity-40" width={40} />
-      <HolographicSecurityStrip className="absolute right-[8%] top-0 h-full opacity-30" orientation="diagonal" width={28} />
+      <HolographicSecurityStrip className="absolute left-[18%] top-0 h-full opacity-70" width={44} />
+      <HolographicSecurityStrip className="absolute right-[14%] top-0 h-full opacity-50" orientation="diagonal" width={30} />
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
         {/* Left: copy */}
