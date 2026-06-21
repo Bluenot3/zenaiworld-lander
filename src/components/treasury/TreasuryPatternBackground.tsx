@@ -53,13 +53,13 @@ export function TreasuryPatternBackground({
       {/* radial engraving waves */}
       <SecurityLinePattern
         variant="wave"
-        color="#e3b955"
+        color="#f3d172"
         opacity={hero ? 0.18 : 0.11}
         className="absolute -right-1/4 -top-1/3 h-[150%] w-[150%]"
       />
 
       {/* fine ornamental grid */}
-      <SecurityLinePattern variant="grid" color="#38b96a" opacity={0.06} className="absolute inset-0 h-full w-full" />
+      <SecurityLinePattern variant="grid" color="#45dcae" opacity={0.06} className="absolute inset-0 h-full w-full" />
 
       {/* large color-shifting guilloche rosette */}
       {watermark && (
