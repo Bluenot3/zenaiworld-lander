@@ -9,9 +9,9 @@ interface CredentialBadgeProps {
  */
 export function CredentialBadge({ label, className = "", tone = "gold" }: CredentialBadgeProps) {
   const tones = {
-    emerald: { dot: "#00b879", border: "rgba(0,184,121,0.35)", text: "text-zen-emerald" },
-    gold: { dot: "#d6b15e", border: "rgba(214,177,94,0.35)", text: "text-zen-gold" },
-    holo: { dot: "#2ea8ff", border: "rgba(46,168,255,0.4)", text: "text-zen-holo" },
+    emerald: { dot: "#38b96a", border: "rgba(56,185,106,0.35)", text: "text-zen-emerald" },
+    gold: { dot: "#e3b955", border: "rgba(227,185,85,0.35)", text: "text-zen-gold" },
+    holo: { dot: "#a9d24a", border: "rgba(182,212,74,0.4)", text: "text-zen-holo" },
   } as const;
   const t = tones[tone];
 
