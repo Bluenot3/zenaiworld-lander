@@ -104,6 +104,8 @@
   --grad-navy-ink: linear-gradient(160deg, #07111f 0%, #05070a 100%);
   --grad-gold-platinum: linear-gradient(120deg, #9f7a2e 0%, #d6b15e 45%, #e8e2d0 100%);
   --grad-treasury: linear-gradient(165deg, #063b2b 0%, #05070a 90%);
+  /* currency color-shift — copper → emerald → cyan, like modern banknote ink */
+  --grad-currency: linear-gradient(110deg, #b9803a 0%, #d6b15e 22%, #00b879 52%, #2ea8ff 80%, #7de7ff 100%);
 
   /* Shadows / glow */
   --shadow-cert: 0 30px 80px -40px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(214, 177, 94, 0.1);
