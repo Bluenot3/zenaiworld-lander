@@ -51,7 +51,7 @@ export function SovereignCTASection() {
               <div className="absolute right-2 top-1/2 hidden h-72 -translate-y-1/2 md:block">
                 <HolographicSecurityStrip orientation="diagonal" width={48} className="h-72 rounded-full" />
               </div>
-              <ZenMedallion size={220} glyph="verify" spin className="opacity-90 drop-shadow-[0_0_30px_rgba(0,184,121,0.25)]" />
+              <ZenMedallion size={220} glyph="verify" spin className="opacity-90 drop-shadow-[0_0_36px_rgba(182,212,74,0.3)]" />
             </div>
           </div>
         </CertificateFrame>
