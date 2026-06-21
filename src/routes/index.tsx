@@ -8,6 +8,7 @@ import { PremiumPathCard } from "@/components/treasury/PremiumPathCard";
 import { CredentialBadge } from "@/components/treasury/CredentialBadge";
 import { SovereignCTASection } from "@/components/treasury/SovereignCTASection";
 import { GuillocheOverlay } from "@/components/treasury/GuillocheOverlay";
+import { MicroprintBorder } from "@/components/treasury/MicroprintBorder";
 
 export const Route = createFileRoute("/")({
   head: () => ({
