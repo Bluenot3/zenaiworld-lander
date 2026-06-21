@@ -205,6 +205,24 @@
   color: transparent;
 }
 
+@utility text-currency {
+  background: var(--grad-currency);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: var(--animate-currency-shift);
+}
+
+@utility border-currency {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--card), var(--card)) padding-box,
+    var(--grad-currency) border-box;
+  background-size: 100% 100%, 220% 100%;
+  animation: currency-shift 9s ease-in-out infinite;
+}
+
 @utility micro-label {
   font-family: var(--font-mono);
   text-transform: uppercase;
