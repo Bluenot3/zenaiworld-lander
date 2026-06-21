@@ -84,7 +84,7 @@ export function TreasuryPatternBackground({
       {/* vignette */}
       <div
         className="absolute inset-0"
-        style={{ background: "radial-gradient(125% 125% at 50% 45%, transparent 60%, rgba(8,16,8,0.78) 100%)" }}
+        style={{ background: "radial-gradient(125% 125% at 50% 45%, transparent 62%, rgba(6,18,22,0.72) 100%)" }}
       />
     </div>
   );
