@@ -38,7 +38,7 @@ export function PremiumPathCard({
         <div className="flex items-center justify-between">
           <div
             className="flex h-12 w-12 items-center justify-center rounded-lg text-zen-platinum"
-            style={{ border: `1px solid ${ring}`, background: "rgba(5,7,10,0.6)" }}
+            style={{ border: `1px solid ${ring}`, background: "rgba(8,16,8,0.6)" }}
           >
             {icon}
           </div>
