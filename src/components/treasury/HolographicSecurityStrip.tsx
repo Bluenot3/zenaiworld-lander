@@ -63,7 +63,7 @@ export function HolographicSecurityStrip({
         ))}
       </div>
       {/* breathing glow */}
-      <div className="absolute inset-0 animate-breathe" style={{ background: "radial-gradient(60% 40% at 50% 50%, rgba(182,212,74,0.5), transparent 70%)" }} />
+      <div className="absolute inset-0 animate-breathe" style={{ background: "radial-gradient(60% 40% at 50% 50%, rgba(149,232,255,0.5), transparent 70%)" }} />
       {/* shimmer sweep */}
       <div
         className="absolute -inset-y-10 left-0 w-1/2 animate-shimmer"
