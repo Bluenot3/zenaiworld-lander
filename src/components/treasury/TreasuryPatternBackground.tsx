@@ -66,17 +66,17 @@ export function TreasuryPatternBackground({
         <>
           <GuillocheOverlay
             gradient="currency"
-            className="absolute left-1/2 top-1/2 h-[820px] w-[820px] -translate-x-1/2 -translate-y-1/2"
+            className="absolute left-1/2 top-1/2 h-[860px] w-[860px] -translate-x-1/2 -translate-y-1/2 animate-spin-slow"
             rings={8}
-            opacity={hero ? 0.4 : 0.22}
-            weight={0.6}
+            opacity={hero ? 0.6 : 0.34}
+            weight={1.1}
           />
           <GuillocheOverlay
             gradient="holo"
-            className="absolute left-1/2 top-1/2 h-[480px] w-[480px] -translate-x-1/2 -translate-y-1/2"
+            className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 animate-spin-reverse"
             rings={5}
-            opacity={hero ? 0.32 : 0.16}
-            weight={0.5}
+            opacity={hero ? 0.5 : 0.24}
+            weight={0.9}
           />
         </>
       )}
@@ -84,7 +84,7 @@ export function TreasuryPatternBackground({
       {/* vignette */}
       <div
         className="absolute inset-0"
-        style={{ background: "radial-gradient(120% 120% at 50% 40%, transparent 50%, rgba(5,7,10,0.9) 100%)" }}
+        style={{ background: "radial-gradient(125% 125% at 50% 45%, transparent 62%, rgba(5,7,10,0.82) 100%)" }}
       />
     </div>
   );
