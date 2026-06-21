@@ -58,7 +58,9 @@
   --animate-sweep: sweep 8s linear infinite;
   --animate-float: float 9s ease-in-out infinite;
   --animate-spin-slow: spin-slow 90s linear infinite;
+  --animate-spin-reverse: spin-slow 120s linear infinite reverse;
   --animate-rise: rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-currency-shift: currency-shift 9s ease-in-out infinite;
 }
 
 :root {
@@ -104,6 +106,8 @@
   --grad-navy-ink: linear-gradient(160deg, #07111f 0%, #05070a 100%);
   --grad-gold-platinum: linear-gradient(120deg, #9f7a2e 0%, #d6b15e 45%, #e8e2d0 100%);
   --grad-treasury: linear-gradient(165deg, #063b2b 0%, #05070a 90%);
+  /* currency color-shift — copper → emerald → cyan, like modern banknote ink */
+  --grad-currency: linear-gradient(110deg, #b9803a 0%, #d6b15e 22%, #00b879 52%, #2ea8ff 80%, #7de7ff 100%);
 
   /* Shadows / glow */
   --shadow-cert: 0 30px 80px -40px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(214, 177, 94, 0.1);
@@ -173,6 +177,10 @@
   from { opacity: 0; transform: translateY(22px); }
   to { opacity: 1; transform: translateY(0); }
 }
+@keyframes currency-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
 
 /* ---------- Utilities ---------- */
 @utility text-engrave {
@@ -195,6 +203,24 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+@utility text-currency {
+  background: var(--grad-currency);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: var(--animate-currency-shift);
+}
+
+@utility border-currency {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--card), var(--card)) padding-box,
+    var(--grad-currency) border-box;
+  background-size: 100% 100%, 220% 100%;
+  animation: currency-shift 9s ease-in-out infinite;
 }
 
 @utility micro-label {

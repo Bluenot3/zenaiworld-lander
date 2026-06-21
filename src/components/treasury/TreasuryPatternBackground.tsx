@@ -1,4 +1,5 @@
 import { GuillocheOverlay } from "./GuillocheOverlay";
+import { EngineTurnedField } from "./EngineTurnedField";
 import { SecurityLinePattern } from "./SecurityLinePattern";
 
 interface TreasuryPatternBackgroundProps {
@@ -10,64 +11,80 @@ interface TreasuryPatternBackgroundProps {
 }
 
 /**
- * TreasuryPatternBackground — layered treasury background system combining
- * radial engraving waves, ornamental grids, guilloche watermarks and glow.
+ * TreasuryPatternBackground — layered currency-grade background system:
+ * engine-turned woven bands, dense guilloche rosettes, ornamental grids,
+ * color-shifting glow and vignette. Designed to read like the intaglio
+ * printing on United States banknotes, reimagined for ZEN.
  */
 export function TreasuryPatternBackground({
   className = "",
   variant = "section",
   watermark = true,
 }: TreasuryPatternBackgroundProps) {
+  const hero = variant === "hero";
   return (
     <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`} aria-hidden="true">
       {/* base gradient */}
       <div
         className="absolute inset-0"
         style={{
-          background:
-            variant === "hero"
-              ? "radial-gradient(120% 80% at 50% -10%, rgba(0,184,121,0.1), transparent 55%), radial-gradient(90% 70% at 80% 20%, rgba(46,168,255,0.1), transparent 55%), linear-gradient(165deg, #07111f 0%, #05070a 80%)"
-              : "linear-gradient(165deg, #060d18 0%, #05070a 90%)",
+          background: hero
+            ? "radial-gradient(130% 90% at 50% -10%, rgba(0,184,121,0.16), transparent 55%), radial-gradient(80% 70% at 82% 22%, rgba(46,168,255,0.16), transparent 55%), radial-gradient(70% 60% at 12% 75%, rgba(185,128,58,0.12), transparent 60%), linear-gradient(165deg, #07131f 0%, #05070a 82%)"
+            : "radial-gradient(90% 70% at 80% 0%, rgba(46,168,255,0.07), transparent 55%), linear-gradient(165deg, #060e18 0%, #05070a 92%)",
         }}
+      />
+
+      {/* engine-turned woven band — top */}
+      <EngineTurnedField
+        gradient="currency"
+        opacity={hero ? 0.4 : 0.24}
+        lines={hero ? 56 : 42}
+        className="absolute -top-10 left-0 h-[58%] w-full"
+      />
+      {/* engine-turned woven band — bottom, mirrored */}
+      <EngineTurnedField
+        gradient="emerald"
+        opacity={hero ? 0.3 : 0.18}
+        lines={46}
+        amplitude={0.2}
+        className="absolute -bottom-10 left-0 h-[58%] w-full -scale-y-100"
       />
 
       {/* radial engraving waves */}
       <SecurityLinePattern
         variant="wave"
         color="#d6b15e"
-        opacity={variant === "hero" ? 0.1 : 0.06}
-        className="absolute -right-1/4 -top-1/3 h-[140%] w-[140%] text-zen-gold"
+        opacity={hero ? 0.16 : 0.1}
+        className="absolute -right-1/4 -top-1/3 h-[150%] w-[150%]"
       />
 
       {/* fine ornamental grid */}
-      <SecurityLinePattern
-        variant="grid"
-        color="#00b879"
-        opacity={0.05}
-        className="absolute inset-0 h-full w-full"
-      />
+      <SecurityLinePattern variant="grid" color="#00b879" opacity={0.05} className="absolute inset-0 h-full w-full" />
 
-      {/* micro security lines */}
-      <SecurityLinePattern
-        variant="lines"
-        color="#2ea8ff"
-        opacity={0.04}
-        className="absolute inset-0 h-full w-full"
-      />
-
+      {/* large color-shifting guilloche rosette */}
       {watermark && (
-        <GuillocheOverlay
-          className="absolute left-1/2 top-1/2 h-[680px] w-[680px] -translate-x-1/2 -translate-y-1/2 text-zen-gold"
-          color="#d6b15e"
-          rings={6}
-          opacity={variant === "hero" ? 0.12 : 0.07}
-        />
+        <>
+          <GuillocheOverlay
+            gradient="currency"
+            className="absolute left-1/2 top-1/2 h-[860px] w-[860px] -translate-x-1/2 -translate-y-1/2 animate-spin-slow"
+            rings={8}
+            opacity={hero ? 0.6 : 0.34}
+            weight={1.1}
+          />
+          <GuillocheOverlay
+            gradient="holo"
+            className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 animate-spin-reverse"
+            rings={5}
+            opacity={hero ? 0.5 : 0.24}
+            weight={0.9}
+          />
+        </>
       )}
 
       {/* vignette */}
       <div
         className="absolute inset-0"
-        style={{ background: "radial-gradient(120% 120% at 50% 40%, transparent 55%, rgba(5,7,10,0.85) 100%)" }}
+        style={{ background: "radial-gradient(125% 125% at 50% 45%, transparent 62%, rgba(5,7,10,0.82) 100%)" }}
       />
     </div>
   );

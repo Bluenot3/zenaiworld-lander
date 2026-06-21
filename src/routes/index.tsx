@@ -8,6 +8,7 @@ import { PremiumPathCard } from "@/components/treasury/PremiumPathCard";
 import { CredentialBadge } from "@/components/treasury/CredentialBadge";
 import { SovereignCTASection } from "@/components/treasury/SovereignCTASection";
 import { GuillocheOverlay } from "@/components/treasury/GuillocheOverlay";
+import { MicroprintBorder } from "@/components/treasury/MicroprintBorder";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -99,9 +100,17 @@ function Hero() {
     <section className="relative flex min-h-screen items-center overflow-hidden px-6 pt-28 pb-20">
       <TreasuryPatternBackground variant="hero" />
 
+      {/* legibility scrim behind copy */}
+      <div
+        className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-full md:w-3/5"
+        style={{ background: "linear-gradient(90deg, rgba(5,7,10,0.92) 0%, rgba(5,7,10,0.7) 45%, transparent 100%)" }}
+        aria-hidden="true"
+      />
+
       {/* holographic strips */}
-      <HolographicSecurityStrip className="absolute left-[18%] top-0 h-full opacity-70" width={44} />
-      <HolographicSecurityStrip className="absolute right-[14%] top-0 h-full opacity-50" orientation="diagonal" width={30} />
+      <HolographicSecurityStrip className="absolute left-[18%] top-0 z-[2] h-full opacity-70" width={44} />
+      <HolographicSecurityStrip className="absolute right-[14%] top-0 z-[2] h-full opacity-50" orientation="diagonal" width={30} />
+
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
         {/* Left: copy */}
@@ -111,7 +120,7 @@ function Hero() {
             The treasury of{" "}
             <span className="text-engrave">artificial</span>
             <br />
-            <span className="text-emerald-gold">intelligence.</span>
+            <span className="text-currency">intelligence.</span>
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
             ZEN unifies AI literacy, Arsenal automation, and verifiable Web3 credentials on a
@@ -154,6 +163,21 @@ function Hero() {
 
         {/* Right: floating certificate interface */}
         <div className="relative animate-float">
+          {/* currency-grade guilloche rosette behind the certificate */}
+          <GuillocheOverlay
+            gradient="currency"
+            className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 animate-spin-slow"
+            rings={7}
+            opacity={0.7}
+            weight={1.1}
+          />
+          <GuillocheOverlay
+            gradient="holo"
+            className="absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 animate-spin-reverse"
+            rings={4}
+            opacity={0.5}
+            weight={0.9}
+          />
           <CertificateFrame>
             <div className="p-7">
               <div className="flex items-center justify-between">
@@ -202,6 +226,11 @@ function Hero() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* microprint security line */}
+      <div className="absolute inset-x-0 bottom-6 z-10 mx-auto max-w-7xl px-6">
+        <MicroprintBorder className="w-full" />
       </div>
     </section>
   );
