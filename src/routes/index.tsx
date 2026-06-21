@@ -103,7 +103,7 @@ function Hero() {
       {/* legibility scrim behind copy */}
       <div
         className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-full md:w-3/5"
-        style={{ background: "linear-gradient(90deg, rgba(10,18,7,0.92) 0%, rgba(10,18,7,0.68) 45%, transparent 100%)" }}
+        style={{ background: "linear-gradient(90deg, rgba(8,25,30,0.94) 0%, rgba(8,25,30,0.70) 45%, transparent 100%)" }}
         aria-hidden="true"
       />
 
