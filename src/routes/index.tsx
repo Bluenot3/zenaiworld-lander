@@ -112,7 +112,7 @@ function Hero() {
             The treasury of{" "}
             <span className="text-engrave">artificial</span>
             <br />
-            <span className="text-emerald-gold">intelligence.</span>
+            <span className="text-currency">intelligence.</span>
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
             ZEN unifies AI literacy, Arsenal automation, and verifiable Web3 credentials on a
