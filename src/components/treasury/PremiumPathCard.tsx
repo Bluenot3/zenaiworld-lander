@@ -27,9 +27,9 @@ export function PremiumPathCard({
   className = "",
 }: PremiumPathCardProps) {
   const ring = {
-    gold: "rgba(214,177,94,0.4)",
-    emerald: "rgba(0,184,121,0.4)",
-    holo: "rgba(46,168,255,0.45)",
+    gold: "rgba(227,185,85,0.4)",
+    emerald: "rgba(56,185,106,0.4)",
+    holo: "rgba(182,212,74,0.45)",
   }[accent];
 
   return (
