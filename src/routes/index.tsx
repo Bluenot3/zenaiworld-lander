@@ -218,6 +218,11 @@ function Hero() {
           </div>
         </div>
       </div>
+
+      {/* microprint security line */}
+      <div className="absolute inset-x-0 bottom-6 z-10 mx-auto max-w-7xl px-6">
+        <MicroprintBorder className="w-full" />
+      </div>
     </section>
   );
 }
