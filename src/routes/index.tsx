@@ -158,16 +158,17 @@ function Hero() {
           {/* currency-grade guilloche rosette behind the certificate */}
           <GuillocheOverlay
             gradient="currency"
-            className="absolute left-1/2 top-1/2 h-[680px] w-[680px] -translate-x-1/2 -translate-y-1/2 animate-spin-slow"
+            className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 animate-spin-slow"
             rings={7}
-            opacity={0.45}
-            weight={0.6}
+            opacity={0.7}
+            weight={1.1}
           />
           <GuillocheOverlay
             gradient="holo"
-            className="absolute left-1/2 top-1/2 h-[440px] w-[440px] -translate-x-1/2 -translate-y-1/2 animate-spin-reverse"
+            className="absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 animate-spin-reverse"
             rings={4}
-            opacity={0.3}
+            opacity={0.5}
+            weight={0.9}
           />
           <CertificateFrame>
             <div className="p-7">
