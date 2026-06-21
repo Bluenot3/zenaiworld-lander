@@ -70,8 +70,8 @@ export function HolographicSecurityStrip({
         style={{ background: "linear-gradient(180deg, transparent, rgba(248,247,242,0.6), transparent)", filter: "blur(6px)" }}
       />
       {/* edge highlights */}
-      <div className="absolute inset-y-0 left-0 w-px" style={{ background: "rgba(182,212,74,0.65)" }} />
-      <div className="absolute inset-y-0 right-0 w-px" style={{ background: "rgba(227,185,85,0.55)" }} />
+      <div className="absolute inset-y-0 left-0 w-px" style={{ background: "rgba(149,232,255,0.65)" }} />
+      <div className="absolute inset-y-0 right-0 w-px" style={{ background: "rgba(243,209,114,0.55)" }} />
     </div>
   );
 }
