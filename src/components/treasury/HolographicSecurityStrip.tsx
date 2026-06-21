@@ -5,8 +5,10 @@ interface HolographicSecurityStripProps {
 }
 
 /**
- * HolographicSecurityStrip — luminous credential ribbon inspired by modern
- * banknote security strips, reimagined as a futuristic ZEN element.
+ * HolographicSecurityStrip — luminous 3D security ribbon inspired by the
+ * color-shifting woven ribbon on modern United States banknotes. Layered
+ * holographic gradient, repeated micro-glyph motifs, shimmer sweep and
+ * breathing glow, reimagined as a futuristic ZEN credential element.
  */
 export function HolographicSecurityStrip({
   className = "",
@@ -21,37 +23,55 @@ export function HolographicSecurityStrip({
       style={{ width, transform: rotate }}
       aria-hidden="true"
     >
-      {/* base holo gradient */}
+      {/* base holo gradient — copper → emerald → cyan color shift */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(46,168,255,0.05), rgba(46,168,255,0.35) 28%, rgba(125,231,255,0.5) 50%, rgba(232,226,208,0.32) 72%, rgba(46,168,255,0.05))",
+            "linear-gradient(180deg, rgba(185,128,58,0.18) 0%, rgba(0,184,121,0.4) 26%, rgba(125,231,255,0.55) 50%, rgba(46,168,255,0.42) 74%, rgba(214,177,94,0.18) 100%)",
           mixBlendMode: "screen",
         }}
       />
-      {/* engraved micro lines on strip */}
+      {/* woven 3D ribbon facets */}
+      <div
+        className="absolute inset-0 opacity-50"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(115deg, transparent 0 6px, rgba(248,247,242,0.22) 6px 7px, transparent 7px 13px)",
+        }}
+      />
+      {/* engraved micro lines */}
       <div
         className="absolute inset-0 opacity-40"
         style={{
           backgroundImage:
-            "repeating-linear-gradient(180deg, transparent 0 5px, rgba(232,226,208,0.25) 5px 6px)",
+            "repeating-linear-gradient(180deg, transparent 0 5px, rgba(232,226,208,0.28) 5px 6px)",
         }}
       />
+      {/* repeated micro-glyph motifs (the ribbon's moving icons) */}
+      <div className="absolute inset-0 flex flex-col items-center justify-around opacity-60">
+        {Array.from({ length: 9 }).map((_, i) => (
+          <svg key={i} width={Math.min(width * 0.5, 22)} height={Math.min(width * 0.5, 22)} viewBox="0 0 24 24" fill="none">
+            <path
+              d="M7 6h10L7 18h10"
+              stroke="rgba(248,247,242,0.7)"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        ))}
+      </div>
       {/* breathing glow */}
       <div className="absolute inset-0 animate-breathe" style={{ background: "radial-gradient(60% 40% at 50% 50%, rgba(125,231,255,0.5), transparent 70%)" }} />
       {/* shimmer sweep */}
       <div
         className="absolute -inset-y-10 left-0 w-1/2 animate-shimmer"
-        style={{
-          background:
-            "linear-gradient(180deg, transparent, rgba(248,247,242,0.55), transparent)",
-          filter: "blur(6px)",
-        }}
+        style={{ background: "linear-gradient(180deg, transparent, rgba(248,247,242,0.6), transparent)", filter: "blur(6px)" }}
       />
       {/* edge highlights */}
-      <div className="absolute inset-y-0 left-0 w-px" style={{ background: "rgba(125,231,255,0.6)" }} />
-      <div className="absolute inset-y-0 right-0 w-px" style={{ background: "rgba(214,177,94,0.5)" }} />
+      <div className="absolute inset-y-0 left-0 w-px" style={{ background: "rgba(125,231,255,0.65)" }} />
+      <div className="absolute inset-y-0 right-0 w-px" style={{ background: "rgba(214,177,94,0.55)" }} />
     </div>
   );
 }
