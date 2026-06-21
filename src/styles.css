@@ -58,7 +58,9 @@
   --animate-sweep: sweep 8s linear infinite;
   --animate-float: float 9s ease-in-out infinite;
   --animate-spin-slow: spin-slow 90s linear infinite;
+  --animate-spin-reverse: spin-slow 120s linear infinite reverse;
   --animate-rise: rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-currency-shift: currency-shift 9s ease-in-out infinite;
 }
 
 :root {
