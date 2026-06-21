@@ -29,8 +29,8 @@ export function TreasuryPatternBackground({
         className="absolute inset-0"
         style={{
           background: hero
-            ? "radial-gradient(130% 90% at 50% -10%, rgba(0,184,121,0.16), transparent 55%), radial-gradient(80% 70% at 82% 22%, rgba(46,168,255,0.16), transparent 55%), radial-gradient(70% 60% at 12% 75%, rgba(185,128,58,0.12), transparent 60%), linear-gradient(165deg, #07131f 0%, #05070a 82%)"
-            : "radial-gradient(90% 70% at 80% 0%, rgba(46,168,255,0.07), transparent 55%), linear-gradient(165deg, #060e18 0%, #05070a 92%)",
+            ? "radial-gradient(130% 90% at 50% -10%, rgba(56,185,106,0.20), transparent 55%), radial-gradient(80% 70% at 82% 22%, rgba(232,137,58,0.20), transparent 55%), radial-gradient(80% 70% at 14% 78%, rgba(182,212,74,0.16), transparent 60%), linear-gradient(165deg, #11280f 0%, #0a1207 82%)"
+            : "radial-gradient(90% 70% at 80% 0%, rgba(232,137,58,0.10), transparent 55%), radial-gradient(80% 70% at 12% 90%, rgba(56,185,106,0.10), transparent 58%), linear-gradient(165deg, #0e210f 0%, #0a1207 92%)",
         }}
       />
 
@@ -53,13 +53,13 @@ export function TreasuryPatternBackground({
       {/* radial engraving waves */}
       <SecurityLinePattern
         variant="wave"
-        color="#d6b15e"
-        opacity={hero ? 0.16 : 0.1}
+        color="#e3b955"
+        opacity={hero ? 0.18 : 0.11}
         className="absolute -right-1/4 -top-1/3 h-[150%] w-[150%]"
       />
 
       {/* fine ornamental grid */}
-      <SecurityLinePattern variant="grid" color="#00b879" opacity={0.05} className="absolute inset-0 h-full w-full" />
+      <SecurityLinePattern variant="grid" color="#38b96a" opacity={0.06} className="absolute inset-0 h-full w-full" />
 
       {/* large color-shifting guilloche rosette */}
       {watermark && (
@@ -84,7 +84,7 @@ export function TreasuryPatternBackground({
       {/* vignette */}
       <div
         className="absolute inset-0"
-        style={{ background: "radial-gradient(125% 125% at 50% 45%, transparent 62%, rgba(5,7,10,0.82) 100%)" }}
+        style={{ background: "radial-gradient(125% 125% at 50% 45%, transparent 60%, rgba(8,16,8,0.78) 100%)" }}
       />
     </div>
   );

@@ -23,12 +23,12 @@ export function HolographicSecurityStrip({
       style={{ width, transform: rotate }}
       aria-hidden="true"
     >
-      {/* base holo gradient — copper → emerald → cyan color shift */}
+      {/* base holo gradient — copper-orange → emerald → lime color shift */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(185,128,58,0.18) 0%, rgba(0,184,121,0.4) 26%, rgba(125,231,255,0.55) 50%, rgba(46,168,255,0.42) 74%, rgba(214,177,94,0.18) 100%)",
+            "linear-gradient(180deg, rgba(194,99,42,0.22) 0%, rgba(232,137,58,0.42) 24%, rgba(56,185,106,0.55) 48%, rgba(182,212,74,0.5) 72%, rgba(227,185,85,0.24) 100%)",
           mixBlendMode: "screen",
         }}
       />
@@ -63,15 +63,15 @@ export function HolographicSecurityStrip({
         ))}
       </div>
       {/* breathing glow */}
-      <div className="absolute inset-0 animate-breathe" style={{ background: "radial-gradient(60% 40% at 50% 50%, rgba(125,231,255,0.5), transparent 70%)" }} />
+      <div className="absolute inset-0 animate-breathe" style={{ background: "radial-gradient(60% 40% at 50% 50%, rgba(182,212,74,0.5), transparent 70%)" }} />
       {/* shimmer sweep */}
       <div
         className="absolute -inset-y-10 left-0 w-1/2 animate-shimmer"
         style={{ background: "linear-gradient(180deg, transparent, rgba(248,247,242,0.6), transparent)", filter: "blur(6px)" }}
       />
       {/* edge highlights */}
-      <div className="absolute inset-y-0 left-0 w-px" style={{ background: "rgba(125,231,255,0.65)" }} />
-      <div className="absolute inset-y-0 right-0 w-px" style={{ background: "rgba(214,177,94,0.55)" }} />
+      <div className="absolute inset-y-0 left-0 w-px" style={{ background: "rgba(182,212,74,0.65)" }} />
+      <div className="absolute inset-y-0 right-0 w-px" style={{ background: "rgba(227,185,85,0.55)" }} />
     </div>
   );
 }

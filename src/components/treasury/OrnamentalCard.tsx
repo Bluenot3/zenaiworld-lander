@@ -11,9 +11,9 @@ interface OrnamentalCardProps {
 }
 
 const accentMap = {
-  gold: "rgba(214,177,94,0.55)",
-  emerald: "rgba(0,184,121,0.5)",
-  holo: "rgba(46,168,255,0.5)",
+  gold: "rgba(227,185,85,0.55)",
+  emerald: "rgba(56,185,106,0.5)",
+  holo: "rgba(182,212,74,0.5)",
 };
 
 /**
@@ -46,7 +46,7 @@ export function OrnamentalCard({
       {watermark && (
         <GuillocheOverlay
           className="absolute -bottom-24 -right-24 h-72 w-72 opacity-[0.06] transition-opacity duration-700 group-hover:opacity-[0.12]"
-          color={accent === "emerald" ? "#00b879" : accent === "holo" ? "#2ea8ff" : "#d6b15e"}
+          color={accent === "emerald" ? "#38b96a" : accent === "holo" ? "#a9d24a" : "#e3b955"}
           rings={4}
           opacity={1}
         />
