@@ -15,10 +15,10 @@ interface GuillocheOverlayProps {
 }
 
 const gradientStops: Record<string, [string, string, string]> = {
-  gold: ["#9f7a2e", "#d6b15e", "#e8e2d0"],
-  emerald: ["#063b2b", "#00b879", "#7de7ff"],
-  holo: ["#2ea8ff", "#7de7ff", "#e8e2d0"],
-  currency: ["#b9803a", "#00b879", "#2ea8ff"],
+  gold: ["#c2782e", "#e3b955", "#f4eed8"],
+  emerald: ["#15401f", "#38b96a", "#b6d44a"],
+  holo: ["#b6d44a", "#d9e87f", "#f4eed8"],
+  currency: ["#c2632a", "#e3b955", "#38b96a"],
 };
 
 /**
