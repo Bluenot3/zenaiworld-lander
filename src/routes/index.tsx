@@ -361,7 +361,7 @@ function Proof() {
             <div className="grid gap-px p-px md:grid-cols-4" style={{ background: "rgba(214,177,94,0.1)" }}>
               {PROOF.map(([n, l, s], i) => (
                 <div key={l} className="cert-surface relative overflow-hidden p-8 text-center">
-                  {i === 1 && <GuillocheOverlay className="absolute inset-0 m-auto h-48 w-48 text-zen-emerald" color="#00b879" rings={4} opacity={0.07} />}
+                  {i === 1 && <GuillocheOverlay className="absolute inset-0 m-auto h-48 w-48 text-zen-emerald" color="#38b96a" rings={4} opacity={0.08} />}
                   <div className="relative font-display text-4xl font-semibold text-engrave md:text-5xl">{n}</div>
                   <div className="relative mt-2 text-sm font-medium text-zen-platinum">{l}</div>
                   <div className="relative mt-1 micro-label text-muted-foreground">{s}</div>
