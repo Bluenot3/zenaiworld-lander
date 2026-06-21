@@ -61,13 +61,14 @@ export function ZenMedallion({
     >
       <defs>
         <linearGradient id="zm-gold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#9f7a2e" />
-          <stop offset="0.5" stopColor="#d6b15e" />
-          <stop offset="1" stopColor="#e8e2d0" />
+          <stop offset="0" stopColor="#c2782e" />
+          <stop offset="0.5" stopColor="#e3b955" />
+          <stop offset="1" stopColor="#f4eed8" />
         </linearGradient>
         <linearGradient id="zm-emerald" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#00b879" />
-          <stop offset="1" stopColor="#d6b15e" />
+          <stop offset="0" stopColor="#38b96a" />
+          <stop offset="0.5" stopColor="#b6d44a" />
+          <stop offset="1" stopColor="#e3b955" />
         </linearGradient>
       </defs>
 
