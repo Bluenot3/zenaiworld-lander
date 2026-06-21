@@ -100,9 +100,17 @@ function Hero() {
     <section className="relative flex min-h-screen items-center overflow-hidden px-6 pt-28 pb-20">
       <TreasuryPatternBackground variant="hero" />
 
+      {/* legibility scrim behind copy */}
+      <div
+        className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-full md:w-3/5"
+        style={{ background: "linear-gradient(90deg, rgba(5,7,10,0.92) 0%, rgba(5,7,10,0.7) 45%, transparent 100%)" }}
+        aria-hidden="true"
+      />
+
       {/* holographic strips */}
-      <HolographicSecurityStrip className="absolute left-[18%] top-0 h-full opacity-70" width={44} />
-      <HolographicSecurityStrip className="absolute right-[14%] top-0 h-full opacity-50" orientation="diagonal" width={30} />
+      <HolographicSecurityStrip className="absolute left-[18%] top-0 z-[2] h-full opacity-70" width={44} />
+      <HolographicSecurityStrip className="absolute right-[14%] top-0 z-[2] h-full opacity-50" orientation="diagonal" width={30} />
+
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
         {/* Left: copy */}
