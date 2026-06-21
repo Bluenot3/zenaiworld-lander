@@ -23,12 +23,12 @@ export function HolographicSecurityStrip({
       style={{ width, transform: rotate }}
       aria-hidden="true"
     >
-      {/* base holo gradient — copper-orange → emerald → lime color shift */}
+      {/* base holo gradient — sky blue → teal-green → lime → gold color shift */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(194,99,42,0.22) 0%, rgba(232,137,58,0.42) 24%, rgba(56,185,106,0.55) 48%, rgba(182,212,74,0.5) 72%, rgba(227,185,85,0.24) 100%)",
+            "linear-gradient(180deg, rgba(149,232,255,0.30) 0%, rgba(127,232,218,0.46) 24%, rgba(69,220,174,0.52) 48%, rgba(212,236,128,0.48) 72%, rgba(243,209,114,0.30) 100%)",
           mixBlendMode: "screen",
         }}
       />
