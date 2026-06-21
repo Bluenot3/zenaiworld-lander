@@ -11,9 +11,9 @@ interface OrnamentalCardProps {
 }
 
 const accentMap = {
-  gold: "rgba(214,177,94,0.55)",
-  emerald: "rgba(0,184,121,0.5)",
-  holo: "rgba(46,168,255,0.5)",
+  gold: "rgba(227,185,85,0.55)",
+  emerald: "rgba(56,185,106,0.5)",
+  holo: "rgba(182,212,74,0.5)",
 };
 
 /**
