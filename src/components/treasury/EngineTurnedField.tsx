@@ -15,10 +15,10 @@ interface EngineTurnedFieldProps {
 }
 
 const stopsMap: Record<string, [string, string, string]> = {
-  gold: ["#c2782e", "#e3b955", "#f4eed8"],
-  emerald: ["#15401f", "#38b96a", "#b6d44a"],
-  holo: ["#b6d44a", "#d9e87f", "#f4eed8"],
-  currency: ["#c2632a", "#e3b955", "#38b96a"],
+  gold: ["#f6964f", "#f3d172", "#fcf6e6"],
+  emerald: ["#177a72", "#45dcae", "#d4ec80"],
+  holo: ["#95e8ff", "#aef0e6", "#fcf6e6"],
+  currency: ["#7fe8da", "#6fdc9e", "#f3d172"],
 };
 
 /**
