@@ -264,3 +264,77 @@
     box-shadow: var(--shadow-cert), var(--glow-gold);
   }
 }
+
+/* ---------- Holographic foil + cosmos (reference-grade) ---------- */
+:root {
+  /* opalescent mother-of-pearl foil — the signature ZEN wordmark/medallion sheen */
+  --grad-foil: linear-gradient(
+    115deg,
+    #fcf9f2 0%,
+    #cfe9ff 14%,
+    #ffd9ec 28%,
+    #d8ffe9 42%,
+    #fff3c4 56%,
+    #ffe0c2 70%,
+    #d6f0ff 84%,
+    #fcf9f2 100%
+  );
+  --grad-aurora: linear-gradient(
+    100deg,
+    rgba(149, 232, 255, 0.0) 0%,
+    rgba(149, 232, 255, 0.5) 22%,
+    rgba(127, 232, 218, 0.55) 40%,
+    rgba(212, 236, 128, 0.45) 58%,
+    rgba(243, 209, 114, 0.5) 76%,
+    rgba(246, 150, 79, 0.4) 100%
+  );
+}
+
+@keyframes foil-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: var(--tw-min, 0.2); transform: scale(0.8); }
+  50% { opacity: var(--tw-max, 1); transform: scale(1.15); }
+}
+@keyframes aurora-drift {
+  0%, 100% { transform: translate3d(-3%, 0, 0) scale(1.05); opacity: 0.85; }
+  50% { transform: translate3d(3%, -2%, 0) scale(1.12); opacity: 1; }
+}
+@keyframes cloud-drift {
+  0% { transform: translateX(-4%); }
+  100% { transform: translateX(4%); }
+}
+
+/* opalescent foil text — mother-of-pearl, animated sheen */
+@utility text-foil {
+  background: var(--grad-foil);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: foil-shift 12s linear infinite;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35)) drop-shadow(0 0 22px rgba(207, 233, 255, 0.25));
+}
+
+/* opalescent foil surface — for medallion glow rings / chips */
+@utility foil-surface {
+  background: var(--grad-foil);
+  background-size: 200% 100%;
+  animation: foil-shift 14s linear infinite;
+}
+
+/* premium glass tile (image-2 sky cards) */
+@utility glass-tile {
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(22px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 20px 50px -24px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+@utility tap-target {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
