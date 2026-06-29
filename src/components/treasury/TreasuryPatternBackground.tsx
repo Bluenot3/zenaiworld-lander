@@ -1,6 +1,7 @@
 import { GuillocheOverlay } from "./GuillocheOverlay";
 import { EngineTurnedField } from "./EngineTurnedField";
 import { SecurityLinePattern } from "./SecurityLinePattern";
+import { StarField } from "./StarField";
 
 interface TreasuryPatternBackgroundProps {
   className?: string;
@@ -8,6 +9,8 @@ interface TreasuryPatternBackgroundProps {
   variant?: "hero" | "section" | "subtle";
   /** show a centered guilloche watermark */
   watermark?: boolean;
+  /** overlay a restrained starfield cosmos */
+  stars?: boolean;
 }
 
 /**
