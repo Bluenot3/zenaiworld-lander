@@ -420,16 +420,118 @@ function Footer() {
   );
 }
 
+const POSSIBILITY = [
+  { title: "Agent Builder", desc: "Build intelligent agents in minutes, not months.", icon: Icon.node },
+  { title: "Mission Control", desc: "Orchestrate every flow, in real time.", icon: Icon.program },
+  { title: "Night Shift", desc: "Operations keep running while the world sleeps.", icon: Icon.verify },
+  { title: "Z-Engine", desc: "Create, refine, publish — from idea to impact.", icon: Icon.business },
+  { title: "Business Spaces", desc: "Organize teams, clients and projects with clarity.", icon: Icon.learn },
+  { title: "Research", desc: "Search smarter. Find what matters.", icon: Icon.verify },
+];
+
+function PossibilitySection() {
+  return (
+    <section id="possibility" className="relative overflow-hidden px-6 py-28 md:py-40">
+      <AuroraHorizon intensity="bright" />
+      <div className="relative z-10 mx-auto max-w-6xl text-center">
+        <div className="mx-auto mb-6 flex items-center justify-center gap-3">
+          <span className="h-px w-10" style={{ background: "linear-gradient(90deg, transparent, rgba(255,247,224,0.7))" }} />
+          <span className="micro-label text-zen-platinum/80">Endless Possibility</span>
+          <span className="h-px w-10" style={{ background: "linear-gradient(90deg, rgba(255,247,224,0.7), transparent)" }} />
+        </div>
+        <h2 className="mx-auto max-w-4xl text-5xl font-medium leading-[1.0] text-zen-platinum md:text-7xl">
+          <span className="text-foil font-display">Unlimited power.</span>
+          <br />
+          One conversation away.
+        </h2>
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed" style={{ color: "rgba(231,243,243,0.78)" }}>
+          Command your entire operation by text. Every agent, flow and credential —
+          coordinated from a single luminous control surface.
+        </p>
+
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {POSSIBILITY.map((p, i) => (
+            <div
+              key={p.title}
+              className="glass-tile tap-target group flex items-start gap-4 rounded-2xl p-5 text-left transition-transform duration-500 hover:-translate-y-1.5"
+              style={{ animation: `rise 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 0.06}s both` }}
+            >
+              <div
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-zen-ink"
+                style={{ background: "var(--grad-gold-platinum)", boxShadow: "0 8px 24px -10px rgba(0,0,0,0.6)" }}
+              >
+                {p.icon}
+              </div>
+              <div>
+                <div className="font-display text-lg font-semibold text-zen-platinum">{p.title}</div>
+                <div className="mt-1 text-sm leading-relaxed" style={{ color: "rgba(231,243,243,0.72)" }}>
+                  {p.desc}
+                </div>
+              </div>
+              <svg className="ml-auto mt-1 shrink-0 opacity-50 transition-all group-hover:translate-x-0.5 group-hover:opacity-90" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true" style={{ color: "rgba(231,243,243,0.85)" }}>
+                <path d="M3 8h10M9 4l4 4-4 4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 inline-flex items-center gap-3 rounded-full px-5 py-2.5 glass-tile">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-zen-emerald opacity-60" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-zen-emerald" />
+          </span>
+          <span className="micro-label text-zen-platinum/85">Weekend Mode · Focus · Freedom · Flow</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* App-style sticky action bar — gives the platform native-iOS parity on mobile */
+function MobileActionBar() {
+  return (
+    <div
+      className="fixed inset-x-0 bottom-0 z-50 md:hidden"
+      style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+    >
+      <div className="glass-panel border-x-0 border-b-0 px-4 pb-3 pt-3">
+        <div className="flex items-center gap-3">
+          <a
+            href="#apply"
+            className="tap-target flex flex-1 items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-sm font-semibold text-zen-ink active:brightness-95"
+            style={{ background: "var(--grad-emerald-gold)", boxShadow: "var(--shadow-emerald)" }}
+          >
+            Enter the Treasury
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+          <a
+            href="#programs"
+            className="tap-target flex items-center justify-center rounded-xl border px-5 py-3.5 text-sm font-medium text-zen-platinum active:bg-white/5"
+            style={{ borderColor: "rgba(214,177,94,0.3)" }}
+          >
+            Programs
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   return (
     <main className="relative min-h-screen bg-background">
       <Nav />
       <Hero />
       <Paths />
+      <PossibilitySection />
       <FeaturedPrograms />
       <Proof />
       <SovereignCTASection />
       <Footer />
+      <div className="h-20 md:hidden" />
+      <MobileActionBar />
     </main>
   );
 }
