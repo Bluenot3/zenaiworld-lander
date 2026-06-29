@@ -23,8 +23,10 @@ export function TreasuryPatternBackground({
   className = "",
   variant = "section",
   watermark = true,
+  stars,
 }: TreasuryPatternBackgroundProps) {
   const hero = variant === "hero";
+  const showStars = stars ?? hero;
   return (
     <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`} aria-hidden="true">
       {/* base gradient */}
@@ -36,6 +38,9 @@ export function TreasuryPatternBackground({
             : "radial-gradient(90% 70% at 80% 0%, rgba(149,232,255,0.10), transparent 55%), radial-gradient(80% 70% at 12% 90%, rgba(69,220,174,0.10), transparent 58%), linear-gradient(165deg, #0c2630 0%, #08191e 92%)",
         }}
       />
+
+      {/* cosmos */}
+      {showStars && <StarField count={hero ? 110 : 70} density={hero ? "normal" : "sparse"} />}
 
       {/* engine-turned woven band — top */}
       <EngineTurnedField
