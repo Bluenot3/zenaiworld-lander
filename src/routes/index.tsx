@@ -9,6 +9,7 @@ import { CredentialBadge } from "@/components/treasury/CredentialBadge";
 import { SovereignCTASection } from "@/components/treasury/SovereignCTASection";
 import { GuillocheOverlay } from "@/components/treasury/GuillocheOverlay";
 import { MicroprintBorder } from "@/components/treasury/MicroprintBorder";
+import { AuroraHorizon } from "@/components/treasury/AuroraHorizon";
 
 export const Route = createFileRoute("/")({
   head: () => ({
