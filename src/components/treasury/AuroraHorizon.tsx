@@ -30,7 +30,7 @@ export function AuroraHorizon({ className = "", intensity = "soft" }: AuroraHori
           width: "140%",
           height: "120%",
           background: bright
-            ? "radial-gradient(closest-side, rgba(255,247,224,0.55), rgba(149,232,255,0.30) 35%, rgba(127,232,218,0.18) 55%, transparent 72%)"
+            ? "radial-gradient(closest-side, rgba(255,250,235,0.72), rgba(180,238,255,0.40) 34%, rgba(140,236,222,0.22) 56%, transparent 74%)"
             : "radial-gradient(closest-side, rgba(255,247,224,0.38), rgba(149,232,255,0.22) 38%, rgba(127,232,218,0.12) 58%, transparent 74%)",
           animation: "aurora-drift 16s ease-in-out infinite",
         }}
