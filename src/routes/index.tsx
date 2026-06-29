@@ -118,7 +118,7 @@ function Hero() {
           <CredentialBadge label="Sovereign Intelligence Infrastructure" tone="emerald" />
           <h1 className="mt-7 text-5xl font-medium leading-[1.02] text-zen-platinum md:text-7xl">
             The treasury of{" "}
-            <span className="text-engrave">artificial</span>
+            <span className="text-foil font-display">artificial</span>
             <br />
             <span className="text-currency">intelligence.</span>
           </h1>
