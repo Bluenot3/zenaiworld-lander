@@ -42,10 +42,10 @@ export function ZenMedallion({
       const inner = size * 0.34;
       const outer = size * 0.385;
       return {
-        x1: c + Math.cos(a) * inner,
-        y1: c + Math.sin(a) * inner,
-        x2: c + Math.cos(a) * outer,
-        y2: c + Math.sin(a) * outer,
+        x1: +(c + Math.cos(a) * inner).toFixed(3),
+        y1: +(c + Math.sin(a) * inner).toFixed(3),
+        x2: +(c + Math.cos(a) * outer).toFixed(3),
+        y2: +(c + Math.sin(a) * outer).toFixed(3),
       };
     });
   }, [size, c]);
