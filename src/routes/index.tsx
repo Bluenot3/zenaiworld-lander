@@ -204,20 +204,12 @@ function Hero() {
             style={{ background: "radial-gradient(closest-side, rgba(6,18,22,0.86) 38%, rgba(6,18,22,0.55) 60%, transparent 78%)" }}
             aria-hidden="true"
           />
-          {/* crisp currency-grade guilloche seal behind the certificate (static) */}
-          <img
-            src={guillocheSeal}
-            alt=""
-            aria-hidden="true"
-            width={1024}
-            height={1024}
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[560px] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-25 mix-blend-screen"
-          />
           {/* official federal / treasury-grade seal — large enough to frame the certificate */}
           <FederalSeal
             size={780}
-            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-90"
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-95"
           />
+
 
 
 
