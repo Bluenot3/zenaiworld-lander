@@ -48,7 +48,10 @@ export function FederalSeal({
     const r = size * 0.345;
     return Array.from({ length: n }, (_, i) => {
       const a = (i / n) * Math.PI * 2 - Math.PI / 2;
-      return { x: cx + r * Math.cos(a), y: cy + r * Math.sin(a) };
+      return {
+        x: Math.round((cx + r * Math.cos(a)) * 1000) / 1000,
+        y: Math.round((cy + r * Math.sin(a)) * 1000) / 1000,
+      };
     });
   }, [size, cx, cy]);
 
