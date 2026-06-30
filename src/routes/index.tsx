@@ -1,12 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { TreasuryPatternBackground } from "@/components/treasury/TreasuryPatternBackground";
 import { HolographicSecurityStrip } from "@/components/treasury/HolographicSecurityStrip";
 import { ZenMedallion } from "@/components/treasury/ZenMedallion";
 import { CertificateFrame } from "@/components/treasury/CertificateFrame";
 import { OrnamentalCard } from "@/components/treasury/OrnamentalCard";
-import { PremiumPathCard } from "@/components/treasury/PremiumPathCard";
 import { CredentialBadge } from "@/components/treasury/CredentialBadge";
-import { SovereignCTASection } from "@/components/treasury/SovereignCTASection";
 import { GuillocheOverlay } from "@/components/treasury/GuillocheOverlay";
 import { MicroprintBorder } from "@/components/treasury/MicroprintBorder";
 import { AuroraHorizon } from "@/components/treasury/AuroraHorizon";
@@ -14,43 +13,82 @@ import { MagicParticles } from "@/components/treasury/MagicParticles";
 import { FederalSeal } from "@/components/treasury/FederalSeal";
 import heroBg from "@/assets/treasury-hero-bg.jpg";
 
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ZEN — Sovereign AI Treasury & Credentialing Platform" },
+      {
+        title:
+          "ZEN AI Co. | AI Literacy, Arsenal Automation, and Verified AI Credentials",
+      },
       {
         name: "description",
         content:
-          "Treasury-grade infrastructure for AI literacy, Arsenal automation, and verifiable Web3 credentials — built to institutional standard.",
+          "ZEN AI Co. builds AI literacy, automation, and credential infrastructure through AI Pioneer, Arsenal, ZEN Vanguard, AI Arena, and blockchain-verified Zen Cards.",
       },
-      { property: "og:title", content: "ZEN — Sovereign AI Treasury & Credentialing" },
+      {
+        property: "og:title",
+        content:
+          "ZEN AI Co. | AI Literacy, Arsenal Automation & Verified AI Credentials",
+      },
       {
         property: "og:description",
         content:
-          "Where AI literacy, Arsenal automation, and Web3 credentials converge on treasury-grade infrastructure.",
+          "Learn AI. Build systems. Verify capability. The literacy, automation, and credential infrastructure for the AI era.",
       },
+      { property: "og:url", content: "/" },
     ],
+    links: [{ rel: "canonical", href: "/" }],
   }),
   component: Index,
 });
 
+/* ---------- External link helper ---------- */
+const ARSENAL = "https://qubit.earth";
+const AIPIONEER = "https://aipioneer.zen.ai/";
+const MAILTO = "mailto:ZENAI.BIZ";
+const ext = { target: "_blank", rel: "noopener noreferrer" } as const;
+
 /* ---------- Inline icons (consistent weight) ---------- */
 const Icon = {
-  business: (
+  arsenal: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2l3 5 5 1-3.5 4 1 6L12 19l-5.5 -1 1-6L4 8l5-1z" />
+    </svg>
+  ),
+  pioneer: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 6l9-3 9 3-9 3-9-3zM6 9.5V15c0 1.5 2.7 3 6 3s6-1.5 6-3V9.5M21 9v5" />
+    </svg>
+  ),
+  vanguard: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
+      <path d="M9 12l2 2 4-4" />
+    </svg>
+  ),
+  homeschool: (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
       <path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6" />
     </svg>
   ),
-  program: (
+  trainer: (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="3" />
-      <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" />
+      <circle cx="9" cy="7" r="3" /><path d="M3 21v-1a6 6 0 0 1 12 0v1M16 3.5a3 3 0 0 1 0 7M21 21v-1a6 6 0 0 0-4-5.6" />
     </svg>
   ),
-  learn: (
+  cards: (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 6l9-3 9 3-9 3-9-3zM6 9.5V15c0 1.5 2.7 3 6 3s6-1.5 6-3V9.5M21 9v5" />
+      <rect x="3" y="6" width="18" height="13" rx="2" /><path d="M3 10h18M7 15h4" />
+    </svg>
+  ),
+  arena: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+    </svg>
+  ),
+  weekly: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h12a2 2 0 0 1 2 2v12a2 2 0 0 0 2 2H6a2 2 0 0 1-2-2z" /><path d="M8 8h6M8 12h6M8 16h3" />
     </svg>
   ),
   verify: (
@@ -64,35 +102,51 @@ const Icon = {
       <path d="M7.7 7.5l2.6 9M16.3 7.5l-2.6 9M8 6h8" />
     </svg>
   ),
+  globe: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+    </svg>
+  ),
+  arrow: (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
 };
 
-const NAV = ["Platform", "Programs", "Credentials", "Arsenal", "Proof"];
+const NAV = [
+  { label: "Ecosystem", href: "#ecosystem" },
+  { label: "Arsenal", href: "#arsenal" },
+  { label: "AI Pioneer", href: "#pioneer" },
+  { label: "Programs", href: "#programs" },
+  { label: "Command Center", href: "#command" },
+];
 
 function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="glass-panel border-x-0 border-t-0">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-          <a href="/" className="flex items-center gap-3">
+          <a href="#top" className="flex items-center gap-3">
             <ZenMedallion size={34} glyph="zen" />
             <span className="font-display text-xl font-semibold tracking-wide text-zen-platinum">
-              ZEN
+              ZEN AI Co.
             </span>
-            <span className="ml-1 hidden micro-label text-muted-foreground sm:inline">Treasury</span>
           </a>
-          <nav className="hidden items-center gap-8 md:flex">
+          <nav className="hidden items-center gap-8 lg:flex">
             {NAV.map((n) => (
-              <a key={n} href={`#${n.toLowerCase()}`} className="text-sm text-muted-foreground transition-colors hover:text-zen-platinum">
-                {n}
+              <a key={n.label} href={n.href} className="text-sm text-muted-foreground transition-colors hover:text-zen-platinum">
+                {n.label}
               </a>
             ))}
           </nav>
           <a
-            href="#apply"
+            href={ARSENAL}
+            {...ext}
             className="rounded-lg px-5 py-2 text-sm font-semibold text-zen-ink transition-all hover:brightness-110"
             style={{ background: "var(--grad-gold-platinum)" }}
           >
-            Request Access
+            Launch Arsenal
           </a>
         </div>
       </div>
@@ -102,10 +156,9 @@ function Nav() {
 
 function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden px-6 pt-28 pb-20">
+    <section id="top" className="relative flex min-h-screen items-center overflow-hidden px-6 pt-28 pb-20">
       <TreasuryPatternBackground variant="hero" />
 
-      {/* currency-grade gold engraving photograph — toned-down accent texture */}
       <div
         className="pointer-events-none absolute inset-0 z-[1] bg-cover bg-center"
         style={{
@@ -118,15 +171,11 @@ function Hero() {
         }}
         aria-hidden="true"
       />
-
-      {/* warm glow that ties the engraving to the palette */}
       <div
         className="pointer-events-none absolute inset-0 z-[1]"
         style={{ background: "radial-gradient(70% 60% at 75% 32%, rgba(246,150,79,0.20), transparent 60%)" }}
         aria-hidden="true"
       />
-
-      {/* legibility scrim — vertical on mobile, left-weighted on desktop */}
       <div
         className="pointer-events-none absolute inset-0 z-[2] md:hidden"
         style={{ background: "linear-gradient(180deg, rgba(8,25,30,0.82) 0%, rgba(8,25,30,0.42) 46%, rgba(8,25,30,0.78) 100%)" }}
@@ -138,56 +187,55 @@ function Hero() {
         aria-hidden="true"
       />
 
-      {/* holographic strips */}
       <HolographicSecurityStrip className="absolute left-[18%] top-0 z-[2] h-full opacity-70" width={44} />
       <HolographicSecurityStrip className="absolute right-[14%] top-0 z-[2] h-full opacity-50" orientation="diagonal" width={30} />
-
-      {/* faint elegant rainbow magic dust drifting across the hero */}
       <MagicParticles className="z-[3]" count={84} lines={11} opacity={0.8} />
-
-
-
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
         {/* Left: copy */}
         <div className="animate-rise">
-          <CredentialBadge label="Sovereign Intelligence Infrastructure" tone="emerald" />
-          <h1 className="mt-7 text-5xl font-medium leading-[1.02] text-zen-platinum md:text-7xl">
-            The treasury of{" "}
-            <span className="text-foil font-display">artificial</span>
+          <CredentialBadge label="Learn AI · Build Systems · Verify Capability" tone="emerald" />
+          <h1 className="mt-7 text-4xl font-medium leading-[1.04] text-zen-platinum md:text-6xl">
+            AI Literacy Was the Beginning.
             <br />
-            <span className="text-currency">intelligence.</span>
+            <span className="text-currency font-display">Execution Is the Infrastructure.</span>
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            ZEN unifies AI literacy, Arsenal automation, and verifiable Web3 credentials on a
-            single, institution-grade platform — engineered with the rigor of a sovereign treasury.
+            ZEN AI Co. turns artificial intelligence into real capability: youth AI literacy,
+            Arsenal-powered agents and automations, professional AI operator training, global
+            cohorts, and blockchain-verified proof of work.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div className="mt-10 flex flex-wrap items-center gap-3">
             <a
-              href="#apply"
-              className="inline-flex items-center gap-2 rounded-lg px-7 py-3.5 text-sm font-semibold text-zen-ink transition-all hover:brightness-110"
+              href={ARSENAL}
+              {...ext}
+              className="inline-flex items-center gap-2 rounded-lg px-6 py-3.5 text-sm font-semibold text-zen-ink transition-all hover:brightness-110"
               style={{ background: "var(--grad-emerald-gold)", boxShadow: "var(--shadow-emerald)" }}
             >
-              Enter the Treasury
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              Launch Arsenal {Icon.arrow}
             </a>
             <a
-              href="#programs"
-              className="inline-flex items-center gap-2 rounded-lg border px-7 py-3.5 text-sm font-medium text-zen-platinum transition-colors hover:border-zen-gold/60"
+              href={AIPIONEER}
+              {...ext}
+              className="inline-flex items-center gap-2 rounded-lg border px-6 py-3.5 text-sm font-medium text-zen-platinum transition-colors hover:border-zen-gold/60"
               style={{ borderColor: "rgba(214,177,94,0.3)" }}
             >
-              View Programs
+              Explore AI Pioneer
+            </a>
+            <a
+              href="#ecosystem"
+              className="inline-flex items-center gap-2 rounded-lg px-5 py-3.5 text-sm font-medium text-muted-foreground transition-colors hover:text-zen-platinum"
+            >
+              View Ecosystem
             </a>
           </div>
 
           <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4">
             {[
-              ["1.2M+", "Credentials issued"],
-              ["120+", "AI models integrated"],
-              ["99.9%", "Verification uptime"],
+              ["2023", "First U.S. youth AI literacy program"],
+              ["11–18", "Builders shipping real AI"],
+              ["6+", "Countries reached"],
             ].map(([n, l]) => (
               <div key={l}>
                 <div className="font-display text-2xl font-semibold text-engrave">{n}</div>
@@ -197,45 +245,45 @@ function Hero() {
           </div>
         </div>
 
-        {/* Right: floating certificate interface */}
+        {/* Right: command interface */}
         <div className="relative animate-float">
-          {/* calming radial disc so the official seal + certificate read clearly over the busy field */}
           <div
             className="pointer-events-none absolute left-1/2 top-1/2 h-[820px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full"
             style={{ background: "radial-gradient(closest-side, rgba(6,18,22,0.86) 38%, rgba(6,18,22,0.55) 60%, transparent 78%)" }}
             aria-hidden="true"
           />
-          {/* official federal / treasury-grade seal — large enough to frame the certificate */}
           <FederalSeal
             size={780}
             className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-95"
           />
 
-
-
-
           <CertificateFrame>
             <div className="p-7">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="micro-label text-muted-foreground">Certificate of</div>
-                  <div className="font-display text-2xl font-semibold text-zen-platinum">AI Literacy</div>
+                  <div className="micro-label text-muted-foreground">ZEN Command Interface</div>
+                  <div className="font-display text-2xl font-semibold text-zen-platinum">Capability Stack</div>
                 </div>
-                <ZenMedallion size={74} glyph="verify" />
+                <ZenMedallion size={64} glyph="verify" />
               </div>
 
               <div className="my-6 h-px w-full" style={{ background: "linear-gradient(90deg, transparent, rgba(214,177,94,0.5), transparent)" }} />
 
-              <div className="grid grid-cols-2 gap-4 text-sm">
+              <div className="space-y-2.5">
                 {[
-                  ["Holder", "Sovereign Member"],
-                  ["Tier", "Charter · Class I"],
-                  ["Ledger", "0xZEN…a91f"],
-                  ["Status", "Verified On-Chain"],
+                  ["Execution core", "Arsenal — agents & automations"],
+                  ["Literacy layer", "AI Pioneer — youth build & deploy"],
+                  ["Proof layer", "Zen Cards — blockchain-verified"],
+                  ["Model layer", "AI Arena — access & comparison"],
+                  ["Expansion layer", "South Africa · global nodes"],
                 ].map(([k, v]) => (
-                  <div key={k} className="rounded-lg p-3" style={{ background: "rgba(8,16,8,0.5)", border: "1px solid rgba(227,185,85,0.14)" }}>
-                    <div className="micro-label text-muted-foreground">{k}</div>
-                    <div className="mt-1 font-medium text-zen-platinum">{v}</div>
+                  <div
+                    key={k}
+                    className="flex items-center justify-between rounded-lg px-3.5 py-2.5"
+                    style={{ background: "rgba(8,16,8,0.5)", border: "1px solid rgba(227,185,85,0.14)" }}
+                  >
+                    <span className="micro-label text-zen-gold">{k}</span>
+                    <span className="text-sm font-medium text-zen-platinum">{v}</span>
                   </div>
                 ))}
               </div>
@@ -244,8 +292,8 @@ function Hero() {
                 <GuillocheOverlay className="absolute -right-10 -top-10 h-40 w-40 text-zen-holo" color="#7fe8da" rings={4} opacity={0.2} />
                 <div className="relative flex items-center justify-between">
                   <div>
-                    <div className="micro-label text-zen-holo">Security Seal</div>
-                    <div className="mt-1 font-mono text-xs text-muted-foreground">SHA-256 · ZEN-CERT-2026</div>
+                    <div className="micro-label text-zen-holo">Verified Capability</div>
+                    <div className="mt-1 font-mono text-xs text-muted-foreground">ZEN-CARD · ON-CHAIN PROOF</div>
                   </div>
                   <div className="flex h-10 w-10 items-center justify-center rounded-full text-zen-holo" style={{ border: "1px solid rgba(182,212,74,0.42)" }}>
                     {Icon.verify}
@@ -255,7 +303,6 @@ function Hero() {
             </div>
           </CertificateFrame>
 
-          {/* floating mini medallion */}
           <div className="absolute -bottom-8 -left-8 hidden md:block">
             <div className="glass-panel rounded-xl p-4">
               <ZenMedallion size={56} glyph="node" />
@@ -264,7 +311,6 @@ function Hero() {
         </div>
       </div>
 
-      {/* microprint security line */}
       <div className="absolute inset-x-0 bottom-6 z-10 mx-auto max-w-7xl px-6">
         <MicroprintBorder className="w-full" />
       </div>
@@ -272,63 +318,48 @@ function Hero() {
   );
 }
 
-const PATHS = [
-  {
-    index: "PATH · I",
-    subtitle: "For Operators",
-    title: "SmartBusiness",
-    description:
-      "Deploy Arsenal automations across your operations. Orchestrate AI workflows, agents, and revenue systems on treasury-grade rails.",
-    cta: "Open SmartBusiness",
-    icon: Icon.business,
-    accent: "gold" as const,
-  },
-  {
-    index: "PATH · II",
-    subtitle: "For Builders",
-    title: "ZEN Programs",
-    description:
-      "Structured tracks across AI literacy, automation, and sovereign infrastructure — each concluding with a verifiable on-chain credential.",
-    cta: "Browse Programs",
-    icon: Icon.program,
-    accent: "emerald" as const,
-  },
-  {
-    index: "PATH · III",
-    subtitle: "For Members",
-    title: "Learn & Accomplish",
-    description:
-      "Earn credentials that compound. Track accomplishments, mint proof, and build a sovereign record of mastery recognized everywhere.",
-    cta: "Start Learning",
-    icon: Icon.learn,
-    accent: "holo" as const,
-  },
+/* ---------- Proof ribbon ---------- */
+const PROOF_CHIPS = [
+  "First youth AI literacy program in U.S. history",
+  "Started late 2023",
+  "3rd Annual AI Pioneer Program",
+  "Ages 11–18",
+  "Students build & deploy real AI apps",
+  "6+ countries reached",
+  "South Africa · inaugural Africa rollout",
+  "Arsenal execution layer",
+  "Blockchain-verified Zen Cards",
 ];
 
-function Paths() {
+function ProofRibbon() {
   return (
-    <section id="platform" className="relative px-6 py-24 md:py-32">
-      <TreasuryPatternBackground variant="section" watermark={false} />
-      <div className="relative z-10 mx-auto max-w-7xl">
-        <SectionHeading
-          label="Three Sovereign Paths"
-          title="One platform. Three ways to enter."
-          desc="Choose your charter. Every path runs on the same treasury-grade credential and automation infrastructure."
-        />
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {PATHS.map((p) => (
-            <PremiumPathCard key={p.title} {...p} />
-          ))}
-        </div>
+    <section className="relative border-y px-6 py-5" style={{ borderColor: "rgba(214,177,94,0.14)" }}>
+      <div
+        className="pointer-events-none absolute inset-0 opacity-60"
+        style={{ background: "linear-gradient(90deg, rgba(8,25,30,0.9), transparent 12%, transparent 88%, rgba(8,25,30,0.9))" }}
+        aria-hidden="true"
+      />
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-2.5">
+        {PROOF_CHIPS.map((c) => (
+          <span
+            key={c}
+            className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 font-mono text-[0.7rem] uppercase tracking-[0.12em] text-muted-foreground"
+            style={{ border: "1px solid rgba(127,232,218,0.18)", background: "rgba(8,16,8,0.45)" }}
+          >
+            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--grad-emerald-gold)" }} />
+            {c}
+          </span>
+        ))}
       </div>
     </section>
   );
 }
 
-function SectionHeading({ label, title, desc }: { label: string; title: string; desc?: string }) {
+function SectionHeading({ label, title, desc, align = "center" }: { label: string; title: string; desc?: string; align?: "center" | "left" }) {
+  const center = align === "center";
   return (
-    <div className="mx-auto max-w-2xl text-center">
-      <div className="mx-auto mb-5 flex items-center justify-center gap-3">
+    <div className={center ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
+      <div className={`mb-5 flex items-center gap-3 ${center ? "justify-center" : ""}`}>
         <span className="h-px w-10" style={{ background: "linear-gradient(90deg, transparent, rgba(214,177,94,0.6))" }} />
         <span className="micro-label text-zen-gold">{label}</span>
         <span className="h-px w-10" style={{ background: "linear-gradient(90deg, rgba(214,177,94,0.6), transparent)" }} />
@@ -339,37 +370,424 @@ function SectionHeading({ label, title, desc }: { label: string; title: string; 
   );
 }
 
-const PROGRAMS = [
-  { tag: "FOUNDATION", title: "AI Literacy Charter", desc: "Master the language, capabilities, and limits of modern AI systems.", weeks: "6 weeks", tone: "emerald" as const, glyph: "shield" as const },
-  { tag: "AUTOMATION", title: "Arsenal Operator", desc: "Build and ship autonomous agent fleets and revenue workflows.", weeks: "8 weeks", tone: "gold" as const, glyph: "node" as const },
-  { tag: "INFRASTRUCTURE", title: "Sovereign Architect", desc: "Design Web3 credentialing and treasury-grade AI infrastructure.", weeks: "10 weeks", tone: "holo" as const, glyph: "verify" as const },
+/* ---------- Ecosystem ---------- */
+const ECOSYSTEM = [
+  { title: "Arsenal", value: "Agents, workflows & business systems", icon: Icon.arsenal, href: ARSENAL, accent: "gold" as const, cta: "Launch", external: true },
+  { title: "AI Pioneer", value: "Youth build-and-deploy AI literacy", icon: Icon.pioneer, href: AIPIONEER, accent: "emerald" as const, cta: "Explore", external: true },
+  { title: "ZEN Vanguard", value: "Adult AI operator training", icon: Icon.vanguard, href: "#programs", accent: "holo" as const, cta: "Learn more" },
+  { title: "Homeschool Kit", value: "Family & micro-school AI curriculum", icon: Icon.homeschool, href: "#programs", accent: "gold" as const, cta: "Learn more" },
+  { title: "Train-the-Trainer", value: "Certified facilitators & regional scale", icon: Icon.trainer, href: "#programs", accent: "emerald" as const, cta: "Learn more" },
+  { title: "Zen Cards", value: "Verified credentials & proof of work", icon: Icon.cards, href: "https://www.zenai.world/legacydossier", accent: "holo" as const, cta: "Verify", external: true },
+  { title: "AI Arena", value: "Model comparison & AI access", icon: Icon.arena, href: "https://zenarena.ai/", accent: "gold" as const, cta: "Enter", external: true },
+  { title: "ZEN Weekly", value: "Intelligence, media & trend tracking", icon: Icon.weekly, href: "https://www.zenai.world/media", accent: "emerald" as const, cta: "Read", external: true },
 ];
 
-function FeaturedPrograms() {
+function Ecosystem() {
   return (
-    <section id="programs" className="relative px-6 py-24 md:py-32">
-      <TreasuryPatternBackground variant="section" />
+    <section id="ecosystem" className="relative px-6 py-24 md:py-28">
+      <TreasuryPatternBackground variant="section" watermark={false} />
       <div className="relative z-10 mx-auto max-w-7xl">
         <SectionHeading
-          label="Featured Programs"
-          title="Credentialed mastery, by design."
-          desc="Each program concludes with a verifiable, on-chain ZEN credential — engraved, sealed, and globally recognized."
+          label="The ZEN Ecosystem"
+          title="One command center. Every layer of capability."
+          desc="Move from passive AI use into verified capability — learning, building, deploying, automating, showcasing, and proving real work."
         />
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
-          {PROGRAMS.map((p) => (
-            <OrnamentalCard key={p.title} accent={p.tone}>
-              <div className="flex h-full flex-col p-7">
-                <div className="flex items-start justify-between">
-                  <ZenMedallion size={64} glyph={p.glyph} />
-                  <CredentialBadge label={p.weeks} tone={p.tone} />
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {ECOSYSTEM.map((c) => (
+            <OrnamentalCard key={c.title} accent={c.accent} watermark={false}>
+              <a
+                href={c.href}
+                {...(c.external ? ext : {})}
+                className="flex h-full flex-col p-6"
+              >
+                <div
+                  className="flex h-11 w-11 items-center justify-center rounded-lg text-zen-platinum"
+                  style={{ border: "1px solid rgba(227,185,85,0.3)", background: "rgba(8,16,8,0.6)" }}
+                >
+                  {c.icon}
                 </div>
-                <p className="mt-6 micro-label text-muted-foreground">{p.tag}</p>
-                <h3 className="mt-2 text-2xl font-medium text-zen-platinum">{p.title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
-                <div className="mt-6 flex items-center justify-between border-t pt-5" style={{ borderColor: "rgba(214,177,94,0.14)" }}>
-                  <span className="micro-label text-zen-gold">Issues Credential</span>
-                  <span className="text-zen-platinum">{Icon.verify}</span>
+                <h3 className="mt-5 text-lg font-medium text-zen-platinum">{c.title}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{c.value}</p>
+                <div className="mt-5 flex items-center gap-2 text-sm font-medium text-zen-gold transition-transform duration-300 group-hover:translate-x-1">
+                  {c.cta} {Icon.arrow}
                 </div>
+              </a>
+            </OrnamentalCard>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Arsenal spotlight ---------- */
+const ARSENAL_CHIPS = [
+  "Agent Builder", "Business Spaces", "Workflow Automation", "Knowledge Vaults",
+  "Model Routing", "Dashboards", "Messaging Channels", "Marketplace",
+  "Custom Apps", "Automation Audits",
+];
+
+function ArsenalSpotlight() {
+  return (
+    <section id="arsenal" className="relative px-6 py-24 md:py-28">
+      <TreasuryPatternBackground variant="subtle" />
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <CertificateFrame className="overflow-hidden">
+          <div className="grid gap-10 p-8 md:p-14 lg:grid-cols-[1fr_1.1fr]">
+            <div>
+              <CredentialBadge label="Execution Engine" tone="gold" />
+              <h2 className="mt-6 text-3xl font-medium leading-[1.08] text-zen-platinum md:text-4xl">
+                Arsenal is where AI literacy becomes{" "}
+                <span className="text-engrave">operational power.</span>
+              </h2>
+              <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground">
+                Build agents, launch workflows, manage knowledge, create dashboards, connect tools,
+                route models, and turn repeated work into AI-powered systems.
+              </p>
+              <a
+                href={ARSENAL}
+                {...ext}
+                className="mt-8 inline-flex items-center gap-2 rounded-lg px-6 py-3.5 text-sm font-semibold text-zen-ink transition-all hover:brightness-110"
+                style={{ background: "var(--grad-gold-platinum)", boxShadow: "var(--glow-gold)" }}
+              >
+                Launch Arsenal {Icon.arrow}
+              </a>
+            </div>
+
+            <div className="relative rounded-xl p-5" style={{ background: "rgba(8,16,8,0.5)", border: "1px solid rgba(214,177,94,0.16)" }}>
+              <div className="flex items-center justify-between border-b pb-3" style={{ borderColor: "rgba(214,177,94,0.12)" }}>
+                <span className="micro-label text-zen-holo">Arsenal Console</span>
+                <span className="flex gap-1.5">
+                  <span className="h-2 w-2 rounded-full bg-zen-emerald/70" />
+                  <span className="h-2 w-2 rounded-full bg-zen-gold/70" />
+                  <span className="h-2 w-2 rounded-full bg-zen-holo/70" />
+                </span>
+              </div>
+              <div className="mt-4 grid grid-cols-2 gap-2.5">
+                {ARSENAL_CHIPS.map((chip) => (
+                  <div
+                    key={chip}
+                    className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm text-zen-platinum transition-colors hover:border-zen-gold/50"
+                    style={{ border: "1px solid rgba(127,232,218,0.16)", background: "rgba(8,16,8,0.4)" }}
+                  >
+                    <span className="text-zen-gold">{Icon.node}</span>
+                    {chip}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </CertificateFrame>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- AI Pioneer proof ---------- */
+const PIONEER_BULLETS = [
+  "Foundations of AI & creativity",
+  "Agents, prompts, APIs & model behavior",
+  "Hugging Face / Google AI Studio / Gradio workflows",
+  "Portfolio & showcase outcomes",
+  "Responsible AI & safety",
+  "Certificate + Zen Card credential path",
+];
+
+function PioneerSection() {
+  return (
+    <section id="pioneer" className="relative px-6 py-24 md:py-28">
+      <TreasuryPatternBackground variant="section" watermark={false} />
+      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1fr_1fr]">
+        <div>
+          <SectionHeading
+            align="left"
+            label="Flagship Youth Program"
+            title="The first youth AI literacy program in U.S. history."
+          />
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
+            AI Pioneer is ZEN's flagship youth program for ages 11–18. Students learn AI by building,
+            deploying, documenting, and showcasing real AI projects.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href={AIPIONEER} {...ext} className="inline-flex items-center gap-2 rounded-lg px-6 py-3.5 text-sm font-semibold text-zen-ink transition-all hover:brightness-110" style={{ background: "var(--grad-emerald-gold)", boxShadow: "var(--shadow-emerald)" }}>
+              Explore AI Pioneer {Icon.arrow}
+            </a>
+            <a href="https://www.zenai.world/ailiteracyyouth" {...ext} className="inline-flex items-center gap-2 rounded-lg border px-6 py-3.5 text-sm font-medium text-zen-platinum transition-colors hover:border-zen-gold/60" style={{ borderColor: "rgba(214,177,94,0.3)" }}>
+              Youth AI Literacy
+            </a>
+          </div>
+        </div>
+
+        <OrnamentalCard accent="emerald">
+          <div className="p-7">
+            <div className="flex items-center justify-between">
+              <ZenMedallion size={60} glyph="shield" />
+              <CredentialBadge label="3rd Annual Cohort" tone="emerald" />
+            </div>
+            <ul className="mt-6 space-y-3">
+              {PIONEER_BULLETS.map((b) => (
+                <li key={b} className="flex items-start gap-3 text-sm text-zen-platinum">
+                  <span className="mt-0.5 shrink-0 text-zen-emerald">{Icon.verify}</span>
+                  {b}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </OrnamentalCard>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Programs tabs ---------- */
+const PROGRAMS = [
+  { name: "AI Pioneer Program", audience: "Youth ages 11–18", outcome: "Public AI project + showcase portfolio", credential: "ZEN AI Pioneer Certificate + Zen Card", href: AIPIONEER, external: true },
+  { name: "ZEN Vanguard", audience: "Adults & professionals", outcome: "Operational AI workflows & deployed systems", credential: "ZEN AI Operator Certificate + Zen Card", href: MAILTO },
+  { name: "Homeschool Kit", audience: "Families, micro-schools & pods", outcome: "Guided at-home AI curriculum & projects", credential: "Completion Certificate + Zen Card path", href: MAILTO },
+  { name: "Blockchain Literacy", audience: "Builders & credential holders", outcome: "Verifiable on-chain proof-of-work fluency", credential: "Blockchain Literacy Zen Card", href: MAILTO },
+  { name: "Train-the-Trainer", audience: "Educators & facilitators", outcome: "Certified capacity to run ZEN cohorts", credential: "ZEN Certified Facilitator + Zen Card", href: MAILTO },
+  { name: "Zen Cards", audience: "All ZEN members", outcome: "Blockchain-verified proof of skill & projects", credential: "Portable on-chain credential", href: "https://www.zenai.world/legacydossier", external: true },
+];
+
+function Programs() {
+  const [active, setActive] = useState(0);
+  const p = PROGRAMS[active];
+  return (
+    <section id="programs" className="relative px-6 py-24 md:py-28">
+      <TreasuryPatternBackground variant="subtle" watermark={false} />
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <SectionHeading
+          label="Programs"
+          title="Structured paths. Verifiable outcomes."
+          desc="Every track ends in a credential — audience, outcome, and proof, by design."
+        />
+        <div className="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="flex flex-wrap gap-2 lg:flex-col">
+            {PROGRAMS.map((prog, i) => (
+              <button
+                key={prog.name}
+                onClick={() => setActive(i)}
+                className="tap-target flex items-center justify-between gap-3 rounded-lg px-4 py-3 text-left text-sm font-medium transition-all"
+                style={{
+                  border: `1px solid ${active === i ? "rgba(214,177,94,0.5)" : "rgba(127,232,218,0.14)"}`,
+                  background: active === i ? "rgba(214,177,94,0.1)" : "rgba(8,16,8,0.4)",
+                  color: active === i ? "var(--zen-platinum)" : "var(--muted-foreground)",
+                }}
+              >
+                {prog.name}
+                {active === i && <span className="text-zen-gold">{Icon.arrow}</span>}
+              </button>
+            ))}
+          </div>
+
+          <CertificateFrame>
+            <div className="p-8 md:p-10">
+              <h3 className="font-display text-2xl font-semibold text-zen-platinum">{p.name}</h3>
+              <div className="mt-6 space-y-4">
+                {[
+                  ["Audience", p.audience],
+                  ["Outcome", p.outcome],
+                  ["Credential", p.credential],
+                ].map(([k, v]) => (
+                  <div key={k} className="border-b pb-4" style={{ borderColor: "rgba(214,177,94,0.12)" }}>
+                    <div className="micro-label text-zen-gold">{k}</div>
+                    <div className="mt-1.5 text-base text-zen-platinum">{v}</div>
+                  </div>
+                ))}
+              </div>
+              <a
+                href={p.href}
+                {...(p.external ? ext : {})}
+                className="mt-7 inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold text-zen-ink transition-all hover:brightness-110"
+                style={{ background: "var(--grad-emerald-gold)" }}
+              >
+                {p.external ? "Explore Program" : "Request Access"} {Icon.arrow}
+              </a>
+            </div>
+          </CertificateFrame>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Global expansion ---------- */
+const GLOBAL_CHIPS = [
+  "Johannesburg + Cape Town",
+  "~1,100 initial student target",
+  "3 partner organizations",
+  "English + Zulu localization",
+  "Build → Deploy → Showcase → Certificate",
+];
+
+function GlobalExpansion() {
+  return (
+    <section className="relative overflow-hidden px-6 py-24 md:py-28">
+      <AuroraHorizon intensity="bright" />
+      <div className="relative z-10 mx-auto max-w-5xl">
+        <CertificateFrame className="overflow-hidden">
+          <div className="p-8 md:p-14">
+            <div className="flex items-center gap-3">
+              <span className="text-zen-gold">{Icon.globe}</span>
+              <span className="micro-label text-zen-gold">Global Expansion</span>
+            </div>
+            <h2 className="mt-5 text-3xl font-medium leading-tight text-zen-platinum md:text-4xl">
+              AI literacy infrastructure is going global.
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
+              ZEN is deploying the AI Pioneer Program in South Africa with English delivery,
+              Zulu-localized materials, partner-led cohorts, and Train-the-Trainer capacity building.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-2.5">
+              {GLOBAL_CHIPS.map((c) => (
+                <span key={c} className="rounded-full px-3.5 py-1.5 font-mono text-[0.7rem] uppercase tracking-[0.12em] text-zen-platinum" style={{ border: "1px solid rgba(127,232,218,0.22)", background: "rgba(8,16,8,0.45)" }}>
+                  {c}
+                </span>
+              ))}
+            </div>
+            <a href={MAILTO} className="mt-8 inline-flex items-center gap-2 rounded-lg px-6 py-3.5 text-sm font-semibold text-zen-ink transition-all hover:brightness-110" style={{ background: "var(--grad-gold-platinum)" }}>
+              Partner With ZEN {Icon.arrow}
+            </a>
+          </div>
+        </CertificateFrame>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Business solutions ---------- */
+const BUSINESS_CHIPS = [
+  "Custom AI Agents", "Workflow Automation", "Internal Knowledge Assistants",
+  "Customer Support AI", "Program Dashboards", "Grant/Sponsorship Automation",
+  "Education Cohort Systems", "Business Spaces", "Automation Audits",
+];
+
+function BusinessSolutions() {
+  return (
+    <section className="relative px-6 py-24 md:py-28">
+      <TreasuryPatternBackground variant="section" watermark={false} />
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <SectionHeading
+          label="Business Solutions"
+          title="AI literacy becomes automation. Automation becomes economic output."
+          desc="ZEN helps founders, businesses, schools, nonprofits, and teams turn repeated work into agents, workflows, dashboards, knowledge systems, and custom AI apps."
+        />
+        <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {BUSINESS_CHIPS.map((c) => (
+            <div
+              key={c}
+              className="group flex items-center gap-3 rounded-xl px-5 py-4 text-sm font-medium text-zen-platinum transition-all hover:-translate-y-0.5"
+              style={{ border: "1px solid rgba(127,232,218,0.16)", background: "rgba(8,16,8,0.4)" }}
+            >
+              <span className="text-zen-gold transition-transform group-hover:scale-110">{Icon.node}</span>
+              {c}
+            </div>
+          ))}
+        </div>
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          <a href={MAILTO} className="inline-flex items-center gap-2 rounded-lg px-6 py-3.5 text-sm font-semibold text-zen-ink transition-all hover:brightness-110" style={{ background: "var(--grad-emerald-gold)" }}>
+            Build With ZEN {Icon.arrow}
+          </a>
+          <a href={ARSENAL} {...ext} className="inline-flex items-center gap-2 rounded-lg border px-6 py-3.5 text-sm font-medium text-zen-platinum transition-colors hover:border-zen-gold/60" style={{ borderColor: "rgba(214,177,94,0.3)" }}>
+            Launch Arsenal
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Command Center link hub ---------- */
+const LINK_GROUPS: { heading: string; links: { label: string; href: string }[] }[] = [
+  {
+    heading: "Build",
+    links: [
+      { label: "Arsenal", href: "https://qubit.earth" },
+      { label: "AI Arena", href: "https://us.zenai.biz/" },
+      { label: "ZEN Arena", href: "https://zenarena.ai/" },
+      { label: "Tools", href: "https://www.zenai.world/tools" },
+      { label: "ZEN Pen", href: "https://www.zenai.world/zen-pen" },
+      { label: "Vibe Book", href: "https://www.zenai.world/vibe-book" },
+    ],
+  },
+  {
+    heading: "Learn",
+    links: [
+      { label: "AI Pioneer", href: "https://aipioneer.zen.ai/" },
+      { label: "AI Literacy Youth", href: "https://www.zenai.world/ailiteracyyouth" },
+      { label: "Challenges", href: "https://www.zenai.world/challenges" },
+      { label: "AI Literacy Report", href: "https://www.perplexity.ai/page/ai-literacy-initiatives-report-kk1_esVDR8iJEQChSlXc0g" },
+    ],
+  },
+  {
+    heading: "Verify",
+    links: [
+      { label: "Legacy Dossier", href: "https://www.zenai.world/legacydossier" },
+      { label: "Leaderboard", href: "https://www.zenai.world/leaderboard" },
+    ],
+  },
+  {
+    heading: "Media",
+    links: [
+      { label: "Blog", href: "https://www.zenai.world/blog" },
+      { label: "Media", href: "https://www.zenai.world/media" },
+      { label: "YouTube", href: "https://www.youtube.com/@ZENAIML" },
+      { label: "X", href: "https://x.com/ZEN_AGI" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/company/z3nai" },
+    ],
+  },
+  {
+    heading: "Community",
+    links: [
+      { label: "Groups", href: "https://www.zenai.world/groups" },
+      { label: "Telegram", href: "https://t.me/ZENOAI" },
+      { label: "Discord", href: "https://discord.gg/qbKgCc46Ym" },
+      { label: "Instagram", href: "https://www.instagram.com/0xvvs1" },
+      { label: "TikTok", href: "https://www.tiktok.com/@milennialai" },
+      { label: "GitHub", href: "https://github.com/Bluenot3" },
+      { label: "Linq", href: "https://linqapp.com/zenai?r=link" },
+    ],
+  },
+  {
+    heading: "Legal / Contact",
+    links: [
+      { label: "Email", href: MAILTO },
+      { label: "Privacy", href: "https://www.zenai.world/privacy-policy" },
+      { label: "Terms", href: "https://www.zenai.world/terms-and-conditions" },
+      { label: "Pricing", href: "https://www.zenai.world/pricing" },
+    ],
+  },
+];
+
+function CommandCenter() {
+  return (
+    <section id="command" className="relative px-6 py-24 md:py-28">
+      <TreasuryPatternBackground variant="subtle" watermark={false} />
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <SectionHeading
+          label="ZEN Command Center"
+          title="Every ZEN destination, one panel."
+          desc="Build, learn, verify, and connect — the full ecosystem without the clutter."
+        />
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {LINK_GROUPS.map((g) => (
+            <OrnamentalCard key={g.heading} accent="holo" watermark={false}>
+              <div className="p-6">
+                <div className="micro-label text-zen-gold">{g.heading}</div>
+                <ul className="mt-4 space-y-2.5">
+                  {g.links.map((l) => (
+                    <li key={l.label}>
+                      <a
+                        href={l.href}
+                        {...(l.href.startsWith("mailto:") ? {} : ext)}
+                        className="group flex items-center justify-between text-sm text-muted-foreground transition-colors hover:text-zen-platinum"
+                      >
+                        {l.label}
+                        <span className="opacity-0 transition-opacity group-hover:opacity-70">{Icon.arrow}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </OrnamentalCard>
           ))}
@@ -379,37 +797,44 @@ function FeaturedPrograms() {
   );
 }
 
-const PROOF = [
-  ["1.2M", "Credentials Minted", "On-chain & verifiable"],
-  ["31K", "Active Builders", "Across 90+ nations"],
-  ["120+", "Models Integrated", "Frontier AI coverage"],
-  ["99.9%", "Ledger Uptime", "Treasury-grade SLA"],
-];
-
-function Proof() {
+/* ---------- Final CTA ---------- */
+function FinalCTA() {
   return (
-    <section id="proof" className="relative px-6 py-24 md:py-32">
-      <TreasuryPatternBackground variant="subtle" />
-      <div className="relative z-10 mx-auto max-w-7xl">
-        <SectionHeading label="Proof of Sovereignty" title="Verified at scale." />
-        <div className="mt-14">
-          <CertificateFrame>
-            <div className="grid gap-px p-px md:grid-cols-4" style={{ background: "rgba(214,177,94,0.1)" }}>
-              {PROOF.map(([n, l, s], i) => (
-                <div key={l} className="cert-surface relative overflow-hidden p-8 text-center">
-                  {i === 1 && <GuillocheOverlay className="absolute inset-0 m-auto h-48 w-48 text-zen-emerald" color="#45dcae" rings={4} opacity={0.08} />}
-                  <div className="relative font-display text-4xl font-semibold text-engrave md:text-5xl">{n}</div>
-                  <div className="relative mt-2 text-sm font-medium text-zen-platinum">{l}</div>
-                  <div className="relative mt-1 micro-label text-muted-foreground">{s}</div>
-                </div>
-              ))}
-            </div>
-          </CertificateFrame>
+    <section id="apply" className="relative overflow-hidden px-6 py-28 md:py-36">
+      <TreasuryPatternBackground variant="hero" />
+      <MagicParticles className="z-[2]" count={60} lines={8} opacity={0.7} />
+      <div className="relative z-10 mx-auto max-w-4xl text-center">
+        <h2 className="text-4xl font-medium leading-[1.05] text-zen-platinum md:text-6xl">
+          The future belongs to builders who can{" "}
+          <span className="text-currency font-display">prove what they built.</span>
+        </h2>
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <a href={ARSENAL} {...ext} className="inline-flex items-center gap-2 rounded-lg px-6 py-3.5 text-sm font-semibold text-zen-ink transition-all hover:brightness-110" style={{ background: "var(--grad-gold-platinum)", boxShadow: "var(--glow-gold)" }}>
+            Launch Arsenal {Icon.arrow}
+          </a>
+          <a href={AIPIONEER} {...ext} className="inline-flex items-center gap-2 rounded-lg border px-6 py-3.5 text-sm font-medium text-zen-platinum transition-colors hover:border-zen-gold/60" style={{ borderColor: "rgba(214,177,94,0.3)" }}>
+            Explore AI Pioneer
+          </a>
+          <a href={MAILTO} className="inline-flex items-center gap-2 rounded-lg border px-6 py-3.5 text-sm font-medium text-zen-platinum transition-colors hover:border-zen-gold/60" style={{ borderColor: "rgba(214,177,94,0.3)" }}>
+            Partner With ZEN
+          </a>
+          <a href="#command" className="inline-flex items-center gap-2 rounded-lg px-5 py-3.5 text-sm font-medium text-muted-foreground transition-colors hover:text-zen-platinum">
+            View All Links
+          </a>
         </div>
       </div>
     </section>
   );
 }
+
+/* ---------- Footer ---------- */
+const FOOTER_SOCIAL = [
+  { label: "YouTube", href: "https://www.youtube.com/@ZENAIML" },
+  { label: "X", href: "https://x.com/ZEN_AGI" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/z3nai" },
+  { label: "Discord", href: "https://discord.gg/qbKgCc46Ym" },
+  { label: "GitHub", href: "https://github.com/Bluenot3" },
+];
 
 function Footer() {
   return (
@@ -420,25 +845,31 @@ function Footer() {
           <div className="max-w-sm">
             <div className="flex items-center gap-3">
               <ZenMedallion size={36} glyph="zen" />
-              <span className="font-display text-xl font-semibold text-zen-platinum">ZEN Treasury</span>
+              <span className="font-display text-xl font-semibold text-zen-platinum">ZEN AI Co.</span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Treasury-grade infrastructure for the sovereign intelligence era. AI literacy,
-              Arsenal automation, and verifiable Web3 credentials.
+              AI literacy, automation, and credential infrastructure.
             </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              {FOOTER_SOCIAL.map((s) => (
+                <a key={s.label} href={s.href} {...ext} className="micro-label text-muted-foreground transition-colors hover:text-zen-platinum">
+                  {s.label}
+                </a>
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-2 gap-x-16 gap-y-8 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-x-12 gap-y-8 sm:grid-cols-3">
             {[
-              ["Platform", ["SmartBusiness", "ZEN Programs", "Credentials", "Arsenal"]],
-              ["Company", ["Charter", "Governance", "Proof", "Careers"]],
-              ["Legal", ["Terms", "Privacy", "Security", "Disclosures"]],
+              ["Build", [["Arsenal", ARSENAL], ["AI Arena", "https://zenarena.ai/"], ["Tools", "https://www.zenai.world/tools"]]],
+              ["Learn", [["AI Pioneer", AIPIONEER], ["AI Literacy Youth", "https://www.zenai.world/ailiteracyyouth"], ["Challenges", "https://www.zenai.world/challenges"]]],
+              ["Company", [["Pricing", "https://www.zenai.world/pricing"], ["Privacy", "https://www.zenai.world/privacy-policy"], ["Terms", "https://www.zenai.world/terms-and-conditions"], ["Contact", MAILTO]]],
             ].map(([h, items]) => (
               <div key={h as string}>
                 <div className="micro-label text-zen-gold">{h as string}</div>
                 <ul className="mt-4 space-y-3">
-                  {(items as string[]).map((it) => (
-                    <li key={it}>
-                      <a href="#" className="text-sm text-muted-foreground transition-colors hover:text-zen-platinum">{it}</a>
+                  {(items as string[][]).map(([label, href]) => (
+                    <li key={label}>
+                      <a href={href} {...(href.startsWith("mailto:") ? {} : ext)} className="text-sm text-muted-foreground transition-colors hover:text-zen-platinum">{label}</a>
                     </li>
                   ))}
                 </ul>
@@ -447,106 +878,37 @@ function Footer() {
           </div>
         </div>
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t pt-8 text-xs text-muted-foreground md:flex-row" style={{ borderColor: "rgba(214,177,94,0.12)" }}>
-          <span className="font-mono tracking-wider">© MMXXVI ZEN · SOVEREIGN INTELLIGENCE TREASURY</span>
-          <span className="font-mono">Abstract design — not affiliated with any government entity.</span>
+          <span className="font-mono tracking-wider">© MMXXVI ZEN AI CO.</span>
+          <span className="font-mono tracking-wider">ZEN AI CO · SAM.gov ready · UEI: UPQGSDYW9K16</span>
         </div>
       </div>
     </footer>
   );
 }
 
-const POSSIBILITY = [
-  { title: "Agent Builder", desc: "Build intelligent agents in minutes, not months.", icon: Icon.node },
-  { title: "Mission Control", desc: "Orchestrate every flow, in real time.", icon: Icon.program },
-  { title: "Night Shift", desc: "Operations keep running while the world sleeps.", icon: Icon.verify },
-  { title: "Z-Engine", desc: "Create, refine, publish — from idea to impact.", icon: Icon.business },
-  { title: "Business Spaces", desc: "Organize teams, clients and projects with clarity.", icon: Icon.learn },
-  { title: "Research", desc: "Search smarter. Find what matters.", icon: Icon.verify },
-];
-
-function PossibilitySection() {
-  return (
-    <section id="possibility" className="relative overflow-hidden px-6 py-28 md:py-40">
-      <AuroraHorizon intensity="bright" />
-      <div className="relative z-10 mx-auto max-w-6xl text-center">
-        <div className="mx-auto mb-6 flex items-center justify-center gap-3">
-          <span className="h-px w-10" style={{ background: "linear-gradient(90deg, transparent, rgba(255,247,224,0.7))" }} />
-          <span className="micro-label text-zen-platinum/80">Endless Possibility</span>
-          <span className="h-px w-10" style={{ background: "linear-gradient(90deg, rgba(255,247,224,0.7), transparent)" }} />
-        </div>
-        <h2 className="mx-auto max-w-4xl text-5xl font-medium leading-[1.0] text-zen-platinum md:text-7xl">
-          <span className="text-foil font-display">Unlimited power.</span>
-          <br />
-          One conversation away.
-        </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed" style={{ color: "rgba(231,243,243,0.78)" }}>
-          Command your entire operation by text. Every agent, flow and credential —
-          coordinated from a single luminous control surface.
-        </p>
-
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {POSSIBILITY.map((p, i) => (
-            <div
-              key={p.title}
-              className="glass-tile tap-target group flex items-start gap-4 rounded-2xl p-5 text-left transition-transform duration-500 hover:-translate-y-1.5"
-              style={{ animation: `rise 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 0.06}s both` }}
-            >
-              <div
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-zen-ink"
-                style={{ background: "var(--grad-gold-platinum)", boxShadow: "0 8px 24px -10px rgba(0,0,0,0.6)" }}
-              >
-                {p.icon}
-              </div>
-              <div>
-                <div className="font-display text-lg font-semibold text-zen-platinum">{p.title}</div>
-                <div className="mt-1 text-sm leading-relaxed" style={{ color: "rgba(231,243,243,0.72)" }}>
-                  {p.desc}
-                </div>
-              </div>
-              <svg className="ml-auto mt-1 shrink-0 opacity-50 transition-all group-hover:translate-x-0.5 group-hover:opacity-90" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true" style={{ color: "rgba(231,243,243,0.85)" }}>
-                <path d="M3 8h10M9 4l4 4-4 4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-12 inline-flex items-center gap-3 rounded-full px-5 py-2.5 glass-tile">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-zen-emerald opacity-60" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-zen-emerald" />
-          </span>
-          <span className="micro-label text-zen-platinum/85">Weekend Mode · Focus · Freedom · Flow</span>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* App-style sticky action bar — gives the platform native-iOS parity on mobile */
+/* App-style sticky action bar — native-iOS parity on mobile */
 function MobileActionBar() {
   return (
     <div
-      className="fixed inset-x-0 bottom-0 z-50 md:hidden"
+      className="fixed inset-x-0 bottom-0 z-50 lg:hidden"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
       <div className="glass-panel border-x-0 border-b-0 px-4 pb-3 pt-3">
         <div className="flex items-center gap-3">
           <a
-            href="#apply"
+            href={ARSENAL}
+            {...ext}
             className="tap-target flex flex-1 items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-sm font-semibold text-zen-ink active:brightness-95"
             style={{ background: "var(--grad-emerald-gold)", boxShadow: "var(--shadow-emerald)" }}
           >
-            Enter the Treasury
-            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            Launch Arsenal {Icon.arrow}
           </a>
           <a
-            href="#programs"
+            href="#ecosystem"
             className="tap-target flex items-center justify-center rounded-xl border px-5 py-3.5 text-sm font-medium text-zen-platinum active:bg-white/5"
             style={{ borderColor: "rgba(214,177,94,0.3)" }}
           >
-            Programs
+            Ecosystem
           </a>
         </div>
       </div>
@@ -559,13 +921,17 @@ function Index() {
     <main className="relative min-h-screen bg-background">
       <Nav />
       <Hero />
-      <Paths />
-      <PossibilitySection />
-      <FeaturedPrograms />
-      <Proof />
-      <SovereignCTASection />
+      <ProofRibbon />
+      <Ecosystem />
+      <ArsenalSpotlight />
+      <PioneerSection />
+      <Programs />
+      <GlobalExpansion />
+      <BusinessSolutions />
+      <CommandCenter />
+      <FinalCTA />
       <Footer />
-      <div className="h-20 md:hidden" />
+      <div className="h-20 lg:hidden" />
       <MobileActionBar />
     </main>
   );

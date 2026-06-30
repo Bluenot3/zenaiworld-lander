@@ -77,23 +77,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "ZEN — Sovereign AI Treasury & Credentialing" },
+      { title: "ZEN AI Co. | AI Literacy, Arsenal Automation, and Verified AI Credentials" },
       {
         name: "description",
         content:
-          "ZEN is the treasury-grade operating system for AI literacy, Arsenal automation, and Web3 credentials — an institutional platform for the sovereign intelligence era.",
+          "ZEN AI Co. builds AI literacy, automation, and credential infrastructure through AI Pioneer, Arsenal, ZEN Vanguard, AI Arena, and blockchain-verified Zen Cards.",
       },
-      { name: "author", content: "ZEN" },
-      { property: "og:title", content: "ZEN — Sovereign AI Treasury & Credentialing" },
+      { name: "author", content: "ZEN AI Co." },
+      { property: "og:title", content: "ZEN AI Co. | AI Literacy, Arsenal Automation & Verified AI Credentials" },
       {
         property: "og:description",
         content:
-          "Treasury-grade infrastructure for AI literacy, Arsenal automation, and verifiable Web3 credentials.",
+          "Learn AI. Build systems. Verify capability. The literacy, automation, and credential infrastructure for the AI era.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@ZEN" },
-      { name: "theme-color", content: "#05070A" },
+      { name: "twitter:site", content: "@ZEN_AGI" },
+      { name: "theme-color", content: "#08191e" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
