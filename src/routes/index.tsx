@@ -221,7 +221,7 @@ function Hero() {
                   <div className="micro-label text-muted-foreground">Certificate of</div>
                   <div className="font-display text-2xl font-semibold text-zen-platinum">AI Literacy</div>
                 </div>
-                <ZenMedallion size={74} glyph="verify" spin />
+                <ZenMedallion size={74} glyph="verify" />
               </div>
 
               <div className="my-6 h-px w-full" style={{ background: "linear-gradient(90deg, transparent, rgba(214,177,94,0.5), transparent)" }} />
