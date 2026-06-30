@@ -50,10 +50,10 @@ export function TreasuryPatternBackground({
         lines={hero ? 56 : 42}
         className="absolute -top-10 left-0 h-[58%] w-full"
       />
-      {/* engine-turned woven band — bottom, mirrored */}
+      {/* engine-turned woven band — bottom, mirrored (warm gold tone) */}
       <EngineTurnedField
-        gradient="emerald"
-        opacity={hero ? 0.3 : 0.18}
+        gradient="currency"
+        opacity={hero ? 0.22 : 0.12}
         lines={46}
         amplitude={0.2}
         className="absolute -bottom-10 left-0 h-[58%] w-full -scale-y-100"
