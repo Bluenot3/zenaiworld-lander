@@ -559,17 +559,21 @@ function MobileActionBar() {
 
 function Index() {
   return (
-    <main className="relative min-h-screen bg-background">
-      <Nav />
-      <Hero />
-      <Paths />
-      <PossibilitySection />
-      <FeaturedPrograms />
-      <Proof />
-      <SovereignCTASection />
-      <Footer />
-      <div className="h-20 md:hidden" />
-      <MobileActionBar />
-    </main>
+    <SkyProvider>
+      <LivingSky />
+      <main className="relative min-h-screen">
+        <Nav />
+        <Hero />
+        <Paths />
+        <PossibilitySection />
+        <FeaturedPrograms />
+        <Proof />
+        <SovereignCTASection />
+        <Footer />
+        <div className="h-20 md:hidden" />
+        <MobileActionBar />
+      </main>
+      <SkyControls />
+    </SkyProvider>
   );
 }
