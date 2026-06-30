@@ -624,7 +624,8 @@ const GLOBAL_CHIPS = [
 function GlobalExpansion() {
   return (
     <section className="relative overflow-hidden px-6 py-24 md:py-28">
-      <AuroraHorizon intensity="bright" />
+      <SkyAtmosphere fixed={false} intensity="feature" />
+      <AuroraHorizon intensity="soft" className="opacity-40 mix-blend-screen" />
       <div className="relative z-10 mx-auto max-w-5xl">
         <CertificateFrame className="overflow-hidden">
           <div className="p-8 md:p-14">
