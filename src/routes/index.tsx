@@ -105,19 +105,20 @@ function Hero() {
     <section className="relative flex min-h-screen items-center overflow-hidden px-6 pt-28 pb-20">
       <TreasuryPatternBackground variant="hero" />
 
-      {/* currency-grade gold engraving photograph — the centerpiece texture */}
+      {/* currency-grade gold engraving photograph — toned-down accent texture */}
       <div
         className="pointer-events-none absolute inset-0 z-[1] bg-cover bg-center"
         style={{
           backgroundImage: `url(${heroBg})`,
-          opacity: 0.62,
+          opacity: 0.32,
           maskImage:
-            "radial-gradient(135% 120% at 70% 42%, black 22%, rgba(0,0,0,0.35) 62%, transparent 92%)",
+            "radial-gradient(120% 110% at 78% 38%, black 8%, rgba(0,0,0,0.28) 50%, transparent 84%)",
           WebkitMaskImage:
-            "radial-gradient(135% 120% at 70% 42%, black 22%, rgba(0,0,0,0.35) 62%, transparent 92%)",
+            "radial-gradient(120% 110% at 78% 38%, black 8%, rgba(0,0,0,0.28) 50%, transparent 84%)",
         }}
         aria-hidden="true"
       />
+
       {/* warm glow that ties the engraving to the palette */}
       <div
         className="pointer-events-none absolute inset-0 z-[1]"
