@@ -9,7 +9,7 @@ import { CredentialBadge } from "@/components/treasury/CredentialBadge";
 import { SovereignCTASection } from "@/components/treasury/SovereignCTASection";
 import { GuillocheOverlay } from "@/components/treasury/GuillocheOverlay";
 import { MicroprintBorder } from "@/components/treasury/MicroprintBorder";
-import { AuroraHorizon } from "@/components/treasury/AuroraHorizon";
+
 import { MagicParticles } from "@/components/treasury/MagicParticles";
 import { FederalSeal } from "@/components/treasury/FederalSeal";
 import { SkyProvider } from "@/hooks/useSky";
