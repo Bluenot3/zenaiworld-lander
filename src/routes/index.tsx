@@ -919,7 +919,8 @@ function MobileActionBar() {
 
 function Index() {
   return (
-    <main className="relative min-h-screen bg-background">
+    <main className="relative min-h-screen bg-transparent">
+      <SkyAtmosphere />
       <Nav />
       <Hero />
       <ProofRibbon />
