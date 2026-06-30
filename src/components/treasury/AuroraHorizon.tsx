@@ -1,3 +1,5 @@
+import skyImg from "@/assets/endless-sky.jpg";
+
 interface AuroraHorizonProps {
   className?: string;
   /** intensity of the luminous dawn */
@@ -5,21 +7,39 @@ interface AuroraHorizonProps {
 }
 
 /**
- * AuroraHorizon — a luminous holographic dawn. Volumetric soft clouds and an
- * opalescent sunrise core that brighten the center while the edges stay
- * treasury-deep, fusing the cosmos (images 1 & 3) with the endless-sky
- * possibility (image 2). Pure CSS, no images, fully responsive.
+ * AuroraHorizon — a luminous holographic dawn built on a cinematic dawn-sky
+ * photograph, fused with volumetric CSS clouds and an opalescent sunrise core.
+ * The edges fade to treasury-deep so it blends with the surrounding sections,
+ * fusing the cosmos (images 1 & 3) with the endless-sky possibility (image 2).
  */
 export function AuroraHorizon({ className = "", intensity = "soft" }: AuroraHorizonProps) {
   const bright = intensity === "bright";
   return (
     <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`} aria-hidden="true">
-      {/* deep base */}
+      {/* cinematic dawn sky photograph */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${skyImg})`,
+          opacity: bright ? 0.92 : 0.7,
+          animation: "cloud-drift 40s ease-in-out infinite alternate",
+          transformOrigin: "center",
+        }}
+      />
+      {/* tone-mapping wash to fuse the sky into the ZEN palette */}
+      <div
+        className="absolute inset-0 mix-blend-soft-light"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(149,232,255,0.35) 0%, rgba(127,232,218,0.18) 40%, rgba(246,150,79,0.20) 100%)",
+        }}
+      />
+      {/* deep base fade at the edges so sections blend seamlessly */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(120% 90% at 50% 120%, rgba(8,25,30,0) 30%, #08191e 78%), linear-gradient(180deg, #0a2129 0%, #0c2a31 45%, #08191e 100%)",
+            "radial-gradient(120% 80% at 50% 38%, transparent 30%, rgba(8,25,30,0.55) 78%, #08191e 100%), linear-gradient(180deg, rgba(8,25,30,0.45) 0%, transparent 30%, transparent 62%, rgba(8,25,30,0.85) 100%)",
         }}
       />
 
