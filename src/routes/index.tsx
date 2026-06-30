@@ -10,6 +10,8 @@ import { SovereignCTASection } from "@/components/treasury/SovereignCTASection";
 import { GuillocheOverlay } from "@/components/treasury/GuillocheOverlay";
 import { MicroprintBorder } from "@/components/treasury/MicroprintBorder";
 import { AuroraHorizon } from "@/components/treasury/AuroraHorizon";
+import { MagicParticles } from "@/components/treasury/MagicParticles";
+import { FederalSeal } from "@/components/treasury/FederalSeal";
 import heroBg from "@/assets/treasury-hero-bg.jpg";
 import guillocheSeal from "@/assets/guilloche-seal.png";
 
