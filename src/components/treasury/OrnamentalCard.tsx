@@ -51,7 +51,7 @@ export function OrnamentalCard({
           width={1024}
           height={1024}
           loading="lazy"
-          className="pointer-events-none absolute -bottom-28 -right-28 h-80 w-80 max-w-none animate-spin-slow opacity-[0.08] mix-blend-screen transition-opacity duration-700 group-hover:opacity-[0.16]"
+          className="pointer-events-none absolute -bottom-28 -right-28 h-80 w-80 max-w-none opacity-[0.08] mix-blend-screen transition-opacity duration-700 group-hover:opacity-[0.16]"
         />
       )}
 
