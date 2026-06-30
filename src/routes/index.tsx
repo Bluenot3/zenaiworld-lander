@@ -12,6 +12,9 @@ import { MicroprintBorder } from "@/components/treasury/MicroprintBorder";
 import { AuroraHorizon } from "@/components/treasury/AuroraHorizon";
 import { MagicParticles } from "@/components/treasury/MagicParticles";
 import { FederalSeal } from "@/components/treasury/FederalSeal";
+import { SkyProvider } from "@/hooks/useSky";
+import { LivingSky } from "@/components/treasury/LivingSky";
+import { SkyControls } from "@/components/treasury/SkyControls";
 import heroBg from "@/assets/treasury-hero-bg.jpg";
 
 

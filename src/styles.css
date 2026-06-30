@@ -344,3 +344,17 @@
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
+
+/* ---------- Living sky ---------- */
+@keyframes sky-cloud {
+  0% { transform: translateX(calc(var(--sky-dir, 1) * -60vw)); }
+  100% { transform: translateX(calc(var(--sky-dir, 1) * 160vw)); }
+}
+@keyframes sky-rain {
+  0% { background-position: 0 0; }
+  100% { background-position: -8px 22px; }
+}
+@keyframes sky-snow {
+  0% { background-position: 0 0, 0 0, 0 0, 0 0, 0 0; }
+  100% { background-position: 30px 320px, -40px 320px, 20px 320px, -20px 320px, 40px 320px; }
+}
