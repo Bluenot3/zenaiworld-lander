@@ -68,7 +68,7 @@ export function TreasuryPatternBackground({
       />
 
       {/* fine ornamental grid */}
-      <SecurityLinePattern variant="grid" color="#45dcae" opacity={0.06} className="absolute inset-0 h-full w-full" />
+      <SecurityLinePattern variant="grid" color="#d8c486" opacity={0.04} className="absolute inset-0 h-full w-full" />
 
       {/* large crisp guilloche seal watermark */}
       {watermark && (
