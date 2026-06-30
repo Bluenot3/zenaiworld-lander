@@ -9,6 +9,7 @@ import { CredentialBadge } from "@/components/treasury/CredentialBadge";
 import { GuillocheOverlay } from "@/components/treasury/GuillocheOverlay";
 import { MicroprintBorder } from "@/components/treasury/MicroprintBorder";
 import { AuroraHorizon } from "@/components/treasury/AuroraHorizon";
+import { SkyAtmosphere } from "@/components/treasury/SkyAtmosphere";
 import { MagicParticles } from "@/components/treasury/MagicParticles";
 import { FederalSeal } from "@/components/treasury/FederalSeal";
 import heroBg from "@/assets/treasury-hero-bg.jpg";
