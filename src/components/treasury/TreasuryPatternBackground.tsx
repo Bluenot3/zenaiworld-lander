@@ -70,21 +70,27 @@ export function TreasuryPatternBackground({
       {/* fine ornamental grid */}
       <SecurityLinePattern variant="grid" color="#45dcae" opacity={0.06} className="absolute inset-0 h-full w-full" />
 
-      {/* large color-shifting guilloche rosette */}
+      {/* large crisp guilloche seal watermark */}
       {watermark && (
         <>
-          <GuillocheOverlay
-            gradient="currency"
-            className="absolute left-1/2 top-1/2 h-[860px] w-[860px] -translate-x-1/2 -translate-y-1/2 animate-spin-slow"
-            rings={8}
-            opacity={hero ? 0.6 : 0.34}
-            weight={1.1}
+          <img
+            src={guillocheSeal}
+            alt=""
+            aria-hidden="true"
+            width={1024}
+            height={1024}
+            className="absolute left-1/2 top-1/2 max-w-none -translate-x-1/2 -translate-y-1/2 animate-spin-slow mix-blend-screen"
+            style={{
+              width: hero ? "780px" : "560px",
+              height: hero ? "780px" : "560px",
+              opacity: hero ? 0.5 : 0.22,
+            }}
           />
           <GuillocheOverlay
             gradient="holo"
-            className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 animate-spin-reverse"
+            className="absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 animate-spin-reverse"
             rings={5}
-            opacity={hero ? 0.5 : 0.24}
+            opacity={hero ? 0.4 : 0.18}
             weight={0.9}
           />
         </>
