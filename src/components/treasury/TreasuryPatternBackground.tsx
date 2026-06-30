@@ -2,6 +2,7 @@ import { GuillocheOverlay } from "./GuillocheOverlay";
 import { EngineTurnedField } from "./EngineTurnedField";
 import { SecurityLinePattern } from "./SecurityLinePattern";
 import { StarField } from "./StarField";
+import { FederalSeal } from "./FederalSeal";
 import guillocheSeal from "@/assets/guilloche-seal.png";
 
 interface TreasuryPatternBackgroundProps {
