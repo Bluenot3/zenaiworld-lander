@@ -9,12 +9,9 @@ import { CredentialBadge } from "@/components/treasury/CredentialBadge";
 import { SovereignCTASection } from "@/components/treasury/SovereignCTASection";
 import { GuillocheOverlay } from "@/components/treasury/GuillocheOverlay";
 import { MicroprintBorder } from "@/components/treasury/MicroprintBorder";
-
+import { AuroraHorizon } from "@/components/treasury/AuroraHorizon";
 import { MagicParticles } from "@/components/treasury/MagicParticles";
 import { FederalSeal } from "@/components/treasury/FederalSeal";
-import { SkyProvider } from "@/hooks/useSky";
-import { LivingSky } from "@/components/treasury/LivingSky";
-import { SkyControls } from "@/components/treasury/SkyControls";
 import heroBg from "@/assets/treasury-hero-bg.jpg";
 
 
@@ -470,14 +467,7 @@ const POSSIBILITY = [
 function PossibilitySection() {
   return (
     <section id="possibility" className="relative overflow-hidden px-6 py-28 md:py-40">
-      {/* This section is a clear window onto the global LivingSky — only a
-          soft centered scrim keeps the headline legible against it. */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{ background: "radial-gradient(70% 60% at 50% 42%, rgba(6,18,22,0.55), transparent 78%)" }}
-        aria-hidden="true"
-      />
-      <MagicParticles className="opacity-80" count={70} lines={9} opacity={0.7} />
+      <AuroraHorizon intensity="bright" />
       <div className="relative z-10 mx-auto max-w-6xl text-center">
         <div className="mx-auto mb-6 flex items-center justify-center gap-3">
           <span className="h-px w-10" style={{ background: "linear-gradient(90deg, transparent, rgba(255,247,224,0.7))" }} />
@@ -566,21 +556,17 @@ function MobileActionBar() {
 
 function Index() {
   return (
-    <SkyProvider>
-      <LivingSky />
-      <main className="relative min-h-screen">
-        <Nav />
-        <Hero />
-        <Paths />
-        <PossibilitySection />
-        <FeaturedPrograms />
-        <Proof />
-        <SovereignCTASection />
-        <Footer />
-        <div className="h-20 md:hidden" />
-        <MobileActionBar />
-      </main>
-      <SkyControls />
-    </SkyProvider>
+    <main className="relative min-h-screen bg-background">
+      <Nav />
+      <Hero />
+      <Paths />
+      <PossibilitySection />
+      <FeaturedPrograms />
+      <Proof />
+      <SovereignCTASection />
+      <Footer />
+      <div className="h-20 md:hidden" />
+      <MobileActionBar />
+    </main>
   );
 }
