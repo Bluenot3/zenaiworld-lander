@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { EngravedBorder } from "./CertificateFrame";
-import { GuillocheOverlay } from "./GuillocheOverlay";
+import guillocheSeal from "@/assets/guilloche-seal.png";
 
 interface OrnamentalCardProps {
   children: ReactNode;
@@ -44,11 +44,14 @@ export function OrnamentalCard({
       </div>
 
       {watermark && (
-        <GuillocheOverlay
-          className="absolute -bottom-24 -right-24 h-72 w-72 opacity-[0.06] transition-opacity duration-700 group-hover:opacity-[0.12]"
-          color={accent === "emerald" ? "#38b96a" : accent === "holo" ? "#a9d24a" : "#e3b955"}
-          rings={4}
-          opacity={1}
+        <img
+          src={guillocheSeal}
+          alt=""
+          aria-hidden="true"
+          width={1024}
+          height={1024}
+          loading="lazy"
+          className="pointer-events-none absolute -bottom-28 -right-28 h-80 w-80 max-w-none animate-spin-slow opacity-[0.08] mix-blend-screen transition-opacity duration-700 group-hover:opacity-[0.16]"
         />
       )}
 

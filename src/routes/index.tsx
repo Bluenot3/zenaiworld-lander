@@ -10,6 +10,8 @@ import { SovereignCTASection } from "@/components/treasury/SovereignCTASection";
 import { GuillocheOverlay } from "@/components/treasury/GuillocheOverlay";
 import { MicroprintBorder } from "@/components/treasury/MicroprintBorder";
 import { AuroraHorizon } from "@/components/treasury/AuroraHorizon";
+import heroBg from "@/assets/treasury-hero-bg.jpg";
+import guillocheSeal from "@/assets/guilloche-seal.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -101,10 +103,35 @@ function Hero() {
     <section className="relative flex min-h-screen items-center overflow-hidden px-6 pt-28 pb-20">
       <TreasuryPatternBackground variant="hero" />
 
-      {/* legibility scrim behind copy */}
+      {/* currency-grade gold engraving photograph — the centerpiece texture */}
       <div
-        className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-full md:w-3/5"
-        style={{ background: "linear-gradient(90deg, rgba(8,25,30,0.94) 0%, rgba(8,25,30,0.70) 45%, transparent 100%)" }}
+        className="pointer-events-none absolute inset-0 z-[1] bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${heroBg})`,
+          opacity: 0.62,
+          maskImage:
+            "radial-gradient(135% 120% at 70% 42%, black 22%, rgba(0,0,0,0.35) 62%, transparent 92%)",
+          WebkitMaskImage:
+            "radial-gradient(135% 120% at 70% 42%, black 22%, rgba(0,0,0,0.35) 62%, transparent 92%)",
+        }}
+        aria-hidden="true"
+      />
+      {/* warm glow that ties the engraving to the palette */}
+      <div
+        className="pointer-events-none absolute inset-0 z-[1]"
+        style={{ background: "radial-gradient(70% 60% at 75% 32%, rgba(246,150,79,0.20), transparent 60%)" }}
+        aria-hidden="true"
+      />
+
+      {/* legibility scrim — vertical on mobile, left-weighted on desktop */}
+      <div
+        className="pointer-events-none absolute inset-0 z-[2] md:hidden"
+        style={{ background: "linear-gradient(180deg, rgba(8,25,30,0.82) 0%, rgba(8,25,30,0.42) 46%, rgba(8,25,30,0.78) 100%)" }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-y-0 left-0 z-[2] hidden w-3/5 md:block"
+        style={{ background: "linear-gradient(90deg, rgba(8,25,30,0.94) 0%, rgba(8,25,30,0.70) 48%, transparent 100%)" }}
         aria-hidden="true"
       />
 
@@ -164,19 +191,20 @@ function Hero() {
 
         {/* Right: floating certificate interface */}
         <div className="relative animate-float">
-          {/* currency-grade guilloche rosette behind the certificate */}
-          <GuillocheOverlay
-            gradient="currency"
-            className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 animate-spin-slow"
-            rings={7}
-            opacity={0.7}
-            weight={1.1}
+          {/* crisp currency-grade guilloche seal behind the certificate */}
+          <img
+            src={guillocheSeal}
+            alt=""
+            aria-hidden="true"
+            width={1024}
+            height={1024}
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[640px] w-[640px] max-w-none -translate-x-1/2 -translate-y-1/2 animate-spin-slow opacity-50 mix-blend-screen"
           />
           <GuillocheOverlay
             gradient="holo"
             className="absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 animate-spin-reverse"
             rings={4}
-            opacity={0.5}
+            opacity={0.35}
             weight={0.9}
           />
           <CertificateFrame>
