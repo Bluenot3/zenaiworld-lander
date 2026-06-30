@@ -205,20 +205,14 @@ function Hero() {
             aria-hidden="true"
             width={1024}
             height={1024}
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[640px] w-[640px] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-40 mix-blend-screen"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[560px] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-25 mix-blend-screen"
           />
-          {/* official federal / treasury-grade seal */}
+          {/* official federal / treasury-grade seal — large enough to frame the certificate */}
           <FederalSeal
-            size={520}
-            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-60 mix-blend-screen"
+            size={760}
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-80 mix-blend-screen"
           />
-          <GuillocheOverlay
-            gradient="holo"
-            className="absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2"
-            rings={4}
-            opacity={0.3}
-            weight={0.9}
-          />
+
 
           <CertificateFrame>
             <div className="p-7">
