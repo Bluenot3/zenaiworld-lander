@@ -198,6 +198,12 @@ function Hero() {
 
         {/* Right: floating certificate interface */}
         <div className="relative animate-float">
+          {/* calming radial disc so the official seal + certificate read clearly over the busy field */}
+          <div
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[820px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+            style={{ background: "radial-gradient(closest-side, rgba(6,18,22,0.86) 38%, rgba(6,18,22,0.55) 60%, transparent 78%)" }}
+            aria-hidden="true"
+          />
           {/* crisp currency-grade guilloche seal behind the certificate (static) */}
           <img
             src={guillocheSeal}
@@ -209,9 +215,10 @@ function Hero() {
           />
           {/* official federal / treasury-grade seal — large enough to frame the certificate */}
           <FederalSeal
-            size={760}
-            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-80 mix-blend-screen"
+            size={780}
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-90"
           />
+
 
 
           <CertificateFrame>
