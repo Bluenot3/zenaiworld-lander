@@ -184,19 +184,20 @@ function Hero() {
 
         {/* Right: floating certificate interface */}
         <div className="relative animate-float">
-          {/* currency-grade guilloche rosette behind the certificate */}
-          <GuillocheOverlay
-            gradient="currency"
-            className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 animate-spin-slow"
-            rings={7}
-            opacity={0.7}
-            weight={1.1}
+          {/* crisp currency-grade guilloche seal behind the certificate */}
+          <img
+            src={guillocheSeal}
+            alt=""
+            aria-hidden="true"
+            width={1024}
+            height={1024}
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[640px] w-[640px] max-w-none -translate-x-1/2 -translate-y-1/2 animate-spin-slow opacity-50 mix-blend-screen"
           />
           <GuillocheOverlay
             gradient="holo"
             className="absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 animate-spin-reverse"
             rings={4}
-            opacity={0.5}
+            opacity={0.35}
             weight={0.9}
           />
           <CertificateFrame>
