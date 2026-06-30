@@ -84,7 +84,7 @@ export function AuroraHorizon({ className = "", intensity = "soft" }: AuroraHori
       {/* edge vignette to fuse with treasury sections */}
       <div
         className="absolute inset-0"
-        style={{ background: "radial-gradient(130% 130% at 50% 45%, transparent 55%, rgba(6,18,22,0.85) 100%)" }}
+        style={{ background: "radial-gradient(135% 135% at 50% 45%, transparent 64%, rgba(6,18,22,0.6) 100%)" }}
       />
     </div>
   );
