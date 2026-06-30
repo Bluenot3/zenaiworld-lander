@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { EngravedBorder } from "./CertificateFrame";
-import { GuillocheOverlay } from "./GuillocheOverlay";
+import guillocheSeal from "@/assets/guilloche-seal.png";
 
 interface OrnamentalCardProps {
   children: ReactNode;
