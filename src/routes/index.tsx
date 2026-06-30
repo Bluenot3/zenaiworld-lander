@@ -141,6 +141,11 @@ function Hero() {
       <HolographicSecurityStrip className="absolute left-[18%] top-0 z-[2] h-full opacity-70" width={44} />
       <HolographicSecurityStrip className="absolute right-[14%] top-0 z-[2] h-full opacity-50" orientation="diagonal" width={30} />
 
+      {/* faint elegant rainbow magic dust drifting across the hero */}
+      <MagicParticles className="z-[3]" count={84} lines={11} opacity={0.8} />
+
+
+
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
         {/* Left: copy */}
