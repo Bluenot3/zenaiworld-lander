@@ -470,7 +470,14 @@ const POSSIBILITY = [
 function PossibilitySection() {
   return (
     <section id="possibility" className="relative overflow-hidden px-6 py-28 md:py-40">
-      <AuroraHorizon intensity="bright" />
+      {/* This section is a clear window onto the global LivingSky — only a
+          soft centered scrim keeps the headline legible against it. */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{ background: "radial-gradient(70% 60% at 50% 42%, rgba(6,18,22,0.55), transparent 78%)" }}
+        aria-hidden="true"
+      />
+      <MagicParticles className="opacity-80" count={70} lines={9} opacity={0.7} />
       <div className="relative z-10 mx-auto max-w-6xl text-center">
         <div className="mx-auto mb-6 flex items-center justify-center gap-3">
           <span className="h-px w-10" style={{ background: "linear-gradient(90deg, transparent, rgba(255,247,224,0.7))" }} />
