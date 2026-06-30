@@ -100,21 +100,21 @@ export function FederalSeal({
       </defs>
 
       {/* outer rings */}
-      <circle cx={cx} cy={cy} r={size * 0.485} stroke={`url(#fs-gold-${gid})`} strokeWidth={1.4} strokeOpacity={0.9} />
-      <circle cx={cx} cy={cy} r={size * 0.455} stroke={`url(#fs-gold-${gid})`} strokeWidth={0.7} strokeOpacity={0.7} />
+      <circle cx={cx} cy={cy} r={size * 0.485} stroke={`url(#fs-gold-${gid})`} strokeWidth={2.6} strokeOpacity={1} />
+      <circle cx={cx} cy={cy} r={size * 0.455} stroke={`url(#fs-gold-${gid})`} strokeWidth={1.3} strokeOpacity={0.85} />
 
       {/* denticles */}
       {denticles.map((d, i) => (
-        <path key={i} d={d} stroke={`url(#fs-gold-${gid})`} strokeWidth={0.9} strokeOpacity={0.55} />
+        <path key={i} d={d} stroke={`url(#fs-gold-${gid})`} strokeWidth={1.6} strokeOpacity={0.7} />
       ))}
 
       {/* circular microtext legend */}
       <text
         fontFamily="'JetBrains Mono', monospace"
-        fontSize={size * 0.032}
+        fontSize={size * 0.03}
         letterSpacing={size * 0.006}
         fill={color}
-        fillOpacity={0.85}
+        fillOpacity={0.95}
       >
         <textPath href={`#fs-rim-${gid}`} startOffset="0">
           {legend.repeat(3)}
@@ -122,7 +122,7 @@ export function FederalSeal({
       </text>
 
       {/* inner boundary for star ring */}
-      <circle cx={cx} cy={cy} r={size * 0.375} stroke={`url(#fs-gold-${gid})`} strokeWidth={0.6} strokeOpacity={0.5} />
+      <circle cx={cx} cy={cy} r={size * 0.375} stroke={`url(#fs-gold-${gid})`} strokeWidth={1} strokeOpacity={0.65} />
 
       {/* star ring */}
       {stars.map((s, i) => (
@@ -130,14 +130,15 @@ export function FederalSeal({
           key={`s${i}`}
           d={`M${s.x} ${s.y - size * 0.018} L${s.x + size * 0.0055} ${s.y - size * 0.0055} L${s.x + size * 0.018} ${s.y} L${s.x + size * 0.0055} ${s.y + size * 0.0055} L${s.x} ${s.y + size * 0.018} L${s.x - size * 0.0055} ${s.y + size * 0.0055} L${s.x - size * 0.018} ${s.y} L${s.x - size * 0.0055} ${s.y - size * 0.0055} Z`}
           fill={color}
-          fillOpacity={0.7}
+          fillOpacity={0.9}
         />
       ))}
 
       {/* center guilloche rosette */}
       {rosette.map((d, i) => (
-        <path key={`r${i}`} d={d} stroke={`url(#fs-gold-${gid})`} strokeWidth={0.5} strokeOpacity={0.55 - i * 0.08} />
+        <path key={`r${i}`} d={d} stroke={`url(#fs-gold-${gid})`} strokeWidth={0.9} strokeOpacity={0.7 - i * 0.1} />
       ))}
+
 
       {/* center monogram */}
       <text
