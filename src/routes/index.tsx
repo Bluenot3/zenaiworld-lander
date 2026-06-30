@@ -9,6 +9,7 @@ import { CredentialBadge } from "@/components/treasury/CredentialBadge";
 import { GuillocheOverlay } from "@/components/treasury/GuillocheOverlay";
 import { MicroprintBorder } from "@/components/treasury/MicroprintBorder";
 import { AuroraHorizon } from "@/components/treasury/AuroraHorizon";
+import { SkyAtmosphere } from "@/components/treasury/SkyAtmosphere";
 import { MagicParticles } from "@/components/treasury/MagicParticles";
 import { FederalSeal } from "@/components/treasury/FederalSeal";
 import heroBg from "@/assets/treasury-hero-bg.jpg";
@@ -623,7 +624,8 @@ const GLOBAL_CHIPS = [
 function GlobalExpansion() {
   return (
     <section className="relative overflow-hidden px-6 py-24 md:py-28">
-      <AuroraHorizon intensity="bright" />
+      <SkyAtmosphere fixed={false} intensity="feature" />
+      <AuroraHorizon intensity="soft" className="opacity-40 mix-blend-screen" />
       <div className="relative z-10 mx-auto max-w-5xl">
         <CertificateFrame className="overflow-hidden">
           <div className="p-8 md:p-14">
@@ -918,7 +920,8 @@ function MobileActionBar() {
 
 function Index() {
   return (
-    <main className="relative min-h-screen bg-background">
+    <main className="relative min-h-screen bg-transparent">
+      <SkyAtmosphere />
       <Nav />
       <Hero />
       <ProofRibbon />

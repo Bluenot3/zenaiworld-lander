@@ -312,6 +312,25 @@
   88% { opacity: var(--mg-o, 0.3); }
   100% { transform: translate(var(--mg-dx, 0), var(--mg-dy, -24px)); opacity: 0; }
 }
+@keyframes lightning-flash {
+  0% { opacity: 0; }
+  4% { opacity: 0.9; }
+  8% { opacity: 0.25; }
+  12% { opacity: 1; }
+  20% { opacity: 0.4; }
+  30% { opacity: 0.7; }
+  46% { opacity: 0.12; }
+  100% { opacity: 0; }
+}
+@keyframes bolt-strike {
+  0% { opacity: 0; }
+  5% { opacity: 1; }
+  11% { opacity: 0.2; }
+  16% { opacity: 1; }
+  34% { opacity: 0.5; }
+  60% { opacity: 0.15; }
+  100% { opacity: 0; }
+}
 
 /* opalescent foil text — mother-of-pearl, animated sheen */
 @utility text-foil {
