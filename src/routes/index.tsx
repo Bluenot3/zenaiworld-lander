@@ -198,22 +198,28 @@ function Hero() {
 
         {/* Right: floating certificate interface */}
         <div className="relative animate-float">
-          {/* crisp currency-grade guilloche seal behind the certificate */}
+          {/* crisp currency-grade guilloche seal behind the certificate (static) */}
           <img
             src={guillocheSeal}
             alt=""
             aria-hidden="true"
             width={1024}
             height={1024}
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[640px] w-[640px] max-w-none -translate-x-1/2 -translate-y-1/2 animate-spin-slow opacity-50 mix-blend-screen"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[640px] w-[640px] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-40 mix-blend-screen"
+          />
+          {/* official federal / treasury-grade seal */}
+          <FederalSeal
+            size={520}
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-60 mix-blend-screen"
           />
           <GuillocheOverlay
             gradient="holo"
-            className="absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 animate-spin-reverse"
+            className="absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2"
             rings={4}
-            opacity={0.35}
+            opacity={0.3}
             weight={0.9}
           />
+
           <CertificateFrame>
             <div className="p-7">
               <div className="flex items-center justify-between">
