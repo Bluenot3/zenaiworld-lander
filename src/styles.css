@@ -306,6 +306,12 @@
   0% { transform: translateX(-4%); }
   100% { transform: translateX(4%); }
 }
+@keyframes magic-drift {
+  0% { transform: translate(0, 0); opacity: 0; }
+  12% { opacity: var(--mg-o, 0.3); }
+  88% { opacity: var(--mg-o, 0.3); }
+  100% { transform: translate(var(--mg-dx, 0), var(--mg-dy, -24px)); opacity: 0; }
+}
 
 /* opalescent foil text — mother-of-pearl, animated sheen */
 @utility text-foil {

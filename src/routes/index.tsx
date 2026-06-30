@@ -10,8 +10,10 @@ import { SovereignCTASection } from "@/components/treasury/SovereignCTASection";
 import { GuillocheOverlay } from "@/components/treasury/GuillocheOverlay";
 import { MicroprintBorder } from "@/components/treasury/MicroprintBorder";
 import { AuroraHorizon } from "@/components/treasury/AuroraHorizon";
+import { MagicParticles } from "@/components/treasury/MagicParticles";
+import { FederalSeal } from "@/components/treasury/FederalSeal";
 import heroBg from "@/assets/treasury-hero-bg.jpg";
-import guillocheSeal from "@/assets/guilloche-seal.png";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -103,19 +105,20 @@ function Hero() {
     <section className="relative flex min-h-screen items-center overflow-hidden px-6 pt-28 pb-20">
       <TreasuryPatternBackground variant="hero" />
 
-      {/* currency-grade gold engraving photograph — the centerpiece texture */}
+      {/* currency-grade gold engraving photograph — toned-down accent texture */}
       <div
         className="pointer-events-none absolute inset-0 z-[1] bg-cover bg-center"
         style={{
           backgroundImage: `url(${heroBg})`,
-          opacity: 0.62,
+          opacity: 0.32,
           maskImage:
-            "radial-gradient(135% 120% at 70% 42%, black 22%, rgba(0,0,0,0.35) 62%, transparent 92%)",
+            "radial-gradient(120% 110% at 78% 38%, black 8%, rgba(0,0,0,0.28) 50%, transparent 84%)",
           WebkitMaskImage:
-            "radial-gradient(135% 120% at 70% 42%, black 22%, rgba(0,0,0,0.35) 62%, transparent 92%)",
+            "radial-gradient(120% 110% at 78% 38%, black 8%, rgba(0,0,0,0.28) 50%, transparent 84%)",
         }}
         aria-hidden="true"
       />
+
       {/* warm glow that ties the engraving to the palette */}
       <div
         className="pointer-events-none absolute inset-0 z-[1]"
@@ -138,6 +141,11 @@ function Hero() {
       {/* holographic strips */}
       <HolographicSecurityStrip className="absolute left-[18%] top-0 z-[2] h-full opacity-70" width={44} />
       <HolographicSecurityStrip className="absolute right-[14%] top-0 z-[2] h-full opacity-50" orientation="diagonal" width={30} />
+
+      {/* faint elegant rainbow magic dust drifting across the hero */}
+      <MagicParticles className="z-[3]" count={84} lines={11} opacity={0.8} />
+
+
 
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
@@ -191,22 +199,21 @@ function Hero() {
 
         {/* Right: floating certificate interface */}
         <div className="relative animate-float">
-          {/* crisp currency-grade guilloche seal behind the certificate */}
-          <img
-            src={guillocheSeal}
-            alt=""
+          {/* calming radial disc so the official seal + certificate read clearly over the busy field */}
+          <div
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[820px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+            style={{ background: "radial-gradient(closest-side, rgba(6,18,22,0.86) 38%, rgba(6,18,22,0.55) 60%, transparent 78%)" }}
             aria-hidden="true"
-            width={1024}
-            height={1024}
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[640px] w-[640px] max-w-none -translate-x-1/2 -translate-y-1/2 animate-spin-slow opacity-50 mix-blend-screen"
           />
-          <GuillocheOverlay
-            gradient="holo"
-            className="absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 animate-spin-reverse"
-            rings={4}
-            opacity={0.35}
-            weight={0.9}
+          {/* official federal / treasury-grade seal — large enough to frame the certificate */}
+          <FederalSeal
+            size={780}
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-95"
           />
+
+
+
+
           <CertificateFrame>
             <div className="p-7">
               <div className="flex items-center justify-between">

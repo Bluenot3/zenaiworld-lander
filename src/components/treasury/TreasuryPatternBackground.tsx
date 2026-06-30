@@ -2,6 +2,7 @@ import { GuillocheOverlay } from "./GuillocheOverlay";
 import { EngineTurnedField } from "./EngineTurnedField";
 import { SecurityLinePattern } from "./SecurityLinePattern";
 import { StarField } from "./StarField";
+import { FederalSeal } from "./FederalSeal";
 import guillocheSeal from "@/assets/guilloche-seal.png";
 
 interface TreasuryPatternBackgroundProps {
@@ -70,7 +71,7 @@ export function TreasuryPatternBackground({
       {/* fine ornamental grid */}
       <SecurityLinePattern variant="grid" color="#d8c486" opacity={0.04} className="absolute inset-0 h-full w-full" />
 
-      {/* large crisp guilloche seal watermark */}
+      {/* large crisp guilloche seal watermark (static — no spin) */}
       {watermark && (
         <>
           <img
@@ -79,22 +80,29 @@ export function TreasuryPatternBackground({
             aria-hidden="true"
             width={1024}
             height={1024}
-            className="absolute left-1/2 top-1/2 max-w-none -translate-x-1/2 -translate-y-1/2 animate-spin-slow mix-blend-screen"
+            className="absolute left-1/2 top-1/2 max-w-none -translate-x-1/2 -translate-y-1/2 mix-blend-screen"
             style={{
               width: hero ? "780px" : "560px",
               height: hero ? "780px" : "560px",
-              opacity: hero ? 0.5 : 0.22,
+              opacity: hero ? 0.42 : 0.2,
             }}
+          />
+          {/* official federal / treasury seal watermark */}
+          <FederalSeal
+            size={hero ? 640 : 460}
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-screen"
+            opacity={hero ? 0.3 : 0.16}
           />
           <GuillocheOverlay
             gradient="holo"
-            className="absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 animate-spin-reverse"
+            className="absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2"
             rings={5}
-            opacity={hero ? 0.4 : 0.18}
+            opacity={hero ? 0.34 : 0.16}
             weight={0.9}
           />
         </>
       )}
+
 
       {/* vignette */}
       <div
