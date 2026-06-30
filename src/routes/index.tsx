@@ -13,7 +13,7 @@ import { AuroraHorizon } from "@/components/treasury/AuroraHorizon";
 import { MagicParticles } from "@/components/treasury/MagicParticles";
 import { FederalSeal } from "@/components/treasury/FederalSeal";
 import heroBg from "@/assets/treasury-hero-bg.jpg";
-import guillocheSeal from "@/assets/guilloche-seal.png";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
