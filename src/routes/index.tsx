@@ -269,6 +269,7 @@ function Hero() {
           />
 
           <CertificateFrame>
+            <NoteCornerFrame value="Z" size={54} inset={14} opacity={0.32} />
             <div className="p-7">
               <div className="flex items-center justify-between">
                 <div>
