@@ -266,10 +266,12 @@ function Hero() {
             style={{ background: "radial-gradient(closest-side, rgba(6,18,22,0.86) 38%, rgba(6,18,22,0.55) 60%, transparent 78%)" }}
             aria-hidden="true"
           />
-          <FederalSeal
-            size={780}
-            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-95"
-          />
+          <div
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.56] opacity-60 sm:scale-90 sm:opacity-85 lg:scale-100 lg:opacity-95"
+            aria-hidden="true"
+          >
+            <FederalSeal size={780} />
+          </div>
 
           <CertificateFrame>
             <NoteCornerFrame value="Z" size={54} inset={14} opacity={0.32} />
