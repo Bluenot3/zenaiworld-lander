@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { useTimeOfDay } from "@/hooks/useTimeOfDay";
 import { TreasuryPatternBackground } from "@/components/treasury/TreasuryPatternBackground";
 import { HolographicSecurityStrip } from "@/components/treasury/HolographicSecurityStrip";
 import { ZenMedallion } from "@/components/treasury/ZenMedallion";
