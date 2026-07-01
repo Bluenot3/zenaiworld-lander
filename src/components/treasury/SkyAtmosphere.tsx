@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { StarField } from "./StarField";
 import { useTimeOfDay, type SkyPhase } from "@/hooks/useTimeOfDay";
 
