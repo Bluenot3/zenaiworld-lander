@@ -13,6 +13,8 @@ import { AuroraHorizon } from "@/components/treasury/AuroraHorizon";
 import { SkyAtmosphere } from "@/components/treasury/SkyAtmosphere";
 import { MagicParticles } from "@/components/treasury/MagicParticles";
 import { FederalSeal } from "@/components/treasury/FederalSeal";
+import { ZenLogo } from "@/components/treasury/ZenLogo";
+import { NoteNumeral, SerialStrip, NoteCornerFrame } from "@/components/treasury/BanknoteOrnaments";
 import heroBg from "@/assets/treasury-hero-bg.jpg";
 
 export const Route = createFileRoute("/")({
@@ -130,7 +132,7 @@ function Nav() {
       <div className="glass-panel border-x-0 border-t-0">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           <a href="#top" className="flex items-center gap-3">
-            <ZenMedallion size={34} glyph="zen" />
+            <ZenLogo variant="icon" size={38} glow />
             <span className="font-display text-xl font-semibold tracking-wide text-zen-platinum">
               ZEN AI Co.
             </span>
@@ -196,6 +198,13 @@ function Hero() {
       <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
         {/* Left: copy */}
         <div className="animate-rise">
+          <div className="mb-6 flex items-center gap-4">
+            <ZenLogo variant="icon" size={68} glow />
+            <div className="flex flex-col">
+              <span className="font-display text-2xl font-semibold leading-none text-zen-platinum">ZEN AI Co.</span>
+              <SerialStrip className="mt-2" serial="EST. MMXXIII · SOVEREIGN AI TREASURY" />
+            </div>
+          </div>
           <CredentialBadge label="Learn AI · Build Systems · Verify Capability" tone="emerald" />
           <h1 className="mt-7 text-4xl font-medium leading-[1.04] text-zen-platinum md:text-6xl">
             AI Literacy Was the Beginning.
@@ -260,6 +269,7 @@ function Hero() {
           />
 
           <CertificateFrame>
+            <NoteCornerFrame value="Z" size={54} inset={14} opacity={0.32} />
             <div className="p-7">
               <div className="flex items-center justify-between">
                 <div>
@@ -435,6 +445,7 @@ function ArsenalSpotlight() {
       <TreasuryPatternBackground variant="subtle" />
       <div className="relative z-10 mx-auto max-w-7xl">
         <CertificateFrame className="overflow-hidden">
+          <NoteCornerFrame value="Z" size={68} inset={20} opacity={0.28} />
           <div className="grid gap-10 p-8 md:p-14 lg:grid-cols-[1fr_1.1fr]">
             <div>
               <CredentialBadge label="Execution Engine" tone="gold" />
@@ -879,7 +890,7 @@ function Footer() {
         <div className="flex flex-col items-start justify-between gap-10 md:flex-row">
           <div className="max-w-sm">
             <div className="flex items-center gap-3">
-              <ZenMedallion size={36} glyph="zen" />
+              <ZenLogo variant="icon" size={40} glow />
               <span className="font-display text-xl font-semibold text-zen-platinum">ZEN AI Co.</span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
@@ -911,6 +922,9 @@ function Footer() {
               </div>
             ))}
           </div>
+        </div>
+        <div className="mt-12 flex justify-center">
+          <SerialStrip serial="ZEN · A 00000001 K · SERIES MMXXVI · VERIFIED ON-CHAIN" />
         </div>
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t pt-8 text-xs text-muted-foreground md:flex-row" style={{ borderColor: "rgba(214,177,94,0.12)" }}>
           <span className="font-mono tracking-wider">© MMXXVI ZEN AI CO.</span>
