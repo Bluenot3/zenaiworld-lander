@@ -15,6 +15,8 @@ import { MagicParticles } from "@/components/treasury/MagicParticles";
 import { FederalSeal } from "@/components/treasury/FederalSeal";
 import { ZenLogo } from "@/components/treasury/ZenLogo";
 import { NoteNumeral, SerialStrip, NoteCornerFrame } from "@/components/treasury/BanknoteOrnaments";
+import { LiveMetrics } from "@/components/treasury/LiveMetrics";
+import { useInView } from "@/hooks/useInView";
 import heroBg from "@/assets/treasury-hero-bg.jpg";
 
 export const Route = createFileRoute("/")({
