@@ -445,6 +445,7 @@ function ArsenalSpotlight() {
       <TreasuryPatternBackground variant="subtle" />
       <div className="relative z-10 mx-auto max-w-7xl">
         <CertificateFrame className="overflow-hidden">
+          <NoteCornerFrame value="Z" size={68} inset={20} opacity={0.28} />
           <div className="grid gap-10 p-8 md:p-14 lg:grid-cols-[1fr_1.1fr]">
             <div>
               <CredentialBadge label="Execution Engine" tone="gold" />
