@@ -132,7 +132,7 @@ function Nav() {
       <div className="glass-panel border-x-0 border-t-0">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           <a href="#top" className="flex items-center gap-3">
-            <ZenMedallion size={34} glyph="zen" />
+            <ZenLogo variant="icon" size={38} glow />
             <span className="font-display text-xl font-semibold tracking-wide text-zen-platinum">
               ZEN AI Co.
             </span>
