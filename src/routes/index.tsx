@@ -636,18 +636,25 @@ function GlobalExpansion() {
 
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="relative mx-auto max-w-3xl text-center">
+          {/* soft legibility aura so the copy stays crisp over any sky phase */}
+          <div
+            className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[130%] w-[128%] -translate-x-1/2 -translate-y-1/2"
+            style={{ background: "radial-gradient(60% 55% at 50% 50%, rgba(5,12,20,0.42), transparent 72%)", filter: "blur(20px)" }}
+            aria-hidden="true"
+          />
           <span className="micro-label text-foil">Endless Possibility · Global Expansion</span>
-          <h2 className="mt-6 text-4xl font-medium leading-[1.05] text-zen-platinum md:text-6xl">
+          <h2 className="mt-6 text-4xl font-medium leading-[1.05] text-zen-platinum md:text-6xl" style={{ textShadow: "0 2px 24px rgba(4,10,20,0.5)" }}>
             A living sky over an{" "}
             <span className="text-foil">endless</span> horizon of capability.
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zen-platinum/80 md:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zen-platinum md:text-lg" style={{ textShadow: "0 1px 12px rgba(4,10,20,0.55)" }}>
             The ZEN sky shifts with your local time — luminous dawns, bright days, burning
             dusks, and sweeping starfields with aurora and meteors after dark. AI literacy
             infrastructure is going global, and the horizon keeps expanding.
           </p>
         </div>
+
 
         {/* floating glass tiles suspended in the sky */}
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
