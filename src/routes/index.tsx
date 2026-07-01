@@ -889,7 +889,7 @@ function Footer() {
         <div className="flex flex-col items-start justify-between gap-10 md:flex-row">
           <div className="max-w-sm">
             <div className="flex items-center gap-3">
-              <ZenMedallion size={36} glyph="zen" />
+              <ZenLogo variant="icon" size={40} glow />
               <span className="font-display text-xl font-semibold text-zen-platinum">ZEN AI Co.</span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
