@@ -198,6 +198,13 @@ function Hero() {
       <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
         {/* Left: copy */}
         <div className="animate-rise">
+          <div className="mb-6 flex items-center gap-4">
+            <ZenLogo variant="icon" size={68} glow />
+            <div className="flex flex-col">
+              <span className="font-display text-2xl font-semibold leading-none text-zen-platinum">ZEN AI Co.</span>
+              <SerialStrip className="mt-2" serial="EST. MMXXIII · SOVEREIGN AI TREASURY" />
+            </div>
+          </div>
           <CredentialBadge label="Learn AI · Build Systems · Verify Capability" tone="emerald" />
           <h1 className="mt-7 text-4xl font-medium leading-[1.04] text-zen-platinum md:text-6xl">
             AI Literacy Was the Beginning.
