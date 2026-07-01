@@ -923,6 +923,9 @@ function Footer() {
             ))}
           </div>
         </div>
+        <div className="mt-12 flex justify-center">
+          <SerialStrip serial="ZEN · A 00000001 K · SERIES MMXXVI · VERIFIED ON-CHAIN" />
+        </div>
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t pt-8 text-xs text-muted-foreground md:flex-row" style={{ borderColor: "rgba(214,177,94,0.12)" }}>
           <span className="font-mono tracking-wider">© MMXXVI ZEN AI CO.</span>
           <span className="font-mono tracking-wider">ZEN AI CO · SAM.gov ready · UEI: UPQGSDYW9K16</span>
