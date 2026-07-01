@@ -121,6 +121,7 @@ const Icon = {
 };
 
 const NAV = [
+  { label: "Proof", href: "#metrics" },
   { label: "Ecosystem", href: "#ecosystem" },
   { label: "Arsenal", href: "#arsenal" },
   { label: "AI Pioneer", href: "#pioneer" },
