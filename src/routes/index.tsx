@@ -15,6 +15,8 @@ import { MagicParticles } from "@/components/treasury/MagicParticles";
 import { FederalSeal } from "@/components/treasury/FederalSeal";
 import { ZenLogo } from "@/components/treasury/ZenLogo";
 import { NoteNumeral, SerialStrip, NoteCornerFrame } from "@/components/treasury/BanknoteOrnaments";
+import { LiveMetrics } from "@/components/treasury/LiveMetrics";
+import { useInView } from "@/hooks/useInView";
 import heroBg from "@/assets/treasury-hero-bg.jpg";
 
 export const Route = createFileRoute("/")({
@@ -119,6 +121,7 @@ const Icon = {
 };
 
 const NAV = [
+  { label: "Proof", href: "#metrics" },
   { label: "Ecosystem", href: "#ecosystem" },
   { label: "Arsenal", href: "#arsenal" },
   { label: "AI Pioneer", href: "#pioneer" },
@@ -263,10 +266,12 @@ function Hero() {
             style={{ background: "radial-gradient(closest-side, rgba(6,18,22,0.86) 38%, rgba(6,18,22,0.55) 60%, transparent 78%)" }}
             aria-hidden="true"
           />
-          <FederalSeal
-            size={780}
-            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-95"
-          />
+          <div
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.56] opacity-60 sm:scale-90 sm:opacity-85 lg:scale-100 lg:opacity-95"
+            aria-hidden="true"
+          >
+            <FederalSeal size={780} />
+          </div>
 
           <CertificateFrame>
             <NoteCornerFrame value="Z" size={54} inset={14} opacity={0.32} />
@@ -369,16 +374,44 @@ function ProofRibbon() {
 
 function SectionHeading({ label, title, desc, align = "center" }: { label: string; title: string; desc?: string; align?: "center" | "left" }) {
   const center = align === "center";
+  const { ref, inView } = useInView<HTMLDivElement>();
   return (
-    <div className={center ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
+    <div
+      ref={ref}
+      className={center ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translateY(0)" : "translateY(26px)",
+        transition: "opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1)",
+      }}
+    >
       <div className={`mb-5 flex items-center gap-3 ${center ? "justify-center" : ""}`}>
         <span className="h-px w-10" style={{ background: "linear-gradient(90deg, transparent, rgba(214,177,94,0.6))" }} />
         <span className="micro-label text-zen-gold">{label}</span>
         <span className="h-px w-10" style={{ background: "linear-gradient(90deg, rgba(214,177,94,0.6), transparent)" }} />
       </div>
-      <h2 className="text-4xl font-medium leading-tight text-zen-platinum md:text-5xl">{title}</h2>
+      <h2 className="text-3xl font-medium leading-tight text-zen-platinum sm:text-4xl md:text-5xl">{title}</h2>
       {desc && <p className="mt-5 text-base leading-relaxed text-muted-foreground">{desc}</p>}
     </div>
+  );
+}
+
+/* ---------- Proof of scale (metrics) ---------- */
+function MetricsSection() {
+  return (
+    <section id="metrics" className="relative px-6 py-20 md:py-28">
+      <TreasuryPatternBackground variant="subtle" watermark={false} />
+      <div className="relative z-10 mx-auto max-w-6xl">
+        <SectionHeading
+          label="Proof of Scale"
+          title="Traction you can measure. Momentum you can feel."
+          desc="Real usage across the ZEN ecosystem — generations shipped, operators onboarded, and outcomes verified."
+        />
+        <div className="mt-12">
+          <LiveMetrics />
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -972,6 +1005,7 @@ function Index() {
       <Nav />
       <Hero />
       <ProofRibbon />
+      <MetricsSection />
       <Ecosystem />
       <ArsenalSpotlight />
       <PioneerSection />
