@@ -1003,6 +1003,7 @@ function Index() {
       <Nav />
       <Hero />
       <ProofRibbon />
+      <MetricsSection />
       <Ecosystem />
       <ArsenalSpotlight />
       <PioneerSection />
