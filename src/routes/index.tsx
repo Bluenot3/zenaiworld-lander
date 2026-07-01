@@ -622,12 +622,17 @@ const GLOBAL_CHIPS = [
 ];
 
 function GlobalExpansion() {
+  const { isNight } = useTimeOfDay();
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden px-6 py-28 md:py-36">
       {/* the living sky is the hero of this section — cinematic, feature-grade */}
       <SkyAtmosphere fixed={false} intensity="feature" />
-      <AuroraHorizon intensity="bright" className="opacity-55 mix-blend-screen" />
+      {/* the bright dawn horizon only complements day/dusk — night keeps its true cosmos */}
+      {!isNight && (
+        <AuroraHorizon intensity="bright" className="opacity-45 mix-blend-screen" />
+      )}
       <MagicParticles className="z-[2]" count={70} lines={9} opacity={0.6} />
+
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
         <div className="mx-auto max-w-3xl text-center">
