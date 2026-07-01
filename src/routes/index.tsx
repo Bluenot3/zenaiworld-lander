@@ -13,6 +13,8 @@ import { AuroraHorizon } from "@/components/treasury/AuroraHorizon";
 import { SkyAtmosphere } from "@/components/treasury/SkyAtmosphere";
 import { MagicParticles } from "@/components/treasury/MagicParticles";
 import { FederalSeal } from "@/components/treasury/FederalSeal";
+import { ZenLogo } from "@/components/treasury/ZenLogo";
+import { NoteNumeral, SerialStrip, NoteCornerFrame } from "@/components/treasury/BanknoteOrnaments";
 import heroBg from "@/assets/treasury-hero-bg.jpg";
 
 export const Route = createFileRoute("/")({
