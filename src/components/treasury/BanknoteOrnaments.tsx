@@ -147,7 +147,7 @@ export function NoteCornerFrame({
   inset?: number;
   opacity?: number;
 }) {
-  const positions = [
+  const positions: React.CSSProperties[] = [
     { top: inset, left: inset },
     { top: inset, right: inset },
     { bottom: inset, left: inset },
@@ -159,15 +159,9 @@ export function NoteCornerFrame({
       aria-hidden="true"
     >
       {positions.map((pos, i) => (
-        <NoteNumeral
-          key={i}
-          value={value}
-          size={size}
-          opacity={opacity}
-          className="absolute mix-blend-screen"
-          // @ts-expect-error style positions
-          style={pos}
-        />
+        <span key={i} className="absolute mix-blend-screen" style={pos}>
+          <NoteNumeral value={value} size={size} opacity={opacity} />
+        </span>
       ))}
     </div>
   );
