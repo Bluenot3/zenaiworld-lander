@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { useTimeOfDay } from "@/hooks/useTimeOfDay";
 import { TreasuryPatternBackground } from "@/components/treasury/TreasuryPatternBackground";
 import { HolographicSecurityStrip } from "@/components/treasury/HolographicSecurityStrip";
 import { ZenMedallion } from "@/components/treasury/ZenMedallion";
@@ -622,36 +623,68 @@ const GLOBAL_CHIPS = [
 ];
 
 function GlobalExpansion() {
+  const { isNight } = useTimeOfDay();
   return (
-    <section className="relative overflow-hidden px-6 py-24 md:py-28">
+    <section className="relative flex min-h-screen items-center overflow-hidden px-6 py-28 md:py-36">
+      {/* the living sky is the hero of this section — cinematic, feature-grade */}
       <SkyAtmosphere fixed={false} intensity="feature" />
-      <AuroraHorizon intensity="soft" className="opacity-40 mix-blend-screen" />
-      <div className="relative z-10 mx-auto max-w-5xl">
-        <CertificateFrame className="overflow-hidden">
-          <div className="p-8 md:p-14">
-            <div className="flex items-center gap-3">
+      {/* the bright dawn horizon only complements day/dusk — night keeps its true cosmos */}
+      {!isNight && (
+        <AuroraHorizon intensity="bright" className="opacity-45 mix-blend-screen" />
+      )}
+      <MagicParticles className="z-[2]" count={70} lines={9} opacity={0.6} />
+
+
+      <div className="relative z-10 mx-auto w-full max-w-6xl">
+        <div className="relative mx-auto max-w-3xl text-center">
+          {/* soft legibility aura so the copy stays crisp over any sky phase */}
+          <div
+            className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[130%] w-[128%] -translate-x-1/2 -translate-y-1/2"
+            style={{ background: "radial-gradient(60% 55% at 50% 50%, rgba(5,12,20,0.42), transparent 72%)", filter: "blur(20px)" }}
+            aria-hidden="true"
+          />
+          <span className="micro-label text-foil">Endless Possibility · Global Expansion</span>
+          <h2 className="mt-6 text-4xl font-medium leading-[1.05] text-zen-platinum md:text-6xl" style={{ textShadow: "0 2px 24px rgba(4,10,20,0.5)" }}>
+            A living sky over an{" "}
+            <span className="text-foil">endless</span> horizon of capability.
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zen-platinum md:text-lg" style={{ textShadow: "0 1px 12px rgba(4,10,20,0.55)" }}>
+            The ZEN sky shifts with your local time — luminous dawns, bright days, burning
+            dusks, and sweeping starfields with aurora and meteors after dark. AI literacy
+            infrastructure is going global, and the horizon keeps expanding.
+          </p>
+        </div>
+
+
+        {/* floating glass tiles suspended in the sky */}
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {GLOBAL_CHIPS.map((c, i) => (
+            <div
+              key={c}
+              className="animate-float rounded-2xl border px-6 py-6 backdrop-blur-xl"
+              style={{
+                borderColor: "rgba(149,232,255,0.24)",
+                background:
+                  "linear-gradient(160deg, rgba(255,255,255,0.10), rgba(8,20,28,0.28))",
+                boxShadow: "0 18px 50px -20px rgba(0,0,0,0.6)",
+                animationDelay: `${i * 0.6}s`,
+              }}
+            >
               <span className="text-zen-gold">{Icon.globe}</span>
-              <span className="micro-label text-zen-gold">Global Expansion</span>
+              <p className="mt-3 text-sm font-medium leading-snug text-zen-platinum">{c}</p>
             </div>
-            <h2 className="mt-5 text-3xl font-medium leading-tight text-zen-platinum md:text-4xl">
-              AI literacy infrastructure is going global.
-            </h2>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-              ZEN is deploying the AI Pioneer Program in South Africa with English delivery,
-              Zulu-localized materials, partner-led cohorts, and Train-the-Trainer capacity building.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-2.5">
-              {GLOBAL_CHIPS.map((c) => (
-                <span key={c} className="rounded-full px-3.5 py-1.5 font-mono text-[0.7rem] uppercase tracking-[0.12em] text-zen-platinum" style={{ border: "1px solid rgba(127,232,218,0.22)", background: "rgba(8,16,8,0.45)" }}>
-                  {c}
-                </span>
-              ))}
-            </div>
-            <a href={MAILTO} className="mt-8 inline-flex items-center gap-2 rounded-lg px-6 py-3.5 text-sm font-semibold text-zen-ink transition-all hover:brightness-110" style={{ background: "var(--grad-gold-platinum)" }}>
-              Partner With ZEN {Icon.arrow}
-            </a>
-          </div>
-        </CertificateFrame>
+          ))}
+        </div>
+
+        <div className="mt-12 flex justify-center">
+          <a
+            href={MAILTO}
+            className="inline-flex items-center gap-2 rounded-lg px-7 py-3.5 text-sm font-semibold text-zen-ink transition-all hover:brightness-110"
+            style={{ background: "var(--grad-gold-platinum)" }}
+          >
+            Partner With ZEN {Icon.arrow}
+          </a>
+        </div>
       </div>
     </section>
   );

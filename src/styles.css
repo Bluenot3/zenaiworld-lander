@@ -331,6 +331,33 @@
   60% { opacity: 0.15; }
   100% { opacity: 0; }
 }
+/* a shooting star streaking diagonally across the night */
+@keyframes meteor {
+  0% { transform: translate3d(0,0,0) rotate(var(--mt-rot, 32deg)); opacity: 0; }
+  6% { opacity: 1; }
+  60% { opacity: 1; }
+  100% { transform: translate3d(var(--mt-dx, 520px), var(--mt-dy, 320px), 0) rotate(var(--mt-rot, 32deg)); opacity: 0; }
+}
+/* flowing aurora curtain — sways and breathes */
+@keyframes aurora-ribbon {
+  0%, 100% { transform: translateX(-4%) skewX(-6deg) scaleY(0.94); opacity: 0.5; }
+  50% { transform: translateX(5%) skewX(4deg) scaleY(1.08); opacity: 0.9; }
+}
+/* very slow parallax drift for distant star layers */
+@keyframes drift-slow {
+  0% { transform: translate3d(0,0,0); }
+  100% { transform: translate3d(-2.5%, 1.5%, 0); }
+}
+/* nebula bloom pulse */
+@keyframes nebula-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.06); }
+}
+/* slow celestial corona rotation */
+@keyframes corona-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 
 /* opalescent foil text — mother-of-pearl, animated sheen */
 @utility text-foil {

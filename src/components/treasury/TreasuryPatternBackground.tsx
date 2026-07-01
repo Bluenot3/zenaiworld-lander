@@ -36,8 +36,8 @@ export function TreasuryPatternBackground({
         className="absolute inset-0"
         style={{
           background: hero
-            ? "radial-gradient(130% 90% at 50% -10%, rgba(69,220,174,0.20), transparent 55%), radial-gradient(80% 70% at 82% 22%, rgba(149,232,255,0.18), transparent 55%), radial-gradient(80% 70% at 14% 78%, rgba(246,150,79,0.14), transparent 60%), linear-gradient(165deg, rgba(14,44,52,0.52) 0%, rgba(8,25,30,0.80) 82%)"
-            : "radial-gradient(90% 70% at 80% 0%, rgba(149,232,255,0.10), transparent 55%), radial-gradient(80% 70% at 12% 90%, rgba(69,220,174,0.10), transparent 58%), linear-gradient(165deg, rgba(12,38,48,0.60) 0%, rgba(8,25,30,0.84) 92%)",
+            ? "radial-gradient(130% 90% at 50% -10%, rgba(69,220,174,0.20), transparent 55%), radial-gradient(80% 70% at 82% 22%, rgba(149,232,255,0.18), transparent 55%), radial-gradient(80% 70% at 14% 78%, rgba(246,150,79,0.14), transparent 60%), linear-gradient(165deg, rgba(14,44,52,0.42) 0%, rgba(8,25,30,0.68) 82%)"
+            : "radial-gradient(90% 70% at 80% 0%, rgba(149,232,255,0.10), transparent 55%), radial-gradient(80% 70% at 12% 90%, rgba(69,220,174,0.10), transparent 58%), linear-gradient(165deg, rgba(12,38,48,0.34) 0%, rgba(8,25,30,0.56) 92%)",
         }}
       />
 
