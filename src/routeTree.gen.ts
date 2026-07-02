@@ -13,6 +13,7 @@ import { Route as WikiRouteImport } from './routes/wiki'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WikiIndexRouteImport } from './routes/wiki.index'
+import { Route as WikiPageIdRouteImport } from './routes/wiki.$pageId'
 
 const WikiRoute = WikiRouteImport.update({
   id: '/wiki',
@@ -34,16 +35,23 @@ const WikiIndexRoute = WikiIndexRouteImport.update({
   path: '/',
   getParentRoute: () => WikiRoute,
 } as any)
+const WikiPageIdRoute = WikiPageIdRouteImport.update({
+  id: '/$pageId',
+  path: '/$pageId',
+  getParentRoute: () => WikiRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/wiki': typeof WikiRouteWithChildren
+  '/wiki/$pageId': typeof WikiPageIdRoute
   '/wiki/': typeof WikiIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/wiki/$pageId': typeof WikiPageIdRoute
   '/wiki': typeof WikiIndexRoute
 }
 export interface FileRoutesById {
@@ -51,14 +59,15 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/wiki': typeof WikiRouteWithChildren
+  '/wiki/$pageId': typeof WikiPageIdRoute
   '/wiki/': typeof WikiIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/sitemap.xml' | '/wiki' | '/wiki/'
+  fullPaths: '/' | '/sitemap.xml' | '/wiki' | '/wiki/$pageId' | '/wiki/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sitemap.xml' | '/wiki'
-  id: '__root__' | '/' | '/sitemap.xml' | '/wiki' | '/wiki/'
+  to: '/' | '/sitemap.xml' | '/wiki/$pageId' | '/wiki'
+  id: '__root__' | '/' | '/sitemap.xml' | '/wiki' | '/wiki/$pageId' | '/wiki/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -97,14 +106,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WikiIndexRouteImport
       parentRoute: typeof WikiRoute
     }
+    '/wiki/$pageId': {
+      id: '/wiki/$pageId'
+      path: '/$pageId'
+      fullPath: '/wiki/$pageId'
+      preLoaderRoute: typeof WikiPageIdRouteImport
+      parentRoute: typeof WikiRoute
+    }
   }
 }
 
 interface WikiRouteChildren {
+  WikiPageIdRoute: typeof WikiPageIdRoute
   WikiIndexRoute: typeof WikiIndexRoute
 }
 
 const WikiRouteChildren: WikiRouteChildren = {
+  WikiPageIdRoute: WikiPageIdRoute,
   WikiIndexRoute: WikiIndexRoute,
 }
 
