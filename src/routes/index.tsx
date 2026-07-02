@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useTimeOfDay } from "@/hooks/useTimeOfDay";
 import { TreasuryPatternBackground } from "@/components/treasury/TreasuryPatternBackground";
