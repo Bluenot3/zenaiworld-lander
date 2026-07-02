@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useTimeOfDay } from "@/hooks/useTimeOfDay";
 import { TreasuryPatternBackground } from "@/components/treasury/TreasuryPatternBackground";
@@ -146,6 +146,9 @@ function Nav() {
                 {n.label}
               </a>
             ))}
+            <Link to="/wiki" className="text-sm text-zen-gold transition-colors hover:brightness-110">
+              Knowledge Base
+            </Link>
           </nav>
           <a
             href={ARSENAL}
