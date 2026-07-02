@@ -146,6 +146,9 @@ function Nav() {
                 {n.label}
               </a>
             ))}
+            <Link to="/wiki" className="text-sm text-zen-gold transition-colors hover:brightness-110">
+              Knowledge Base
+            </Link>
           </nav>
           <a
             href={ARSENAL}
