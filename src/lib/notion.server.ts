@@ -270,3 +270,92 @@ export async function getWikiPage(pageId: string): Promise<WikiPage> {
     blocks,
   };
 }
+
+// ---------- Markdown flattening (for MCP / plain-text consumers) ----------
+
+function spansToMarkdown(spans?: RichSpan[]): string {
+  if (!spans) return "";
+  return spans
+    .map((s) => {
+      let t = s.text;
+      if (s.code) t = `\`${t}\``;
+      if (s.bold) t = `**${t}**`;
+      if (s.italic) t = `*${t}*`;
+      if (s.href) t = `[${t}](${s.href})`;
+      return t;
+    })
+    .join("");
+}
+
+function blocksToMarkdown(blocks: SimpleBlock[], depth = 0): string {
+  const indent = "  ".repeat(depth);
+  const lines: string[] = [];
+  for (const b of blocks) {
+    switch (b.type) {
+      case "heading_1":
+        lines.push(`\n# ${spansToMarkdown(b.text)}`);
+        break;
+      case "heading_2":
+        lines.push(`\n## ${spansToMarkdown(b.text)}`);
+        break;
+      case "heading_3":
+        lines.push(`\n### ${spansToMarkdown(b.text)}`);
+        break;
+      case "paragraph":
+        lines.push(`${indent}${spansToMarkdown(b.text)}`);
+        break;
+      case "bulleted_list_item":
+        lines.push(`${indent}- ${spansToMarkdown(b.text)}`);
+        break;
+      case "numbered_list_item":
+        lines.push(`${indent}1. ${spansToMarkdown(b.text)}`);
+        break;
+      case "to_do":
+        lines.push(`${indent}- [${b.checked ? "x" : " "}] ${spansToMarkdown(b.text)}`);
+        break;
+      case "quote":
+        lines.push(`${indent}> ${spansToMarkdown(b.text)}`);
+        break;
+      case "callout":
+        lines.push(`${indent}> ${b.icon ?? "ℹ️"} ${spansToMarkdown(b.text)}`);
+        break;
+      case "code":
+        lines.push(`\n\`\`\`${b.language ?? ""}\n${(b.text ?? []).map((s) => s.text).join("")}\n\`\`\``);
+        break;
+      case "toggle":
+        lines.push(`${indent}- ${spansToMarkdown(b.text)}`);
+        break;
+      case "divider":
+        lines.push(`\n---`);
+        break;
+      case "image":
+        if (b.url) lines.push(`\n![${spansToMarkdown(b.caption) || "image"}](${b.url})`);
+        break;
+      case "bookmark":
+      case "embed":
+      case "video":
+        if (b.url) lines.push(`${indent}${b.url}`);
+        break;
+      case "child_page":
+      case "child_database":
+        lines.push(`${indent}- 📄 ${spansToMarkdown(b.text)} (id: ${b.pageId})`);
+        break;
+    }
+    if (b.children && b.children.length) {
+      lines.push(blocksToMarkdown(b.children, depth + 1));
+    }
+  }
+  return lines.join("\n");
+}
+
+export async function getWikiPageMarkdown(
+  pageId: string,
+): Promise<{ title: string; tags: string[]; markdown: string }> {
+  const page = await getWikiPage(pageId);
+  return {
+    title: page.title,
+    tags: page.tags,
+    markdown: blocksToMarkdown(page.blocks).trim(),
+  };
+}
+
