@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "zen-ai-co-mcp",
+      "version": "0.1.0",
+      "title": "ZEN AI Co. MCP"
+    },
+    "tools": [
+      {
+        "name": "list_zen_knowledge",
+        "title": "List ZEN Knowledge Base",
+        "description": "List pages in the ZEN AI Co. Knowledge Base. Optionally filter by a search term matched against page titles and tags. Returns each page's id, title, and tags.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "query": {
+              "description": "Optional search term to filter pages by title or tag.",
+              "type": "string"
+            },
+            "limit": {
+              "description": "Maximum number of pages to return (default 50).",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 200
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_zen_knowledge_page",
+        "title": "Get ZEN Knowledge Page",
+        "description": "Fetch the full content of a single ZEN AI Co. Knowledge Base page as Markdown. Provide the page id returned by list_zen_knowledge.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "page_id": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The Notion page id from list_zen_knowledge (e.g. 33a9c471-...)."
+            }
+          },
+          "required": [
+            "page_id"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
