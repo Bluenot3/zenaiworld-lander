@@ -403,7 +403,9 @@ function SectionHeading({ label, title, desc, align = "center" }: { label: strin
 function MetricsSection() {
   return (
     <section id="metrics" className="relative px-6 py-20 md:py-28">
-      <TreasuryPatternBackground variant="subtle" watermark={false} />
+      <TreasuryPatternBackground variant="veil" watermark={false} />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-40 bg-gradient-to-b from-[rgba(6,18,22,0.55)] to-transparent" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-40 bg-gradient-to-t from-[rgba(6,18,22,0.55)] to-transparent" aria-hidden="true" />
       <div className="relative z-10 mx-auto max-w-6xl">
         <SectionHeading
           label="Proof of Scale"
@@ -603,7 +605,9 @@ function Programs() {
   const p = PROGRAMS[active];
   return (
     <section id="programs" className="relative px-6 py-24 md:py-28">
-      <TreasuryPatternBackground variant="subtle" watermark={false} />
+      <TreasuryPatternBackground variant="veil" watermark={false} />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-40 bg-gradient-to-b from-[rgba(6,18,22,0.55)] to-transparent" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-40 bg-gradient-to-t from-[rgba(6,18,22,0.55)] to-transparent" aria-hidden="true" />
       <div className="relative z-10 mx-auto max-w-7xl">
         <SectionHeading
           label="Programs"
@@ -844,7 +848,9 @@ const LINK_GROUPS: { heading: string; links: { label: string; href: string }[] }
 function CommandCenter() {
   return (
     <section id="command" className="relative px-6 py-24 md:py-28">
-      <TreasuryPatternBackground variant="subtle" watermark={false} />
+      <TreasuryPatternBackground variant="veil" watermark={false} />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-40 bg-gradient-to-b from-[rgba(6,18,22,0.55)] to-transparent" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-40 bg-gradient-to-t from-[rgba(6,18,22,0.55)] to-transparent" aria-hidden="true" />
       <div className="relative z-10 mx-auto max-w-7xl">
         <SectionHeading
           label="ZEN Command Center"
@@ -881,12 +887,24 @@ function CommandCenter() {
 
 /* ---------- Final CTA ---------- */
 function FinalCTA() {
+  const { isNight } = useTimeOfDay();
   return (
-    <section id="apply" className="relative overflow-hidden px-6 py-28 md:py-36">
-      <TreasuryPatternBackground variant="hero" />
-      <MagicParticles className="z-[2]" count={60} lines={8} opacity={0.7} />
+    <section id="apply" className="relative flex min-h-[85vh] items-center overflow-hidden px-6 py-28 md:py-36">
+      {/* the living sky becomes the stage for the closing statement */}
+      <SkyAtmosphere fixed={false} intensity="feature" />
+      {!isNight && (
+        <AuroraHorizon intensity="bright" className="opacity-40 mix-blend-screen" />
+      )}
+      <MagicParticles className="z-[2]" count={64} lines={9} opacity={0.7} />
       <div className="relative z-10 mx-auto max-w-4xl text-center">
-        <h2 className="text-4xl font-medium leading-[1.05] text-zen-platinum md:text-6xl">
+        {/* legibility aura so copy stays crisp over any sky phase */}
+        <div
+          className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[150%] w-[135%] -translate-x-1/2 -translate-y-1/2"
+          style={{ background: "radial-gradient(60% 55% at 50% 50%, rgba(5,12,20,0.46), transparent 74%)", filter: "blur(24px)" }}
+          aria-hidden="true"
+        />
+        <span className="micro-label text-foil">The ZEN Horizon</span>
+        <h2 className="mt-6 text-4xl font-medium leading-[1.05] text-zen-platinum md:text-6xl" style={{ textShadow: "0 2px 26px rgba(4,10,20,0.55)" }}>
           The future belongs to builders who can{" "}
           <span className="text-currency font-display">prove what they built.</span>
         </h2>
@@ -900,7 +918,7 @@ function FinalCTA() {
           <a href={MAILTO} className="inline-flex items-center gap-2 rounded-lg border px-6 py-3.5 text-sm font-medium text-zen-platinum transition-colors hover:border-zen-gold/60" style={{ borderColor: "rgba(214,177,94,0.3)" }}>
             Partner With ZEN
           </a>
-          <a href="#command" className="inline-flex items-center gap-2 rounded-lg px-5 py-3.5 text-sm font-medium text-muted-foreground transition-colors hover:text-zen-platinum">
+          <a href="#command" className="inline-flex items-center gap-2 rounded-lg px-5 py-3.5 text-sm font-medium text-zen-platinum/80 transition-colors hover:text-zen-platinum">
             View All Links
           </a>
         </div>
