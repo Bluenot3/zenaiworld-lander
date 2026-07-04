@@ -28,14 +28,17 @@ export function TreasuryPatternBackground({
   stars,
 }: TreasuryPatternBackgroundProps) {
   const hero = variant === "hero";
+  const veil = variant === "veil";
   const showStars = stars ?? hero;
   return (
     <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`} aria-hidden="true">
-      {/* base gradient */}
+      {/* base gradient — in veil mode we keep it whisper-thin so the living sky reads through */}
       <div
         className="absolute inset-0"
         style={{
-          background: hero
+          background: veil
+            ? "radial-gradient(120% 90% at 50% -10%, rgba(69,220,174,0.08), transparent 60%), radial-gradient(90% 80% at 82% 20%, rgba(149,232,255,0.07), transparent 60%)"
+            : hero
             ? "radial-gradient(130% 90% at 50% -10%, rgba(69,220,174,0.20), transparent 55%), radial-gradient(80% 70% at 82% 22%, rgba(149,232,255,0.18), transparent 55%), radial-gradient(80% 70% at 14% 78%, rgba(246,150,79,0.14), transparent 60%), linear-gradient(165deg, rgba(14,44,52,0.42) 0%, rgba(8,25,30,0.68) 82%)"
             : "radial-gradient(90% 70% at 80% 0%, rgba(149,232,255,0.10), transparent 55%), radial-gradient(80% 70% at 12% 90%, rgba(69,220,174,0.10), transparent 58%), linear-gradient(165deg, rgba(12,38,48,0.34) 0%, rgba(8,25,30,0.56) 92%)",
         }}
@@ -47,14 +50,14 @@ export function TreasuryPatternBackground({
       {/* engine-turned woven band — top */}
       <EngineTurnedField
         gradient="currency"
-        opacity={hero ? 0.4 : 0.24}
+        opacity={veil ? 0.14 : hero ? 0.4 : 0.24}
         lines={hero ? 56 : 42}
         className="absolute -top-10 left-0 h-[58%] w-full"
       />
       {/* engine-turned woven band — bottom, mirrored (warm gold tone) */}
       <EngineTurnedField
         gradient="currency"
-        opacity={hero ? 0.22 : 0.12}
+        opacity={veil ? 0.08 : hero ? 0.22 : 0.12}
         lines={46}
         amplitude={0.2}
         className="absolute -bottom-10 left-0 h-[58%] w-full -scale-y-100"
@@ -64,12 +67,12 @@ export function TreasuryPatternBackground({
       <SecurityLinePattern
         variant="wave"
         color="#f3d172"
-        opacity={hero ? 0.18 : 0.11}
+        opacity={veil ? 0.07 : hero ? 0.18 : 0.11}
         className="absolute -right-1/4 -top-1/3 h-[150%] w-[150%]"
       />
 
       {/* fine ornamental grid */}
-      <SecurityLinePattern variant="grid" color="#d8c486" opacity={0.04} className="absolute inset-0 h-full w-full" />
+      <SecurityLinePattern variant="grid" color="#d8c486" opacity={veil ? 0.025 : 0.04} className="absolute inset-0 h-full w-full" />
 
       {/* large crisp guilloche seal watermark (static — no spin) */}
       {watermark && (
@@ -104,10 +107,14 @@ export function TreasuryPatternBackground({
       )}
 
 
-      {/* vignette */}
+      {/* vignette — softened for veil so the sky stays luminous */}
       <div
         className="absolute inset-0"
-        style={{ background: "radial-gradient(125% 125% at 50% 45%, transparent 62%, rgba(6,18,22,0.72) 100%)" }}
+        style={{
+          background: veil
+            ? "radial-gradient(135% 135% at 50% 45%, transparent 72%, rgba(6,18,22,0.42) 100%)"
+            : "radial-gradient(125% 125% at 50% 45%, transparent 62%, rgba(6,18,22,0.72) 100%)",
+        }}
       />
     </div>
   );
