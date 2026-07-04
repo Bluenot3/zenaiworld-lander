@@ -605,7 +605,9 @@ function Programs() {
   const p = PROGRAMS[active];
   return (
     <section id="programs" className="relative px-6 py-24 md:py-28">
-      <TreasuryPatternBackground variant="subtle" watermark={false} />
+      <TreasuryPatternBackground variant="veil" watermark={false} />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-40 bg-gradient-to-b from-[rgba(6,18,22,0.55)] to-transparent" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-40 bg-gradient-to-t from-[rgba(6,18,22,0.55)] to-transparent" aria-hidden="true" />
       <div className="relative z-10 mx-auto max-w-7xl">
         <SectionHeading
           label="Programs"
