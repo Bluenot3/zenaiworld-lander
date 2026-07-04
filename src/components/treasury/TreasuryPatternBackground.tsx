@@ -8,7 +8,7 @@ import guillocheSeal from "@/assets/guilloche-seal.png";
 interface TreasuryPatternBackgroundProps {
   className?: string;
   /** intensity preset */
-  variant?: "hero" | "section" | "subtle";
+  variant?: "hero" | "section" | "subtle" | "veil";
   /** show a centered guilloche watermark */
   watermark?: boolean;
   /** overlay a restrained starfield cosmos */
