@@ -16,6 +16,7 @@ import { FederalSeal } from "@/components/treasury/FederalSeal";
 import { ZenLogo } from "@/components/treasury/ZenLogo";
 import { NoteNumeral, SerialStrip, NoteCornerFrame } from "@/components/treasury/BanknoteOrnaments";
 import { LiveMetrics } from "@/components/treasury/LiveMetrics";
+import { SocialConstellation } from "@/components/treasury/SocialConstellation";
 import { useInView } from "@/hooks/useInView";
 import heroBg from "@/assets/treasury-hero-bg.jpg";
 
@@ -928,45 +929,34 @@ function FinalCTA() {
 }
 
 /* ---------- Footer ---------- */
-const FOOTER_SOCIAL = [
-  { label: "YouTube", href: "https://www.youtube.com/@ZENAIML" },
-  { label: "X", href: "https://x.com/ZEN_AGI" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/z3nai" },
-  { label: "Discord", href: "https://discord.gg/qbKgCc46Ym" },
-  { label: "GitHub", href: "https://github.com/Bluenot3" },
-];
-
 function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t px-6 py-16" style={{ borderColor: "rgba(214,177,94,0.14)" }}>
-      <TreasuryPatternBackground variant="subtle" watermark={false} />
+    <footer className="relative overflow-hidden border-t px-6 py-14" style={{ borderColor: "rgba(214,177,94,0.14)" }}>
+      <TreasuryPatternBackground variant="veil" watermark={false} />
       <div className="relative z-10 mx-auto max-w-7xl">
-        <div className="flex flex-col items-start justify-between gap-10 md:flex-row">
-          <div className="max-w-sm">
+        {/* Socials constellation — the centerpiece */}
+        <SocialConstellation />
+
+        {/* Compact identity + nav row */}
+        <div className="mt-12 flex flex-col gap-8 border-t pt-10 md:flex-row md:items-start md:justify-between" style={{ borderColor: "rgba(214,177,94,0.12)" }}>
+          <div className="max-w-xs">
             <div className="flex items-center gap-3">
-              <ZenLogo variant="icon" size={40} glow />
-              <span className="font-display text-xl font-semibold text-zen-platinum">ZEN AI Co.</span>
+              <ZenLogo variant="icon" size={36} glow />
+              <span className="font-display text-lg font-semibold text-zen-platinum">ZEN AI Co.</span>
             </div>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              AI literacy, automation, and credential infrastructure.
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              AI literacy, automation, and credential infrastructure for the AI era.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              {FOOTER_SOCIAL.map((s) => (
-                <a key={s.label} href={s.href} {...ext} className="micro-label text-muted-foreground transition-colors hover:text-zen-platinum">
-                  {s.label}
-                </a>
-              ))}
-            </div>
           </div>
-          <div className="grid grid-cols-2 gap-x-12 gap-y-8 sm:grid-cols-3">
+          <div className="grid grid-cols-3 gap-x-10 gap-y-6">
             {[
               ["Build", [["Arsenal", ARSENAL], ["AI Arena", "https://zenarena.ai/"], ["Tools", "https://www.zenai.world/tools"]]],
-              ["Learn", [["AI Pioneer", AIPIONEER], ["AI Literacy Youth", "https://www.zenai.world/ailiteracyyouth"], ["Challenges", "https://www.zenai.world/challenges"]]],
+              ["Learn", [["AI Pioneer", AIPIONEER], ["Youth Literacy", "https://www.zenai.world/ailiteracyyouth"], ["Challenges", "https://www.zenai.world/challenges"]]],
               ["Company", [["Pricing", "https://www.zenai.world/pricing"], ["Privacy", "https://www.zenai.world/privacy-policy"], ["Terms", "https://www.zenai.world/terms-and-conditions"], ["Contact", MAILTO]]],
             ].map(([h, items]) => (
               <div key={h as string}>
                 <div className="micro-label text-zen-gold">{h as string}</div>
-                <ul className="mt-4 space-y-3">
+                <ul className="mt-3 space-y-2.5">
                   {(items as string[][]).map(([label, href]) => (
                     <li key={label}>
                       <a href={href} {...(href.startsWith("mailto:") ? {} : ext)} className="text-sm text-muted-foreground transition-colors hover:text-zen-platinum">{label}</a>
@@ -977,12 +967,13 @@ function Footer() {
             ))}
           </div>
         </div>
-        <div className="mt-12 flex justify-center">
+
+        <div className="mt-10 flex justify-center">
           <SerialStrip serial="ZEN · A 00000001 K · SERIES MMXXVI · VERIFIED ON-CHAIN" />
         </div>
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t pt-8 text-xs text-muted-foreground md:flex-row" style={{ borderColor: "rgba(214,177,94,0.12)" }}>
+        <div className="mt-8 flex flex-col items-center justify-between gap-3 text-xs text-muted-foreground md:flex-row">
           <span className="font-mono tracking-wider">© MMXXVI ZEN AI CO.</span>
-          <span className="font-mono tracking-wider">ZEN AI CO · SAM.gov ready · UEI: UPQGSDYW9K16</span>
+          <span className="font-mono tracking-wider">SAM.gov ready · UEI: UPQGSDYW9K16</span>
         </div>
       </div>
     </footer>
