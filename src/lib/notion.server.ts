@@ -8,6 +8,12 @@ const GATEWAY_URL = "https://connector-gateway.lovable.dev/notion/v1";
 /** The ZEN AI Co Wiki database. */
 export const ZEN_WIKI_DATABASE_ID = "33a9c471-18d8-80d0-9424-c16aa3d8403e";
 
+function assertPublicKnowledgeEnabled() {
+  if (process.env.ZEN_PUBLIC_KNOWLEDGE_ENABLED !== "true") {
+    throw new Error("The ZEN knowledge base is not available on the public site.");
+  }
+}
+
 function authHeaders() {
   const lovableKey = process.env.LOVABLE_API_KEY;
   const notionKey = process.env.NOTION_API_KEY;
@@ -27,9 +33,7 @@ async function notionFetch(path: string, init?: RequestInit) {
   });
   const data = await res.json();
   if (!res.ok) {
-    throw new Error(
-      `Notion API ${res.status}: ${data?.message ?? JSON.stringify(data)}`,
-    );
+    throw new Error(`Notion API ${res.status}: ${data?.message ?? JSON.stringify(data)}`);
   }
   return data;
 }
@@ -57,9 +61,7 @@ function mapRichText(rich: any[] | undefined): RichSpan[] {
     underline: r.annotations?.underline || undefined,
     code: r.annotations?.code || undefined,
     color:
-      r.annotations?.color && r.annotations.color !== "default"
-        ? r.annotations.color
-        : undefined,
+      r.annotations?.color && r.annotations.color !== "default" ? r.annotations.color : undefined,
     href: r.href ?? null,
   }));
 }
@@ -116,10 +118,7 @@ function fileUrl(node: any): string | undefined {
   return node.external?.url ?? node.file?.url;
 }
 
-async function fetchBlockChildren(
-  blockId: string,
-  depth: number,
-): Promise<SimpleBlock[]> {
+async function fetchBlockChildren(blockId: string, depth: number): Promise<SimpleBlock[]> {
   const out: SimpleBlock[] = [];
   let cursor: string | undefined;
   let guard = 0;
@@ -221,6 +220,7 @@ export interface WikiIndexItem {
 }
 
 export async function getWikiIndex(): Promise<WikiIndexItem[]> {
+  assertPublicKnowledgeEnabled();
   const items: WikiIndexItem[] = [];
   let cursor: string | undefined;
   let guard = 0;
@@ -260,6 +260,7 @@ export interface WikiPage {
 }
 
 export async function getWikiPage(pageId: string): Promise<WikiPage> {
+  assertPublicKnowledgeEnabled();
   const page = await notionFetch(`/pages/${pageId}`);
   const blocks = await fetchBlockChildren(pageId, 3);
   return {
@@ -320,7 +321,9 @@ function blocksToMarkdown(blocks: SimpleBlock[], depth = 0): string {
         lines.push(`${indent}> ${b.icon ?? "ℹ️"} ${spansToMarkdown(b.text)}`);
         break;
       case "code":
-        lines.push(`\n\`\`\`${b.language ?? ""}\n${(b.text ?? []).map((s) => s.text).join("")}\n\`\`\``);
+        lines.push(
+          `\n\`\`\`${b.language ?? ""}\n${(b.text ?? []).map((s) => s.text).join("")}\n\`\`\``,
+        );
         break;
       case "toggle":
         lines.push(`${indent}- ${spansToMarkdown(b.text)}`);
@@ -358,4 +361,3 @@ export async function getWikiPageMarkdown(
     markdown: blocksToMarkdown(page.blocks).trim(),
   };
 }
-

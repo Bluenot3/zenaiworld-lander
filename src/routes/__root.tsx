@@ -84,7 +84,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "ZEN AI Co. builds AI literacy, automation, and credential infrastructure through AI Pioneer, Arsenal, ZEN Vanguard, AI Arena, and blockchain-verified Zen Cards.",
       },
       { name: "author", content: "ZEN AI Co." },
-      { property: "og:title", content: "ZEN AI Co. | AI Literacy, Arsenal Automation & Verified AI Credentials" },
+      {
+        property: "og:title",
+        content: "ZEN AI Co. | AI Literacy, Arsenal Automation & Verified AI Credentials",
+      },
       {
         property: "og:description",
         content:
@@ -93,7 +96,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@ZEN_AGI" },
-      { name: "theme-color", content: "#08191e" },
+      { name: "theme-color", content: "#06171a" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -103,7 +106,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap",
       },
     ],
   }),

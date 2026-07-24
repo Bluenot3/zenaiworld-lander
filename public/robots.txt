@@ -1,2 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /wiki
+Disallow: /mcp
+Disallow: /.mcp/
+
+Sitemap: https://zenai.world/sitemap.xml

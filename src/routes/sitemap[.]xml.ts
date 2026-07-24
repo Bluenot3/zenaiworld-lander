@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-const BASE_URL = "";
+const BASE_URL = "https://zenai.world";
 
 interface SitemapEntry {
   path: string;
@@ -14,7 +14,13 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const entries: SitemapEntry[] = [{ path: "/", changefreq: "weekly", priority: "1.0" }];
+        const entries: SitemapEntry[] = [
+          { path: "/", changefreq: "weekly", priority: "1.0" },
+          { path: "/privacy-policy", changefreq: "yearly", priority: "0.3" },
+          { path: "/terms-and-conditions", changefreq: "yearly", priority: "0.3" },
+          { path: "/refund-policy", changefreq: "yearly", priority: "0.3" },
+          { path: "/accessibility-statement", changefreq: "yearly", priority: "0.3" },
+        ];
 
         const urls = entries.map((e) =>
           [

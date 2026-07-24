@@ -1,10 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
-import {
-  getWikiIndex,
-  getWikiPage,
-  type WikiIndexItem,
-  type WikiPage,
-} from "./notion.server";
+import { getWikiIndex, getWikiPage, type WikiIndexItem, type WikiPage } from "./notion.server";
 
 /** List every page in the ZEN AI Co Wiki (title, tags, icon). */
 export const fetchWikiIndex = createServerFn({ method: "GET" }).handler(
@@ -21,7 +16,7 @@ export const fetchWikiIndex = createServerFn({ method: "GET" }).handler(
 
 /** Fetch a single wiki page with its rendered block tree. */
 export const fetchWikiPage = createServerFn({ method: "GET" })
-  .inputValidator((data: { pageId: string }) => {
+  .validator((data: { pageId: string }) => {
     if (!data?.pageId || typeof data.pageId !== "string") {
       throw new Error("pageId is required");
     }

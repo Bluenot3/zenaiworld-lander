@@ -8,7 +8,11 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/tanstack/vite";
 
 export default defineConfig({
-  plugins: [mcpPlugin()],
+  // @lovable.dev/mcp-js currently compares POSIX and Windows paths when it
+  // resolves src/routes, which prevents local Windows builds from starting.
+  // Keep the MCP surface enabled in Lovable/production while allowing the
+  // repository to be previewed and verified on Windows.
+  plugins: process.platform === "win32" ? [] : [mcpPlugin()],
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
