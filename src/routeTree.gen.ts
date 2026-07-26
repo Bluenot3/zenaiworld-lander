@@ -19,9 +19,11 @@ import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-condi
 import { Route as WikiRouteImport } from './routes/wiki'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as AdminContentRouteImport } from './routes/admin.content'
 import { Route as AdminRegistrationsRouteImport } from './routes/admin.registrations'
 import { Route as WikiIndexRouteImport } from './routes/wiki.index'
 import { Route as WikiPageIdRouteImport } from './routes/wiki.$pageId'
+import { Route as WorkSlugRouteImport } from './routes/work.$slug'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
 const IndexRoute = IndexRouteImport.update({
@@ -76,6 +78,11 @@ const Char91DotwellKnownChar93OauthProtectedResourceRoute =
     path: '/.well-known/oauth-protected-resource',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AdminContentRoute = AdminContentRouteImport.update({
+  id: '/admin/content',
+  path: '/admin/content',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminRegistrationsRoute = AdminRegistrationsRouteImport.update({
   id: '/admin/registrations',
   path: '/admin/registrations',
@@ -90,6 +97,11 @@ const WikiPageIdRoute = WikiPageIdRouteImport.update({
   id: '/$pageId',
   path: '/$pageId',
   getParentRoute: () => WikiRoute,
+} as any)
+const WorkSlugRoute = WorkSlugRouteImport.update({
+  id: '/work/$slug',
+  path: '/work/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const Char91DotmcpChar93InvokeToolToolRoute =
   Char91DotmcpChar93InvokeToolToolRouteImport.update({
@@ -109,8 +121,10 @@ export interface FileRoutesByFullPath {
   '/wiki': typeof WikiRouteWithChildren
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/admin/content': typeof AdminContentRoute
   '/admin/registrations': typeof AdminRegistrationsRoute
   '/wiki/$pageId': typeof WikiPageIdRoute
+  '/work/$slug': typeof WorkSlugRoute
   '/wiki/': typeof WikiIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
@@ -124,8 +138,10 @@ export interface FileRoutesByTo {
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/admin/content': typeof AdminContentRoute
   '/admin/registrations': typeof AdminRegistrationsRoute
   '/wiki/$pageId': typeof WikiPageIdRoute
+  '/work/$slug': typeof WorkSlugRoute
   '/wiki': typeof WikiIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
@@ -141,8 +157,10 @@ export interface FileRoutesById {
   '/wiki': typeof WikiRouteWithChildren
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/admin/content': typeof AdminContentRoute
   '/admin/registrations': typeof AdminRegistrationsRoute
   '/wiki/$pageId': typeof WikiPageIdRoute
+  '/work/$slug': typeof WorkSlugRoute
   '/wiki/': typeof WikiIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
@@ -159,8 +177,10 @@ export interface FileRouteTypes {
     | '/wiki'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/admin/content'
     | '/admin/registrations'
     | '/wiki/$pageId'
+    | '/work/$slug'
     | '/wiki/'
     | '/.mcp/invoke-tool/$tool'
   fileRoutesByTo: FileRoutesByTo
@@ -174,8 +194,10 @@ export interface FileRouteTypes {
     | '/terms-and-conditions'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/admin/content'
     | '/admin/registrations'
     | '/wiki/$pageId'
+    | '/work/$slug'
     | '/wiki'
     | '/.mcp/invoke-tool/$tool'
   id:
@@ -190,8 +212,10 @@ export interface FileRouteTypes {
     | '/wiki'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/admin/content'
     | '/admin/registrations'
     | '/wiki/$pageId'
+    | '/work/$slug'
     | '/wiki/'
     | '/.mcp/invoke-tool/$tool'
   fileRoutesById: FileRoutesById
@@ -207,7 +231,9 @@ export interface RootRouteChildren {
   WikiRoute: typeof WikiRouteWithChildren
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  AdminContentRoute: typeof AdminContentRoute
   AdminRegistrationsRoute: typeof AdminRegistrationsRoute
+  WorkSlugRoute: typeof WorkSlugRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 
@@ -283,6 +309,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/content': {
+      id: '/admin/content'
+      path: '/admin/content'
+      fullPath: '/admin/content'
+      preLoaderRoute: typeof AdminContentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/registrations': {
       id: '/admin/registrations'
       path: '/admin/registrations'
@@ -303,6 +336,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/wiki/$pageId'
       preLoaderRoute: typeof WikiPageIdRouteImport
       parentRoute: typeof WikiRoute
+    }
+    '/work/$slug': {
+      id: '/work/$slug'
+      path: '/work/$slug'
+      fullPath: '/work/$slug'
+      preLoaderRoute: typeof WorkSlugRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/.mcp/invoke-tool/$tool': {
       id: '/.mcp/invoke-tool/$tool'
@@ -338,7 +378,9 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
+  AdminContentRoute: AdminContentRoute,
   AdminRegistrationsRoute: AdminRegistrationsRoute,
+  WorkSlugRoute: WorkSlugRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
 export const routeTree = rootRouteImport

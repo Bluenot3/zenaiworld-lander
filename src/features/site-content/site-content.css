@@ -1,0 +1,610 @@
+.zsp-shell {
+  --zsp-ink: #06171a;
+  --zsp-navy: #0a2226;
+  --zsp-platinum: #f5f1e8;
+  --zsp-muted: #a8bdbb;
+  --zsp-mint: #66e6c4;
+  --zsp-gold: #f3c969;
+  --zsp-holo: #8beedd;
+  min-height: 100svh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(60rem 30rem at 90% -10%, rgba(139, 238, 221, 0.13), transparent 66%),
+    radial-gradient(48rem 32rem at 0% 32%, rgba(243, 201, 105, 0.08), transparent 72%),
+    linear-gradient(165deg, #0b2529, var(--zsp-ink) 48%, #051012);
+  color: var(--zsp-platinum);
+  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+.zsp-shell *,
+.zsp-shell *::before,
+.zsp-shell *::after,
+.zsp-page *,
+.zsp-page *::before,
+.zsp-page *::after {
+  box-sizing: border-box;
+}
+
+.zsp-topbar {
+  display: flex;
+  min-height: 4.5rem;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(139, 238, 221, 0.14);
+  padding: 0 clamp(1rem, 5vw, 4rem);
+  background: rgba(6, 23, 26, 0.78);
+  backdrop-filter: blur(18px) saturate(135%);
+}
+
+.zsp-brand,
+.zsp-topbar nav,
+.zsp-topbar nav a {
+  display: flex;
+  align-items: center;
+}
+
+.zsp-brand {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  gap: 0.75rem;
+  color: var(--zsp-platinum);
+  text-decoration: none;
+}
+
+.zsp-brand > span {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.72rem;
+  background: linear-gradient(135deg, var(--zsp-mint), var(--zsp-holo) 58%, var(--zsp-gold));
+  color: #06221b;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.zsp-brand strong {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+}
+
+.zsp-topbar nav {
+  gap: 0.65rem;
+}
+
+.zsp-topbar nav a {
+  min-height: 2.6rem;
+  gap: 0.42rem;
+  border: 1px solid rgba(139, 238, 221, 0.14);
+  border-radius: 0.7rem;
+  padding: 0 0.85rem;
+  color: #cfdddb;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.zsp-topbar nav a:last-child {
+  border-color: rgba(102, 230, 196, 0.3);
+  background: rgba(102, 230, 196, 0.08);
+  color: #d8fff3;
+}
+
+.zsp-page {
+  width: min(76rem, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.zsp-hero {
+  position: relative;
+  display: grid;
+  min-height: 32rem;
+  align-content: end;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(139, 238, 221, 0.18);
+  padding: clamp(5rem, 12vw, 9rem) clamp(0rem, 4vw, 3.5rem) clamp(3.5rem, 8vw, 6rem);
+}
+
+.zsp-hero::before {
+  position: absolute;
+  width: min(45rem, 78vw);
+  height: min(45rem, 78vw);
+  border: 1px solid rgba(139, 238, 221, 0.13);
+  border-radius: 50%;
+  content: "";
+  right: -20rem;
+  top: -24rem;
+  box-shadow:
+    0 0 0 5rem rgba(102, 230, 196, 0.018),
+    0 0 0 10rem rgba(243, 201, 105, 0.012);
+}
+
+.zsp-hero h1 {
+  position: relative;
+  max-width: 64rem;
+  margin: 0;
+  font-family: "Space Grotesk", ui-sans-serif, sans-serif;
+  font-size: clamp(3.4rem, 9vw, 8.5rem);
+  font-weight: 600;
+  letter-spacing: -0.065em;
+  line-height: 0.88;
+  text-wrap: balance;
+}
+
+.zsp-hero > p {
+  position: relative;
+  max-width: 48rem;
+  margin: 1.5rem 0 0;
+  color: #bdcfcd;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.7;
+}
+
+.zsp-hero time {
+  position: relative;
+  margin-top: 1.4rem;
+  color: #779795;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.zsp-preview-label {
+  position: relative;
+  width: fit-content;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(243, 201, 105, 0.3);
+  border-radius: 999px;
+  padding: 0.35rem 0.62rem;
+  background: rgba(243, 201, 105, 0.08);
+  color: var(--zsp-gold);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.zsp-blocks {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  padding: clamp(3.5rem, 8vw, 7rem) clamp(0rem, 4vw, 3.5rem) 8rem;
+}
+
+.zsp-section-heading {
+  display: grid;
+  max-width: 60rem;
+  gap: 0.75rem;
+}
+
+.zsp-section-heading > p {
+  margin: 0;
+  color: var(--zsp-mint);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.zsp-section-heading h2,
+.zsp-section-heading h3 {
+  margin: 0;
+  font-family: "Space Grotesk", ui-sans-serif, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+.zsp-section-heading h2 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+}
+
+.zsp-section-heading h3 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.zsp-rich-text {
+  display: grid;
+  max-width: 49rem;
+  gap: 1.25rem;
+}
+
+.zsp-rich-text p {
+  margin: 0;
+  color: #bfd0ce;
+  font-size: clamp(1rem, 2vw, 1.13rem);
+  line-height: 1.85;
+  white-space: pre-line;
+}
+
+.zsp-image-block,
+.zsp-video-block,
+.zsp-quote-block {
+  margin: 0;
+}
+
+.zsp-image-block img,
+.zsp-video-block video {
+  display: block;
+  width: 100%;
+  max-height: 48rem;
+  border: 1px solid rgba(139, 238, 221, 0.16);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 36px 110px -56px rgba(0, 0, 0, 0.95);
+  object-fit: cover;
+}
+
+.zsp-image-block figcaption,
+.zsp-video-block figcaption {
+  margin-top: 0.8rem;
+  color: #789592;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.zsp-interactive-block,
+.zsp-code-block {
+  overflow: hidden;
+  border: 1px solid rgba(139, 238, 221, 0.18);
+  border-radius: 1.2rem;
+  background: rgba(8, 27, 33, 0.8);
+  box-shadow: 0 32px 100px -58px rgba(0, 0, 0, 0.95);
+}
+
+.zsp-interactive-block__bar,
+.zsp-code-block__bar {
+  display: flex;
+  min-height: 3.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(139, 238, 221, 0.13);
+  padding: 0.65rem 0.9rem;
+}
+
+.zsp-interactive-block__bar strong,
+.zsp-code-block__bar strong {
+  color: #ebf3f1;
+  font-size: 0.72rem;
+}
+
+.zsp-interactive-block__bar > span,
+.zsp-code-block__bar span {
+  color: #6f918d;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.zsp-interactive-block__bar a,
+.zsp-code-block__bar button,
+.zsp-embed-fallback a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid rgba(102, 230, 196, 0.2);
+  border-radius: 0.62rem;
+  padding: 0 0.7rem;
+  background: rgba(102, 230, 196, 0.055);
+  color: #c9f8e9;
+  cursor: pointer;
+  font-size: 0.64rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.zsp-interactive-block iframe {
+  display: block;
+  width: 100%;
+  min-height: 15rem;
+  border: 0;
+  background: #07171d;
+}
+
+.zsp-html-paused {
+  display: grid;
+  min-height: 15rem;
+  place-content: center;
+  gap: 0.45rem;
+  padding: 2rem;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(139, 238, 221, 0.08), transparent 55%), #07171d;
+  text-align: center;
+}
+
+.zsp-html-paused strong {
+  color: #dce9e6;
+  font-size: 0.82rem;
+}
+
+.zsp-html-paused p {
+  max-width: 31rem;
+  margin: 0;
+  color: #7f9b98;
+  font-size: 0.72rem;
+  line-height: 1.6;
+}
+
+.zsp-embed-fallback {
+  display: grid;
+  min-height: 18rem;
+  place-content: center;
+  justify-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.zsp-embed-fallback p {
+  max-width: 34rem;
+  margin: 0;
+  color: #94aaa7;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.zsp-code-block__bar > div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.zsp-code-block pre {
+  max-height: 44rem;
+  overflow: auto;
+  margin: 0;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  background: #040c0f;
+  color: #b9f6e4;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: clamp(0.68rem, 1.8vw, 0.82rem);
+  line-height: 1.75;
+  white-space: pre;
+}
+
+.zsp-cta-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  border-block: 1px solid rgba(243, 201, 105, 0.22);
+  padding: clamp(2rem, 5vw, 3.5rem) 0;
+}
+
+.zsp-cta-block h2 {
+  margin: 0;
+  font-family: "Space Grotesk", ui-sans-serif, sans-serif;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  letter-spacing: -0.045em;
+}
+
+.zsp-cta-block p {
+  max-width: 42rem;
+  margin: 0.8rem 0 0;
+  color: #9bb0ad;
+  line-height: 1.65;
+}
+
+.zsp-cta-block > a {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  gap: 0.55rem;
+  flex: 0 0 auto;
+  border-radius: 0.8rem;
+  padding: 0 1rem;
+  background: var(--zsp-mint);
+  color: #041c16;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.zsp-quote-block {
+  max-width: 62rem;
+  border-left: 2px solid var(--zsp-gold);
+  padding: 0.5rem 0 0.5rem clamp(1.3rem, 4vw, 2.5rem);
+}
+
+.zsp-quote-block blockquote {
+  margin: 0;
+  font-family: "Space Grotesk", ui-sans-serif, sans-serif;
+  font-size: clamp(1.8rem, 4vw, 3.25rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.18;
+}
+
+.zsp-quote-block figcaption {
+  margin-top: 1rem;
+  color: var(--zsp-gold);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.62rem;
+}
+
+.zsp-divider {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid rgba(139, 238, 221, 0.16);
+}
+
+.zsp-empty {
+  display: grid;
+  min-height: 18rem;
+  place-items: center;
+  border: 1px dashed rgba(139, 238, 221, 0.18);
+  border-radius: 1rem;
+  color: #77918e;
+  text-align: center;
+}
+
+.zsp-page--showcase {
+  width: min(92rem, calc(100% - 2rem));
+}
+
+.zsp-page--profile .zsp-hero {
+  min-height: 26rem;
+}
+
+.zsp-page--profile .zsp-blocks {
+  width: min(54rem, 100%);
+}
+
+.zsp-page--preview {
+  width: 100%;
+  margin: 0;
+  background: #07171d;
+}
+
+.zsp-page--preview .zsp-hero {
+  min-height: 18rem;
+  padding: 3rem 1.4rem 2rem;
+}
+
+.zsp-page--preview .zsp-hero h1 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+}
+
+.zsp-page--preview .zsp-blocks {
+  gap: 2.2rem;
+  padding: 2.5rem 1.4rem 4rem;
+}
+
+.zsp-page--preview .zsp-interactive-block iframe {
+  max-height: 32rem;
+}
+
+.zsp-footer {
+  display: flex;
+  width: min(76rem, calc(100% - 2rem));
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 auto;
+  border-top: 1px solid rgba(139, 238, 221, 0.14);
+  padding: 1.4rem 0 2.2rem;
+  color: #65827f;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.55rem;
+}
+
+.zsp-route-message {
+  display: grid;
+  min-height: 100svh;
+  place-content: center;
+  justify-items: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.zsp-route-message > span {
+  color: var(--zsp-gold);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+}
+
+.zsp-route-message h1 {
+  max-width: 44rem;
+  margin: 0.8rem 0 0;
+  font-family: "Space Grotesk", ui-sans-serif, sans-serif;
+  font-size: clamp(2.8rem, 9vw, 6rem);
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+}
+
+.zsp-route-message p {
+  max-width: 34rem;
+  margin: 1rem 0 0;
+  color: var(--zsp-muted);
+  line-height: 1.7;
+}
+
+.zsp-route-message a {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  margin-top: 1.5rem;
+  border-radius: 0.75rem;
+  padding: 0 1rem;
+  background: var(--zsp-mint);
+  color: #041c16;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .zsp-topbar {
+    min-height: 4.25rem;
+  }
+
+  .zsp-brand strong,
+  .zsp-topbar nav a:first-child {
+    display: none;
+  }
+
+  .zsp-topbar nav a {
+    min-height: 2.75rem;
+  }
+
+  .zsp-hero {
+    min-height: 29rem;
+    padding-top: 5.5rem;
+  }
+
+  .zsp-hero h1 {
+    font-size: clamp(3.35rem, 17vw, 5.7rem);
+  }
+
+  .zsp-blocks {
+    padding-bottom: 5rem;
+  }
+
+  .zsp-interactive-block__bar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .zsp-interactive-block__bar a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .zsp-cta-block {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .zsp-cta-block > a {
+    width: 100%;
+    min-height: 3.25rem;
+    justify-content: center;
+  }
+
+  .zsp-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zsp-shell *,
+  .zsp-shell *::before,
+  .zsp-shell *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

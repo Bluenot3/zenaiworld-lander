@@ -224,6 +224,53 @@ export const restoreVerifiedAdminSession = async () => {
   }
 };
 
+type AdminRestRequestInit = Omit<RequestInit, "headers"> & {
+  headers?: Record<string, string>;
+};
+
+export const requestAdminRest = async <T>(
+  path: string,
+  init: AdminRestRequestInit,
+  fallback: string,
+) => {
+  const { url, publishableKey } = getConfig();
+  const session = await getValidAdminSession();
+
+  if (!(await verifyAdmin(session))) {
+    clearStoredAdminSession();
+    throw new AdminApiError("This account is no longer authorized for the ZEN admin console.", 403);
+  }
+
+  const normalizedPath = path.replace(/^\/+/, "");
+  return requestJson<T>(
+    `${url}/rest/v1/${normalizedPath}`,
+    {
+      ...init,
+      headers: {
+        ...dataHeaders(publishableKey, session.accessToken),
+        ...init.headers,
+      },
+    },
+    fallback,
+  );
+};
+
+export const callVerifiedAdminRpc = async <T>(
+  rpc: string,
+  body: Record<string, unknown>,
+  fallback: string,
+) => {
+  const { data } = await requestAdminRest<T>(
+    `rpc/${rpc}`,
+    {
+      method: "POST",
+      body: JSON.stringify(body),
+    },
+    fallback,
+  );
+  return data;
+};
+
 export const signInAdmin = async (email: string, password: string) => {
   const { url, publishableKey } = getConfig();
   if (!url || !publishableKey) {

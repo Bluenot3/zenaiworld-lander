@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
+import { listPublishedSitePageIndex } from "@/features/site-content/content.server";
+
 const BASE_URL = "https://zenai.world";
 
 interface SitemapEntry {
@@ -21,6 +23,20 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/refund-policy", changefreq: "yearly", priority: "0.3" },
           { path: "/accessibility-statement", changefreq: "yearly", priority: "0.3" },
         ];
+
+        try {
+          const publishedPages = await listPublishedSitePageIndex();
+          entries.push(
+            ...publishedPages.map((page) => ({
+              path: `/work/${page.slug}`,
+              lastmod: page.updated_at || page.published_at,
+              changefreq: "monthly" as const,
+              priority: "0.7",
+            })),
+          );
+        } catch (error) {
+          console.error("Unable to add published Site Studio pages to sitemap", error);
+        }
 
         const urls = entries.map((e) =>
           [

@@ -331,7 +331,7 @@
 .zar-secondary-button,
 .zar-danger-button {
   display: inline-flex;
-  min-height: 2.6rem;
+  min-height: 2.75rem;
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
@@ -1405,6 +1405,7 @@
   .zar-back-link {
     left: 1.25rem;
     top: 1.5rem;
+    min-height: 2.75rem;
   }
 
   .zar-login__identity {

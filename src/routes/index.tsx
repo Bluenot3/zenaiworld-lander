@@ -21,6 +21,7 @@ import {
 import { FormEvent, useEffect, useMemo, useState } from "react";
 
 import heroVisual from "@/assets/zen-pioneer-hero.png";
+import { fetchPublishedSiteIndex } from "@/features/site-content/content.functions";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -716,6 +717,53 @@ function EcosystemSection() {
   );
 }
 
+function PublishedWorkSection({
+  pages,
+}: {
+  pages: Awaited<ReturnType<typeof fetchPublishedSiteIndex>>["pages"];
+}) {
+  const listedPages = pages
+    .filter((page) => page.listing.showOnHome)
+    .sort(
+      (left, right) =>
+        left.listing.order - right.listing.order ||
+        right.published_at.localeCompare(left.published_at),
+    );
+
+  if (listedPages.length === 0) return null;
+
+  return (
+    <section id="work" className="zen-section zen-work-section">
+      <div className="zen-shell">
+        <div className="zen-work-heading">
+          <div>
+            <p className="zen-section-number">Work &amp; Proof</p>
+            <h2>A living record of what ZEN builds.</h2>
+          </div>
+          <p>
+            Programs, research, launches, artifacts, and milestones—published directly from the ZEN
+            archive.
+          </p>
+        </div>
+        <div className="zen-work-ledger">
+          {listedPages.slice(0, 6).map((page, index) => (
+            <a href={`/work/${page.slug}`} key={page.page_id}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <div>
+                <strong>{page.title}</strong>
+                <p>{page.summary || "Explore this entry from the ZEN AI World archive."}</p>
+              </div>
+              <em>
+                View entry <ArrowRight size={15} />
+              </em>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
   const year = useMemo(() => new Date().getFullYear(), []);
 
@@ -729,7 +777,6 @@ function Footer() {
           <a href="/terms-and-conditions">Terms</a>
           <a href="/refund-policy">Refunds</a>
           <a href="/accessibility-statement">Accessibility</a>
-          <a href="/admin/registrations">Admin</a>
         </nav>
       </div>
       <div className="zen-shell zen-footer-bottom">
@@ -756,7 +803,26 @@ function MobileActionBar({ onRegister }: { onRegister: (program: Program) => voi
 }
 
 function Index() {
+  const [pages, setPages] = useState<Awaited<ReturnType<typeof fetchPublishedSiteIndex>>["pages"]>(
+    [],
+  );
   const [selectedProgram, setSelectedProgram] = useState<Program>("ai-pioneer");
+
+  useEffect(() => {
+    let active = true;
+
+    void fetchPublishedSiteIndex()
+      .then((result) => {
+        if (active) setPages(result.pages);
+      })
+      .catch(() => {
+        // The public archive is optional; registration and the core homepage stay available.
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const selectAndScroll = (program: Program) => {
     setSelectedProgram(program);
@@ -771,6 +837,7 @@ function Index() {
       <Hero onRegister={selectAndScroll} />
       <PioneerSection />
       <RegistrationSection selectedProgram={selectedProgram} onProgramChange={setSelectedProgram} />
+      <PublishedWorkSection pages={pages} />
       <EcosystemSection />
       <Footer />
       <MobileActionBar onRegister={selectAndScroll} />
