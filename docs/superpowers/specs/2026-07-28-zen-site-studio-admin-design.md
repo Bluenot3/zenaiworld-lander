@@ -36,7 +36,7 @@ The editor uses the same Supabase project and authenticated user identity as Ars
 **Trade-offs**
 
 - Notion writes are slower than direct database writes.
-- Publishing must use optimistic UI carefully and display connector failures truthfully.
+- Publishing must display connector failures truthfully.
 - Large HTML experiences require chunking and sandboxed rendering.
 
 ### 2. Supabase-native CMS
@@ -57,11 +57,12 @@ Write content files to GitHub and trigger a deployment for each edit.
 
 1. The site initializes Supabase with the same project URL and publishable key used by Arsenal.
 2. The login flow uses Supabase PKCE and the existing Arsenal account.
-3. `/studio` requires a current authenticated session.
-4. The browser calls `rpc('is_platform_admin')` before displaying admin controls.
-5. Every server mutation independently validates the access token and calls `public.is_platform_admin()` before reading or writing Notion.
-6. Client-provided email, `user_metadata`, route state, or local storage must never grant admin access.
-7. Unauthorized users receive a neutral access-denied screen and no CMS data.
+3. Because `arsenal.world` and `zenai.world` are different root domains, the administrator may need to sign in separately on `zenai.world`; the identity and authorization source remain the same Supabase project.
+4. `/studio` requires a current authenticated session.
+5. The browser calls `rpc('is_platform_admin')` before displaying admin controls.
+6. Every server mutation independently validates the access token and calls `public.is_platform_admin()` before reading or writing Notion.
+7. Client-provided email, `user_metadata`, route state, or local storage must never grant admin access.
+8. Unauthorized users receive a neutral access-denied screen and no CMS data.
 
 ### Content source
 
@@ -79,7 +80,7 @@ Add CMS-specific properties without changing or deleting existing migration rows
 - `Status`: `Draft`, `Published`, `Archived`
 - `Section Type`: section renderer identifier
 - `Sort Order`: integer
-- `Content JSON`: validated JSON payload
+- `Content JSON`: validated structured payload
 - `SEO Title`
 - `SEO Description`
 - `Show in Navigation`: boolean
@@ -87,6 +88,10 @@ Add CMS-specific properties without changing or deleting existing migration rows
 - `Published At`
 - `Published By`
 - `Updated At`
+
+The existing `Link or code` property stores large HTML, iframe markup, or external URLs. `Content JSON` stores normal structured section data. This avoids forcing large HTML payloads into the structured configuration field.
+
+A one-time, admin-only CMS setup operation verifies that these properties exist and adds only missing properties. It never edits, deletes, or reclassifies legacy inventory rows. Public page requests never run schema setup.
 
 Existing columns such as `Page URL`, `Section / Subpage`, `Type`, `Link or code`, `Action`, and migration notes remain intact.
 
@@ -164,6 +169,7 @@ Autosave is not enabled initially. Administrators use an explicit **Save draft**
 ### Public rendering
 
 - Published managed pages render at `/p/$slug` in the first release.
+- Reserved slugs include `studio`, `wiki`, `arsenal`, `learn`, `register`, `work-with-us`, `privacy`, `terms`, `sitemap.xml`, and `robots.txt`.
 - Existing static routes and the code-built homepage remain unchanged.
 - The homepage receives a controlled Site Studio slot before its final CTA/footer so admins can add supplemental published sections without rewriting the current homepage.
 - Draft or archived pages never render publicly.
@@ -199,7 +205,7 @@ Provider helpers may normalize Hugging Face Spaces, Gradio, YouTube, Vimeo, and 
 
 ### Audit trail
 
-Each privileged mutation writes a corresponding entry through the existing Arsenal admin-audit mechanism when that endpoint is available. At minimum, Site Studio revision records capture:
+Every Site Studio publish, unpublish, archive, restore, page mutation, and section mutation creates a Site Studio revision/audit record containing:
 
 - authenticated actor UUID
 - action
@@ -207,6 +213,8 @@ Each privileged mutation writes a corresponding entry through the existing Arsen
 - section ID when relevant
 - timestamp
 - before/after revision reference
+
+The implementation also writes to Arsenal's existing `public.admin_audit_log` through the authenticated Supabase session. Because Notion and Supabase cannot share one atomic transaction, a successful Notion mutation is not rolled back when the secondary Supabase audit insert fails. The UI must surface the audit failure and retain the mandatory Site Studio revision record.
 
 ### Error handling
 
@@ -216,6 +224,7 @@ Each privileged mutation writes a corresponding entry through the existing Arsen
 - Validation failure: identify the exact page or section field.
 - Publish conflict: reject stale saves when the remote update timestamp changed since the editor loaded.
 - Broken embed: show the configured fallback card and external link.
+- CMS schema not initialized: admins see a single setup action; public users see no setup details.
 
 ## Security requirements
 
@@ -251,6 +260,8 @@ Each privileged mutation writes a corresponding entry through the existing Arsen
 - Notion errors never return success
 - stale update conflicts are detected
 - only published records are returned by public loaders
+- schema setup adds only missing CMS properties
+- legacy migration rows remain unchanged
 
 ### Component tests
 
